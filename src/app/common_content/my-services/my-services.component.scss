@@ -1,0 +1,458 @@
+@import '../../../../node_modules/bootstrap/scss/functions';
+@import '../../../../node_modules/bootstrap/scss/variables';
+@import '../../../../node_modules/bootstrap/scss/mixins';
+
+.my-services-container {
+  width: 100%;
+  height: auto; // Adjust height based on content
+
+
+  .my-services-row {
+    width: 100%;
+    height: auto; // Ensure height is flexible for different screen sizes
+
+    .animation-container {
+      width: 100%;
+      height: 100%;
+      // position: absolute;
+      z-index: 2;
+      max-width: calc(100% - 165px);
+
+      .animation1 {
+        position: absolute;
+        z-index: 2;
+        width: 1296px;
+        height: 716px;
+        border-radius: 30px;
+
+        .img2-container {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+
+          .img2 {
+            width: 250px;
+            height: 250px;
+            // transition: width 2s;
+            // transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            animation: mymove 5s infinite;
+          }
+        }
+
+        .img1-container {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+
+          .img1 {
+            width: 150px;
+            height: 150px;
+            // transition: width 2s;
+            // transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+            position: absolute;
+            top: 10%;
+          }
+        }
+
+        .img3-container {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+
+          .img3 {
+            width: 300px;
+            height: 300px;
+            // transition: width 2s;
+            // transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+            position: absolute;
+            right: 0;
+            top: 10%;
+          }
+        }
+
+        .img4-container {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+
+          .img4 {
+            width: 275px;
+            height: 275px;
+            // transition: width 2s;
+            // transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+            position: absolute;
+            // right: 0;
+            bottom: 0%;
+          }
+        }
+
+        .img5-container {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          transition: all 1s cubic-bezier(0.79, 0.33, 0.14, 0.53);
+          .img5 {
+            width: 200px;
+            height: 200px;
+            // transition: width 2s;
+            // transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+            position: absolute;
+            right: 50%;
+            bottom: 50%;
+            // transition: all 1s cubic-bezier(0.79, 0.33, 0.14, 0.53);
+            transition: width 2s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Elastic-like animation */
+          }
+        }
+      }
+
+      &:hover {
+
+        width: 1296px;
+        transform: rotate(180deg);
+        transform: rotate(3.1416rad);
+        rotate: 3.1416rad;
+
+        .img1-container {
+          .img1 {
+            width: 1296px;
+            // rotate: 3.1416rad;
+          }
+        }
+
+        .img2-container {
+          .img2 {
+            width: 1296px;
+            // rotate: 3.1416rad;
+          }
+        }
+
+        .img3-container {
+          .img3 {
+            width: 1296px;
+            // rotate: 3.1416rad;
+          }
+        }
+
+        .img4-container {
+          .img4 {
+            width: 1296px;
+            // rotate: 3.1416rad;
+          }
+        }
+
+        .img5-container {
+          .img5 {
+            width: 1296px;
+            // rotate: 3.1416rad;
+            // transition: all 1s cubic-bezier(0.79, 0.33, 0.14, 0.53);
+          }
+        }
+
+      }
+    }
+
+    .my-services-row-col {
+      width: 100%;
+      height: auto;
+
+      .my-services-card {
+        border: 0;
+        background: url(../../../assets/image/PNG/myservices-bg.png) no-repeat top;
+        background-size: cover;
+        width: 100%;
+        max-width: calc(100% - 165px);
+        height: auto;
+        padding: 20px;
+        border-radius: 35px;
+        position: absolute;
+
+        @include media-breakpoint-down(md) {
+          padding: 15px;
+        }
+
+        .my-services-container-card-body {
+          width: 100%;
+          height: auto;
+          position: relative;
+          z-index: 3;
+
+          .card-header-myservices {
+            color: #FCFCFD;
+
+            .card-header-container-myservices {
+              padding: 10px;
+
+              .word-my {
+                height: fit-content;
+                font-family: 'Lufga Medium', sans-serif;
+                font-size: 48px;
+
+                // Responsive font sizes for medium and smaller screens
+                @include media-breakpoint-down(lg) {
+                  font-size: 45px;
+                }
+
+                @include media-breakpoint-down(md) {
+                  font-size: 36px;
+                }
+
+                @include media-breakpoint-down(sm) {
+                  font-size: 28px;
+                }
+              }
+
+              .word-services {
+                font-family: 'Lufga Medium', sans-serif;
+                font-size: 48px;
+                color: #FD853A;
+
+                // Responsive font sizes
+                @include media-breakpoint-down(lg) {
+                  font-size: 45px;
+                }
+
+                @include media-breakpoint-down(md) {
+                  font-size: 36px;
+                }
+
+                @include media-breakpoint-down(sm) {
+                  font-size: 28px;
+                }
+              }
+
+              .my-services-header-spa {
+                font-family: 'Lufga Medium', sans-serif;
+                font-size: 20px;
+                color: #FCFCFD;
+
+                // Responsive text for smaller screens
+                @include media-breakpoint-down(md) {
+                  font-size: 18px;
+                }
+
+                @include media-breakpoint-down(sm) {
+                  font-size: 16px;
+                }
+
+                // Additional padding for mobile devices
+                @include media-breakpoint-down(xs) {
+                  padding: 10px 0;
+                }
+              }
+            }
+          }
+
+          // Card section
+          .card-of-projects {
+            position: relative;
+            padding: 0;
+            height: auto;
+
+            .card-container {
+              height: 450px;
+              margin: 29px;
+              padding: 0;
+              color: #fff;
+              position: relative;
+              overflow: hidden;
+              transition: transform 0.3s ease;
+              backdrop-filter: blur(5px);
+              -webkit-backdrop-filter: blur(5px);
+              border-radius: 30px;
+              border: 2px solid rgba(255, 255, 255, 0.3);
+              box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+              --r: 25px;
+              /* the radius */
+              --s: 40px;
+              /* the size of the corner*/
+              --_m: /calc(2*var(--r)) calc(2*var(--r)) radial-gradient(#000 70%, #0000 72%) no-repeat;
+              mask:
+                right 0 bottom calc(var(--s) + var(--r)) var(--_m),
+                right calc(var(--s) + var(--r)) bottom 0 var(--_m),
+                radial-gradient(var(--s) at 100% 100%, #0000 99%, #000 101%) calc(-1*var(--r)) calc(-1*var(--r)) no-repeat,
+                conic-gradient(from 90deg at calc(100% - var(--s) - 2*var(--r)) calc(100% - var(--s) - 2*var(--r)),
+                  #0000 25%, #000 0);
+
+              @include media-breakpoint-down(md) {
+                height: 500px;
+              }
+
+              @include media-breakpoint-down(sm) {
+                height: auto;
+              }
+
+              .card-header {
+                text-align: center;
+                font-family: 'Lufga Medium';
+                font-size: 32px;
+                border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+                line-height: 34px;
+
+                .heading-my-services-card {
+                  margin: 24px 15px;
+                  text-align: start;
+
+                  @include media-breakpoint-down(md) {
+                    font-size: 24px;
+                    margin: 16px;
+                  }
+
+                  @include media-breakpoint-down(sm) {
+                    font-size: 18px;
+                  }
+                }
+              }
+
+              .card-body {
+                height: 100%;
+                max-height: calc(100% - 132px);
+                position: relative;
+                padding: 0;
+
+                .card-body-container {
+                  width: 100%;
+                  height: 100%;
+                  padding: 0;
+
+                  .card-body-parent {
+                    position: relative;
+                    height: 100%;
+
+                    .card-body-cd-one {
+                      position: absolute;
+                      background-color: #606060;
+                      border-radius: 30px;
+                      width: 100%;
+                      height: 100%;
+                      max-height: calc(100% - 20%);
+
+                      .card-body-cd-img {
+                        .card-image {
+                          width: 100%;
+                          height: 100%;
+                          object-fit: contain;
+                          border-radius: 30px;
+                        }
+                      }
+                    }
+
+                    .card-body-cd-two {
+                      position: absolute;
+                      background-color: #9E9D9D;
+                      border-radius: 30px;
+                      width: 100%;
+                      height: 100%;
+                      max-height: calc(100% - 25%);
+
+                      .card-body-cd-img {
+                        width: 100%;
+                        height: 100%;
+
+                        .card-image {
+                          width: 100%;
+                          height: 100%;
+                          object-fit: contain;
+                          border-radius: 30px;
+                        }
+                      }
+                    }
+
+                    .card-body-cd-three {
+                      position: absolute;
+                      background-color: #EFE8E2;
+                      border-radius: 30px;
+                      width: 100%;
+                      height: 100%;
+                      max-height: calc(100% - 30%);
+
+                      .card-body-cd-img {
+                        height: inherit;
+                        width: inherit;
+
+                        .card-image {
+                          width: 100%;
+                          height: 100%;
+                          object-fit: fill;
+                          border-radius: 30px;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            // Footer icon styles for responsiveness
+            .footer-card {
+              color: #fff;
+              width: 65px;
+              height: 65px;
+              position: absolute;
+              bottom: 25px;
+              right: 25px;
+
+              @include media-breakpoint-down(md) {
+                width: 50px;
+                height: 50px;
+              }
+
+              @include media-breakpoint-down(sm) {
+                width: 40px;
+                height: 40px;
+              }
+
+              .footer-icon-container {
+                clip-path: circle(40%);
+                background-color: #1D2939;
+                width: 100%;
+                height: 100%;
+
+                .arrowfont {
+                  padding: 22px 23px;
+
+                  @include media-breakpoint-down(md) {
+                    padding: 15px;
+                  }
+
+                  @include media-breakpoint-down(sm) {
+                    padding: 10px;
+                  }
+                }
+              }
+            }
+
+
+            &:hover {
+              .card-container {
+                // Add your hover effect here
+                background-color: #FD853A;
+                transition: transform 0.3s ease, background-color 0.3s ease;
+                border: 0 solid;
+              }
+
+              .arrowfont {
+                // Add your hover effect here
+                background-color: #FD853A;
+                transition: background-color 0.3s ease;
+                transform: rotate(45deg);
+              }
+            }
+
+          }
+
+        }
+
+
+
+
+
+      }
+    }
+
+
+  }
+
+}

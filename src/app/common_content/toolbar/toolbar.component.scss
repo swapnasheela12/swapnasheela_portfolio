@@ -1,0 +1,124 @@
+
+
+
+
+////////////////////////////////////////
+
+
+
+/* Global styles */
+.toolbar-container {
+  // max-width: 1200px;
+  /* Center the navbar */
+  width: 100%;
+  height: 70px;
+  /* Allow it to take the full width */
+  // padding: 20px 0;
+  /* Reduced padding for mobile */
+}
+
+.navbar {
+  z-index: 4;
+  height: 70px;
+  border-radius: 50px;
+}
+
+.container-fluid {
+  padding: 0 13px;
+  /* Add padding to the sides */
+}
+
+/* Toggler button */
+.navbar-toggler {
+  margin-bottom: 10px;
+}
+
+/* Navigation items */
+.nav-item {
+  padding: 4px 0;
+
+  .nav-link {
+    color: #ffffff !important;
+    border-radius: 50px;
+    padding: 10px 35px;
+    font-family: 'Lufga Regular', sans-serif;
+    /* Ensure fallback font */
+    font-size: 18px;
+
+    /* Hover effect for nav links */
+    &:hover {
+      background-color: #343a40;
+      transform: scale(1.1);
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Active state for clicked nav link */
+    &.active {
+      background-color: #FD853A;
+      color: #ffffff;
+      position: relative;
+      transition: background-color 0.3s ease, color 0.3s ease;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        visibility: visible;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+}
+
+/* Logo styling */
+.background-container {
+  width: 195px;
+  height: 41px;
+  background: url('../../../assets/image/SVG/Vector.svg') no-repeat center center;
+  background-size: cover;
+}
+
+@media (max-width: 1200px) {
+
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+    /* Center align nav items on smaller screens */
+  }
+
+  .navbar-brand {
+    margin-bottom: 15px;
+  }
+
+  .navbar-brand .background-container {
+    width: 195px;
+    height: 41px;
+  }
+}
+
+@media (max-width: 576px) {
+  .nav-link {
+    font-size: 14px;
+    /* Smaller font size for mobile */
+  }
+
+  .navbar-toggler {
+    margin-right: 15px;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+  }
+
+  .navbar-brand .background-container {
+    width: 195px;
+    height: 41px;
+  }
+}

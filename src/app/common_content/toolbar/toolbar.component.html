@@ -1,0 +1,50 @@
+
+
+
+
+<div class="mx-auto toolbar-container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+
+      <!-- Toggler button for smaller screens -->
+      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Brand (Logo) for Small Screens -->
+      <a class="navbar-brand d-lg-none mx-auto" href="#" id="logoToolBar">
+        <div class="background-container"></div>
+      </a>
+
+      <!-- Collapsible Menu -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between text-center bg-dark">
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="setActive($event)">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="setActive($event)">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="setActive($event)">Service</a>
+          </li>
+
+          <!-- Navbar Brand (Logo) for Large Screens -->
+          <a class="navbar-brand d-none d-lg-block mx-auto" href="#" id="logoToolBar">
+            <div class="background-container"></div>
+          </a>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="setActive($event)">Resume</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="setActive($event)">Project</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" (click)="setActive($event)">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,74 @@
+
+
+<header class="header-container text-center">
+  <div class="container header-inner-conatiner">
+    <div class="txt-container">
+      @if (!showDiv) {
+      <ng-container>
+        <div class="hello-container mb-2">
+          <button class="hello-button" mat-stroked-button>Hello</button>
+          <img class="hello-img ms-2" src="../../../assets/image/PNG/rightsidethreeline.png" alt="Hello decoration">
+        </div>
+        <div class="headline-container">
+          <div class="headline-one mb-2">
+            I’m <span class="name-of-developer">Swapnasheela</span>,
+          </div>
+          <div class="d-inline-flex justify-content-center">
+            <div class="box1">
+              <img class="headline-threeline-container" src="../../../assets/image/PNG/leftsidethreeline.png"
+                alt="Left decoration">
+            </div>
+            <div class="box2">
+              <div class="headline-two">UI Developer</div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      }
+      @if (showDiv) {
+        <div style="margin-top:20% ;"></div>
+      }
+
+      <div class="sub-content-container d-flex justify-content-around flex-wrap">
+        <div class="sub-content-one py-5">
+          <div class="sub-content-one-para" style="">
+            <div><img src="../../../assets/image/SVG/quote-up.svg" alt="" style="padding: 20px 0px;"></div>
+            Getting a quality website is not an expense but rather an investment
+          </div>
+        </div>
+        <div class="sub-content-two py-5"></div>
+        <div class="sub-content-three py-5">
+          <div class="exp-year">6.5 Years</div>
+          <div class="exp-txt">Experience</div>
+        </div>
+      </div>
+
+      <div class="parent-img-bind">
+        <div class="img-bind-container">
+          <div class="eclips-img-container">
+            <div class="img-eclips-style">
+              <img src="../../../assets/image/SVG/Ellipse.svg" alt="eclips">
+            </div>
+          </div>
+          @if (showDiv) {
+          <ng-container>
+            <div class="doodle-img-container">
+              <div class="img-doodle-style">
+                <img src="../../../assets/image/SVG/bg-doodle.svg" alt="Doodle Background">
+              </div>
+            </div>
+          </ng-container>
+          }
+
+          <div class="photo-img-container">
+            <div class="img-photo-style">
+              <img (mouseenter)="showDiv = true" (mouseleave)="showDiv = false"
+                src="../../../assets/image/SVG/swapna.svg" alt="Swapnasheela">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>

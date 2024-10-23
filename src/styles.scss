@@ -1,0 +1,38 @@
+
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import '../node_modules/bootstrap/scss/functions';
+@import '../node_modules/bootstrap/scss/variables';
+@import '../node_modules/bootstrap/scss/mixins';
+
+// @import 'src/styles.scss';
+// @import '@ctrl/ngx-emoji-mart/picker';
+// @import '~bootstrap/scss/functions';
+// @import '~bootstrap/scss/variables';
+// @import '~bootstrap/scss/mixins';
+// @import '~bootstrap/scss/bootstrap';
+// @import 'bootstrap/scss/_functions';
+// @import 'bootstrap/scss/_variables';
+// @import 'bootstrap/scss/mixins/_breakpoints';
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@font-face {
+  font-family: 'Urbanist SemiBold';
+  src: url('./assets/font/Urbanist/static/Urbanist-SemiBold.ttf');
+}
+@font-face {
+  font-family: 'Urbanist Bold';
+  src: url('./assets/font/Urbanist/static/Urbanist-Bold.ttf');
+}
+@font-face {
+  font-family: 'Lufga Regular';
+  src: url('./assets/font/lufga/LufgaRegular.ttf');
+}
+@font-face {
+  font-family: 'Lufga Medium';
+  src: url('./assets/font/lufga/LufgaMedium.ttf');
+}
+

@@ -37,11 +37,12 @@
               animation: moveAndRotate1 5s linear infinite;
             }
             .img2 {
-              width: 230px;
-              height: 230px;
+              width: 270px;
+              height: 270px;
               position: absolute;
               bottom: 0;
               right: 0;
+              animation: moveAndRotate2 5s linear infinite;
             }
             .img3 {
               width: 275px;
@@ -49,38 +50,29 @@
               position: absolute;
               right: 0;
               top: 10%;
+              animation: moveAndRotate3 5s infinite; // Duration is 5 seconds, infinite loop
+              transition: opacity 0.5s ease-in-out;
             }
             .img4 {
               width: 250px;
               height: 250px;
               position: absolute;
-              bottom: 5%;
-              animation: moveAndRotate4 5s linear infinite;
+              bottom: 0%;
+              animation: moveAndRotate4 4s infinite; // Duration is 5 seconds, infinite loop
+              transition: opacity 0.5s ease-in-out;
             }
             .img5 {
               width: 200px;
               height: 200px;
               position: absolute;
               right: 50%;
-              bottom: 50%;
+              bottom: 34%;
               animation: moveAndRotate5 5s linear infinite;
             }
           }
         }
 
         &:hover {
-          //   @keyframes moveAndRotate {
-          //     0% {
-          //         transform: translateX(0) rotate(0deg);
-          //     }
-          //     50% {
-          //         transform: translateX(400px) rotate(180deg); /* Move right and rotate halfway */
-          //     }
-          //     100% {
-          //         transform: translateX(0) rotate(360deg); /* Return to original position and full rotation */
-          //     }
-          // }
-
           .img-container {
             .img1 {
               @keyframes moveAndRotate1 {
@@ -96,22 +88,116 @@
               }
             }
             .img2 {
-              // width: 1296px;
-              // rotate: 3.1416rad;
+              @include media-breakpoint-up(xxl) {
+              }
+              @include media-breakpoint-up(xl) {
+                @keyframes moveAndRotate2 {
+                  0% {
+                    transform: translateX(0) rotate(0deg); // Start off the right side of the screen
+                    opacity: 1; // Fully opaque
+                  }
+                  50% {
+                    transform: translateX(10%) rotate(180deg); // Center position, rotated halfway
+                    opacity: 0.5; // Reduce opacity
+                  }
+                  100% {
+                    transform: translateX(-150%) rotate(360deg); // Move off the left side of the screen
+                    opacity: 0; // Fully transparent
+                  }
+                }
+              }
+              @include media-breakpoint-down(lg) {
+                @keyframes moveAndRotate2 {
+                  0% {
+                    transform: translateX(0) rotate(0deg); // Start off the right side of the screen
+                    opacity: 1; // Fully opaque
+                  }
+                  50% {
+                    transform: translateX(10%) rotate(180deg); // Center position, rotated halfway
+                    opacity: 0.5; // Reduce opacity
+                  }
+                  100% {
+                    transform: translateX(-20%) rotate(360deg); // Move off the left side of the screen
+                    opacity: 0; // Fully transparent
+                  }
+                }
+              }
+              @include media-breakpoint-down(md) {
+                @keyframes moveAndRotate2 {
+                  0% {
+                    transform: translateX(0) rotate(0deg); // Start off the right side of the screen
+                    opacity: 1; // Fully opaque
+                  }
+                  50% {
+                    transform: translateX(10%) rotate(180deg); // Center position, rotated halfway
+                    opacity: 0.5; // Reduce opacity
+                  }
+                  100% {
+                    transform: translateX(-150%) rotate(360deg); // Move off the left side of the screen
+                    opacity: 0; // Fully transparent
+                  }
+                }
+              }
+              @include media-breakpoint-down(sm) {
+                @keyframes moveAndRotate2 {
+                  0% {
+                    transform: translateX(0) rotate(0deg); // Start off the right side of the screen
+                    opacity: 1; // Fully opaque
+                  }
+                  50% {
+                    transform: translateX(10%) rotate(180deg); // Center position, rotated halfway
+                    opacity: 0.5; // Reduce opacity
+                  }
+                  100% {
+                    transform: translateX(-150%) rotate(360deg); // Move off the left side of the screen
+                    opacity: 0; // Fully transparent
+                  }
+                }
+              }
             }
             .img3 {
               // transform: translateX(100px);
+              @keyframes moveAndRotate3 {
+                0% {
+                  opacity: 0; // Fully transparent
+                }
+                50% {
+                  opacity: 0.5; // Reduce opacity
+                }
+                100% {
+                   opacity: 1; // Fully opaque
+                }
+              }
+
             }
             .img4 {
+              
               @keyframes moveAndRotate4 {
                 0% {
                   transform: translateX(0) rotate(0deg);
+                  opacity: 0; // Fully transparent
                 }
                 50% {
-                  transform: translateX(600px) rotate(180deg); /* Move right and rotate halfway */
+                  transform: translateX(200px) rotate(180deg); /* Move right and rotate halfway */
+                  opacity: 0.5; // Reduce opacity
                 }
                 100% {
                   transform: translateX(0) rotate(360deg); /* Return to original position and full rotation */
+                  opacity: 1; // Fully opaque
+                }
+              }
+
+              @include media-breakpoint-down(md) {
+                @keyframes moveAndRotate2 {
+                  0% {
+                    opacity: 0; // Fully opaque
+                  }
+                  50% {
+                    opacity: 0 // Reduce opacity
+                  }
+                  100% {
+                    opacity: 0; // Fully transparent
+                  }
                 }
               }
             }
@@ -119,12 +205,15 @@
               @keyframes moveAndRotate5 {
                 0% {
                   transform: translateX(0) rotate(0deg);
+                  opacity: 1; // Fully opaque
                 }
                 50% {
-                  transform: translateX(200px) rotate(180deg); /* Move right and rotate halfway */
+                  transform: translateX(300px) rotate(180deg); /* Move right and rotate halfway */
+                  opacity: 0.5; // Reduce opacity
                 }
                 100% {
                   transform: translateX(0) rotate(360deg); /* Return to original position and full rotation */
+                  opacity: 0; // Fully transparent
                 }
               }
             }

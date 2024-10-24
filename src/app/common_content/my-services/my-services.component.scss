@@ -165,13 +165,11 @@
                   opacity: 0.5; // Reduce opacity
                 }
                 100% {
-                   opacity: 1; // Fully opaque
+                  opacity: 1; // Fully opaque
                 }
               }
-
             }
             .img4 {
-              
               @keyframes moveAndRotate4 {
                 0% {
                   transform: translateX(0) rotate(0deg);
@@ -193,7 +191,7 @@
                     opacity: 0; // Fully opaque
                   }
                   50% {
-                    opacity: 0 // Reduce opacity
+                    opacity: 0; // Reduce opacity
                   }
                   100% {
                     opacity: 0; // Fully transparent

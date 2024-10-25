@@ -1,43 +1,52 @@
 {
-  "hash": "1dec2d9a",
-  "configHash": "864979b0",
+  "hash": "9e796012",
+  "configHash": "e1b28cc1",
   "lockfileHash": "1bb365e3",
-  "browserHash": "b4bdc0f8",
+  "browserHash": "f091af8c",
   "optimized": {
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "43d472fe",
+      "fileHash": "7492136c",
       "needsInterop": false
     },
     "@angular/material/button": {
       "src": "../../../../../../node_modules/@angular/material/fesm2022/button.mjs",
       "file": "@angular_material_button.js",
-      "fileHash": "a095dc72",
+      "fileHash": "bd2f87ec",
+      "needsInterop": false
+    },
+    "@angular/material/icon": {
+      "src": "../../../../../../node_modules/@angular/material/fesm2022/icon.mjs",
+      "file": "@angular_material_icon.js",
+      "fileHash": "1cc93835",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "0d308827",
+      "fileHash": "d5afff4c",
       "needsInterop": false
     },
     "@angular/platform-server": {
       "src": "../../../../../../node_modules/@angular/platform-server/fesm2022/platform-server.mjs",
       "file": "@angular_platform-server.js",
-      "fileHash": "213dde25",
+      "fileHash": "6db3adb9",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "76aa522c",
+      "fileHash": "2a2297f0",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-CEA3ZTEH": {
-      "file": "chunk-CEA3ZTEH.js"
+    "chunk-NEOQFER2": {
+      "file": "chunk-NEOQFER2.js"
+    },
+    "chunk-7PMZJM23": {
+      "file": "chunk-7PMZJM23.js"
     },
     "chunk-GNZU6RBP": {
       "file": "chunk-GNZU6RBP.js"

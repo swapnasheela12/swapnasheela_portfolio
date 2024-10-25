@@ -126,6 +126,47 @@
         }
       }
 
+      .button-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      
+        .btn-portfolio {
+          background-color: #f37321; // Orange fill
+          color: white;
+          padding: 10px 20px;
+          border-radius: 50px;
+          border: 2px solid transparent;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+      
+          .arrow-icon {
+            margin-left: 10px;
+          }
+      
+          &:hover {
+            background-color: #f37321; // Keep the button color the same on hover
+            transform: scale(1.05);
+          }
+        }
+      
+        .btn-hire-me {
+          background-color: transparent;
+          color: #f37321;
+          padding: 10px 20px;
+          border-radius: 50px;
+          border: 2px solid #f37321;
+          transition: all 0.3s ease;
+      
+          &:hover {
+            background-color: #f37321;
+            color: white;
+          }
+        }
+      }
+      
 
       .sub-content-container {
         height: inherit;

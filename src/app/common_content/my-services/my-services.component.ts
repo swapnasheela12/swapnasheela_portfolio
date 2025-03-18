@@ -1,19 +1,26 @@
-import { trigger, transition, style, animate, state } from '@angular/animations';
-import { Component } from '@angular/core';
-import { bootstrapApplication } from '@angular/platform-browser';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { provideRouter, withViewTransitions } from '@angular/router';
-import { routes } from '../../app.routes';
+
+import { Component } from '@angular/core';
+import { DiscussProjectComponent } from './discuss-project/discuss-project.component';
+import { MatButtonModule } from '@angular/material/button';
+import { WhyHireMeComponent } from './why-hire-me/why-hire-me/why-hire-me.component';
+import { Work_experinceComponent } from './work_experince/work_experince.component';
+import { bootstrapApplication } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { routes } from '../../app.routes';
 
 @Component({
   selector: 'app-my-services',
   standalone: true,
   imports: [
-
+    MatButtonModule,
+    WhyHireMeComponent,
+    DiscussProjectComponent,
+    Work_experinceComponent
   ],
   templateUrl: './my-services.component.html',
   styleUrl: './my-services.component.scss',
-
 })
 export class MyServicesComponent {
   items = [
@@ -32,6 +39,9 @@ export class MyServicesComponent {
       this.items.push(firstItem);
     }
   }
+
+
+
 }
 
 

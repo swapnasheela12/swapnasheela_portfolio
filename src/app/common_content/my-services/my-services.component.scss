@@ -15,11 +15,13 @@
     width: 100%;
     height: auto; // Ensure height is flexible for different screen sizes
     border: 0;
+
     .my-services-row-col {
       width: 100%;
       height: auto;
       border: 0;
       position: relative;
+
       .animation-container {
         width: 100%;
         height: 100%;
@@ -36,6 +38,7 @@
               top: 10%;
               animation: moveAndRotate1 5s linear infinite;
             }
+
             .img2 {
               width: 270px;
               height: 270px;
@@ -44,6 +47,7 @@
               right: 0;
               animation: moveAndRotate2 5s linear infinite;
             }
+
             .img3 {
               width: 275px;
               height: 275px;
@@ -53,6 +57,7 @@
               animation: moveAndRotate3 5s infinite; // Duration is 5 seconds, infinite loop
               transition: opacity 0.5s ease-in-out;
             }
+
             .img4 {
               width: 250px;
               height: 250px;
@@ -61,6 +66,7 @@
               animation: moveAndRotate4 4s infinite; // Duration is 5 seconds, infinite loop
               transition: opacity 0.5s ease-in-out;
             }
+
             .img5 {
               width: 200px;
               height: 200px;
@@ -79,75 +85,92 @@
                 0% {
                   transform: translateX(0) rotate(0deg);
                 }
+
                 50% {
-                  transform: translateX(100px) rotate(180deg); /* Move right and rotate halfway */
+                  transform: translateX(100px) rotate(180deg);
+                  /* Move right and rotate halfway */
                 }
+
                 100% {
-                  transform: translateX(0) rotate(360deg); /* Return to original position and full rotation */
+                  transform: translateX(0) rotate(360deg);
+                  /* Return to original position and full rotation */
                 }
               }
             }
+
             .img2 {
               @include media-breakpoint-up(xxl) {
               }
+
               @include media-breakpoint-up(xl) {
                 @keyframes moveAndRotate2 {
                   0% {
                     transform: translateX(0) rotate(0deg); // Start off the right side of the screen
                     opacity: 1; // Fully opaque
                   }
+
                   50% {
                     transform: translateX(10%) rotate(180deg); // Center position, rotated halfway
                     opacity: 0.5; // Reduce opacity
                   }
+
                   100% {
                     transform: translateX(-150%) rotate(360deg); // Move off the left side of the screen
                     opacity: 0; // Fully transparent
                   }
                 }
               }
+
               @include media-breakpoint-down(lg) {
                 @keyframes moveAndRotate2 {
                   0% {
                     transform: translateX(0) rotate(0deg); // Start off the right side of the screen
                     opacity: 1; // Fully opaque
                   }
+
                   50% {
                     transform: translateX(10%) rotate(180deg); // Center position, rotated halfway
                     opacity: 0.5; // Reduce opacity
                   }
+
                   100% {
                     transform: translateX(-20%) rotate(360deg); // Move off the left side of the screen
                     opacity: 0; // Fully transparent
                   }
                 }
               }
+
               @include media-breakpoint-down(md) {
                 @keyframes moveAndRotate2 {
                   0% {
                     transform: translateX(0) rotate(0deg); // Start off the right side of the screen
                     opacity: 1; // Fully opaque
                   }
+
                   50% {
                     transform: translateX(10%) rotate(180deg); // Center position, rotated halfway
                     opacity: 0.5; // Reduce opacity
                   }
+
                   100% {
                     transform: translateX(-150%) rotate(360deg); // Move off the left side of the screen
                     opacity: 0; // Fully transparent
                   }
                 }
               }
+
               @include media-breakpoint-down(sm) {
                 @keyframes moveAndRotate2 {
                   0% {
                     transform: translateX(0) rotate(0deg); // Start off the right side of the screen
                     opacity: 1; // Fully opaque
                   }
+
                   50% {
                     transform: translateX(10%) rotate(180deg); // Center position, rotated halfway
                     opacity: 0.5; // Reduce opacity
                   }
+
                   100% {
                     transform: translateX(-150%) rotate(360deg); // Move off the left side of the screen
                     opacity: 0; // Fully transparent
@@ -155,32 +178,40 @@
                 }
               }
             }
+
             .img3 {
               // transform: translateX(100px);
               @keyframes moveAndRotate3 {
                 0% {
                   opacity: 0; // Fully transparent
                 }
+
                 50% {
                   opacity: 0.5; // Reduce opacity
                 }
+
                 100% {
                   opacity: 1; // Fully opaque
                 }
               }
             }
+
             .img4 {
               @keyframes moveAndRotate4 {
                 0% {
                   transform: translateX(0) rotate(0deg);
                   opacity: 0; // Fully transparent
                 }
+
                 50% {
-                  transform: translateX(200px) rotate(180deg); /* Move right and rotate halfway */
+                  transform: translateX(200px) rotate(180deg);
+                  /* Move right and rotate halfway */
                   opacity: 0.5; // Reduce opacity
                 }
+
                 100% {
-                  transform: translateX(0) rotate(360deg); /* Return to original position and full rotation */
+                  transform: translateX(0) rotate(360deg);
+                  /* Return to original position and full rotation */
                   opacity: 1; // Fully opaque
                 }
               }
@@ -190,27 +221,34 @@
                   0% {
                     opacity: 0; // Fully opaque
                   }
+
                   50% {
                     opacity: 0; // Reduce opacity
                   }
+
                   100% {
                     opacity: 0; // Fully transparent
                   }
                 }
               }
             }
+
             .img5 {
               @keyframes moveAndRotate5 {
                 0% {
                   transform: translateX(0) rotate(0deg);
                   opacity: 1; // Fully opaque
                 }
+
                 50% {
-                  transform: translateX(300px) rotate(180deg); /* Move right and rotate halfway */
+                  transform: translateX(300px) rotate(180deg);
+                  /* Move right and rotate halfway */
                   opacity: 0.5; // Reduce opacity
                 }
+
                 100% {
-                  transform: translateX(0) rotate(360deg); /* Return to original position and full rotation */
+                  transform: translateX(0) rotate(360deg);
+                  /* Return to original position and full rotation */
                   opacity: 0; // Fully transparent
                 }
               }
@@ -226,6 +264,7 @@
         border: 0;
         position: relative;
         z-index: 2;
+
         @include media-breakpoint-down(md) {
           padding: 15px;
         }
@@ -511,10 +550,12 @@
 .my-work-experience-container {
   .my-work-experience {
     margin-top: 50px;
+    margin-bottom: 50px;
 
     .my-work-experience-title {
       font-size: 36px;
       color: #212121;
+
       span {
         color: #f37321;
       }
@@ -540,6 +581,7 @@
         width: 0%;
         margin: auto;
         border-left: 4px dashed #6c757d;
+
         .center-circle {
           left: -22px;
           position: relative;
@@ -551,7 +593,5 @@
         }
       }
     }
-
-    
   }
 }

@@ -1,8 +1,8 @@
-
-@import '../node_modules/bootstrap/scss/bootstrap';
-@import '../node_modules/bootstrap/scss/functions';
-@import '../node_modules/bootstrap/scss/variables';
-@import '../node_modules/bootstrap/scss/mixins';
+@import "../src/assets/theme/custom-theme.scss";
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
 
 // @import 'src/styles.scss';
 // @import '@ctrl/ngx-emoji-mart/picker';
@@ -16,23 +16,44 @@
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
 @font-face {
-  font-family: 'Urbanist SemiBold';
-  src: url('./assets/font/Urbanist/static/Urbanist-SemiBold.ttf');
+  font-family: "Urbanist SemiBold";
+  src: url("./assets/font/Urbanist/static/Urbanist-SemiBold.ttf");
 }
 @font-face {
-  font-family: 'Urbanist Bold';
-  src: url('./assets/font/Urbanist/static/Urbanist-Bold.ttf');
+  font-family: "Urbanist Bold";
+  src: url("./assets/font/Urbanist/static/Urbanist-Bold.ttf");
 }
 @font-face {
-  font-family: 'Lufga Regular';
-  src: url('./assets/font/lufga/LufgaRegular.ttf');
+  font-family: "Lufga Regular";
+  src: url("./assets/font/lufga/LufgaRegular.ttf");
 }
 @font-face {
-  font-family: 'Lufga Medium';
-  src: url('./assets/font/lufga/LufgaMedium.ttf');
+  font-family: "Lufga Medium";
+  src: url("./assets/font/lufga/LufgaMedium.ttf");
 }
 
+@font-face {
+  font-family: "Lufga SemiBold";
+  src: url("./assets/font/lufga/LufgaSemiBold.ttf");
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mdc-button {
+  color: #344054 !important; // Default text color
+  border-color: #344054 !important; // Border color
+
+  &:hover {
+    background-color: #fd853a !important; // Hover background color
+    color: white !important; // Text color on hover
+    border-color: #fd853a !important; // Border color on hover
+  }
+}

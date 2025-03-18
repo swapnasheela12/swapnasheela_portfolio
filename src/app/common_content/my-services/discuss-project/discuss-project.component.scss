@@ -1,0 +1,100 @@
+:host {
+  --mdc-outlined-text-field-container-shape: 50px;
+  --mdc-outlined-text-field-focus-outline-color: #fd853a;
+}
+
+.discuss-project-container {
+  .discuss-project-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #344054;
+    margin-bottom: 20px; // Space between text and input field
+  }
+  .discuss-project-email-container {
+    width: 100%; // Full width on small screens
+    max-width: 500px; // Limit width on larger screens
+    .input-group-text {
+      border: transparent;
+      background-color: #fd853a;
+      color: #ffffff;
+      border-radius: 50px;
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+    }
+    .discuss-project-button-send {
+      background-color: #fd853a;
+      color: white;
+      width: 80px;
+      height: 40px;
+      font-size: 18px;
+      border-radius: 35px;
+      border: 0px solid;
+      transition: all 0.3sease-in-out;
+      padding: 20%;
+      margin-right: 10px;
+      &:hover {
+        background-color: darken(#fd853a, 10%);
+      }
+    }
+  }
+}
+
+// .discuss-project-container {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center; // Centers content horizontally
+//   justify-content: center; // Centers content vertically
+//   text-align: center;
+//   height: 100vh; // Full screen height
+//   padding: 20px; // Add padding for small screens
+
+//   .discuss-project-title {
+//     font-size: 24px;
+//     font-weight: bold;
+//     color: #344054;
+//     margin-bottom: 20px; // Space between text and input field
+//   }
+
+//   .discuss-project-email-container {
+//     width: 100%; // Full width on small screens
+//     max-width: 500px; // Limit width on larger screens
+
+//     .discuss-project-input-field {
+//       width: 100%;
+//       .mdc-text-field {
+//         border-radius: 35px !important;
+//       }
+//       .discuss-project-icon-cointainer.input-group-text {
+//         margin: 0 10px;
+//         background: transparent;
+//         border: none;
+//         font-size: 20px;
+//         color: #fd853a; // Icon color
+//         .discuss-project-icon {
+//         }
+//       }
+
+//       .discuss-project-input-box {
+//         font-size: 16px;
+//         color: #344054;
+//       }
+
+//       .discuss-project-button-send {
+//         background-color: #fd853a;
+//         color: white;
+//         width: 80px;
+//         height: 40px;
+//         font-size: 18px;
+//         border-radius: 35px;
+//         border: 0px solid;
+//         transition: all 0.3sease-in-out;
+//         padding: 20%;
+//         margin-right: 10px;
+//         &:hover {
+//           background-color: darken(#fd853a, 10%);
+//         }
+//       }
+//     }
+//   }
+// }

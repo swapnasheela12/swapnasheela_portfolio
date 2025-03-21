@@ -20,28 +20,28 @@
       <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between text-center bg-dark">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/" routerLinkActive="active" (click)="setActive($event)">Home</a>
+            <a class="nav-link" routerLink="home" routerLinkActive="active" (click)="setActive($event)">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" (click)="setActive($event)">About</a>
+            <a class="nav-link" routerLink="about" routerLinkActive="active" (click)="setActive($event)">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" (click)="setActive($event)">Service</a>
+            <a class="nav-link" routerLink="services" routerLinkActive="active" (click)="setActive($event)">Service</a>
           </li>
 
           <!-- Navbar Brand (Logo) for Large Screens -->
-          <a class="navbar-brand d-none d-lg-block mx-auto" href="#" id="logoToolBar">
+          <a class="navbar-brand d-none d-lg-block mx-auto" routerLink="home" routerLinkActive="active" id="logoToolBar">
             <div class="background-container"></div>
           </a>
 
           <li class="nav-item">
-            <a class="nav-link" href="#" (click)="setActive($event)">Resume</a>
+            <a class="nav-link" routerLink="resume" routerLinkActive="active" (click)="setActive($event)">Resume</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" (click)="setActive($event)">Project</a>
+            <a class="nav-link" routerLink="project" routerLinkActive="active" (click)="setActive($event)">Project</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/contact" routerLinkActive="active"  (click)="setActive($event)">Contact</a>
+            <a class="nav-link" routerLink="contact" routerLinkActive="active"  (click)="setActive($event)">Contact</a>
           </li>
         </ul>
       </div>

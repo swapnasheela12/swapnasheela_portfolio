@@ -1,10 +1,12 @@
+import { RouterLink, RouterLinkActive } from '@angular/router';
+
 import { Component } from '@angular/core';
 import { ContactComponent } from '../../main_module/contact/contact.component';
 
 @Component({
   selector: 'app-toolbar',
   standalone: true,
-  imports: [ContactComponent],
+  imports: [ContactComponent, RouterLink, RouterLinkActive],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss'
 })

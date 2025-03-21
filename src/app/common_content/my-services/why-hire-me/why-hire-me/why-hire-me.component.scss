@@ -2,7 +2,7 @@
   background-color: #f2f4f7;
   border-radius: 35px;
   padding: 20px;
-  height: auto; // Adjust height automatically based on content
+  height: auto;
 
   .why-hire-me {
     width: 100%;
@@ -12,7 +12,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-wrap: wrap; // Ensures responsiveness
+      flex-wrap: wrap;
 
       .why-hire-me-first {
         height: 100%;
@@ -21,7 +21,7 @@
           padding: 24% 0 12% 0;
 
           .why-hire-me-first-squre {
-            width: 485px;
+            width: 100%;
             height: 500px;
             background-color: #feb273;
             border-radius: 35px;
@@ -99,11 +99,21 @@
 @media (max-width: 768px) {
   .why-hire-me-container {
     padding: 10px;
+    .why-hire-me {
+      .why-hire-me-row {
+        .why-hire-me-first {
+          .why-hire-me-first-container {
+            .why-hire-me-first-squre {
+            }
+          }
+        }
+      }
+    }
   }
 
-  .why-hire-me-first-container {
-    padding: 10% 0;
-  }
+  // .why-hire-me-first-container {
+  //   padding: 10% 0;
+  // }
 
   .why-hire-me-second {
     padding: 10px;

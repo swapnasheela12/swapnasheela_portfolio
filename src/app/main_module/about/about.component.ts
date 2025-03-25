@@ -1,3 +1,4 @@
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { animate, style, transition, trigger } from '@angular/animations';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,6 +19,8 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',

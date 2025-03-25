@@ -1,3 +1,20 @@
-<p>
-  services works!
-</p>
+<section class="services-section">
+  <div class="container services-container">
+    <h2 class="section-title" @fadeIn><span class="white-word">My </span>Services</h2>
+    <p class="section-subtitle" @fadeIn>
+      I offer a range of front-end development services to create modern, responsive, and visually appealing web applications.
+    </p>
+
+    <div class="row service-card-row">
+      @for (service of services; track service) {
+        <div class="col-lg-4 col-md-6 mb-4" @slideInUp>
+          <div class="service-card">
+            <div class="icon">{{ service.icon }}</div>
+            <h4>{{ service.title }}</h4>
+            <p>{{ service.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

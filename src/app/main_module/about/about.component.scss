@@ -17,35 +17,12 @@ $btn-color: #fd853a;
     display: flex;
     background: #111;
     color: white;
-    border-radius: 10px;
+    border-radius: 20px;
     max-width: 85%;
     width: 100%;
     padding: 4% 2%;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    // Sidebar Navigation
-    // .sidebar-nav {
-    //   //   transform: translateY(-50%);
-    //   display: flex;
-    //   flex-direction: column;
-    //   gap: 15px;
 
-    //   a {
-    //     background: $primary-color;
-    //     padding: 12px;
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: center;
-    //     border-radius: 50%;
-    //     color: $bg-dark;
-    //     width: 50px;
-    //     height: 50px;
-    //     transition: 0.3s;
-
-    //     &:hover {
-    //       background: darken($primary-color, 10%);
-    //     }
-    //   }
-    // }
     .sidebar-nav {
       display: flex;
       flex-direction: column;
@@ -75,16 +52,17 @@ $btn-color: #fd853a;
       //   padding-left: 80px;
 
       h2 {
-        font-size: 40px;
+        font-size: 3rem;
         font-weight: 700;
-
+        font-family: Lufga Medium;
         span.highlight {
           color: $primary-color;
         }
       }
 
       .description {
-        font-size: 1rem;
+        font-family: Lufga Regular;
+        font-size: 0.9rem;
         color: #555;
         line-height: 1.5;
         max-width: 600px;
@@ -114,6 +92,7 @@ $btn-color: #fd853a;
           }
 
           .mat-expansion-panel-header-title {
+            font-family: Lufga SemiBold;
             color: $bg-dark;
             &:hover {
               color: $text-light;
@@ -123,16 +102,26 @@ $btn-color: #fd853a;
           .mat-expansion-panel-content {
             padding: 15px;
             background-color: #f5f5f5;
-            font-size: 1rem;
+            font-family: Lufga Regular;
+            font-size: 0.9rem;
           }
 
           .panel-content {
             ul {
               list-style-type: none;
               padding-left: 0;
+              font-family: Lufga SemiBold;
 
               li {
                 margin: 10px 0;
+                font-family: Lufga Regular;
+                font-size: 0.9rem;
+                line-height: 1.5;
+                .strong {
+                  font-weight: 800;
+                  font-size: 0.9rem;
+                  font-family: "Lufga SemiBold";
+                }
               }
             }
           }
@@ -158,18 +147,19 @@ $btn-color: #fd853a;
         //   flex-direction: column;
         //   align-items: center;
         //   text-align: center;
-        padding: 20px;
+        padding: 20px 20px 20px 0;
 
         .connect-header {
           h3 {
+            font-family: Lufga Semibold;
             font-size: 1.8rem;
-            font-weight: bold;
             margin-bottom: 10px;
           }
         }
 
         .connect-description {
-          font-size: 1rem;
+          font-family: Lufga Regular;
+          font-size: 0.9rem;
           color: #555;
           line-height: 1.5;
           max-width: 600px;
@@ -277,16 +267,16 @@ $btn-color: #fd853a;
       }
 
       .journey-description {
-        padding: 10px;
-
         .journey-title {
+          font-family: Lufga Semibold;
           font-size: 1.8rem;
-          font-weight: bold;
           margin-bottom: 10px;
+          margin-top: -16px;
         }
 
         .journey-content {
-          font-size: 1rem;
+          font-family: Lufga Regular;
+          font-size: 0.9rem;
           color: #555;
           line-height: 1.5;
           max-width: 600px;

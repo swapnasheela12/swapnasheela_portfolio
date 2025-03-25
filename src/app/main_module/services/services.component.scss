@@ -1,11 +1,89 @@
- //   @keyframes moveAndRotate {
-          //     0% {
-          //         transform: translateX(0) rotate(0deg);
-          //     }
-          //     50% {
-          //         transform: translateX(400px) rotate(180deg); /* Move right and rotate halfway */
-          //     }
-          //     100% {
-          //         transform: translateX(0) rotate(360deg); /* Return to original position and full rotation */
-          //     }
-          // }
+// @import 'bootstrap/scss/bootstrap';
+
+$primary-color: #fd853a;
+$bg-dark: #111;
+$text-light: #fff;
+$btn-color: #fd853a;
+
+.services-section {
+  text-align: center;
+  background: $bg-dark;
+  color: $text-light;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border-radius: 30px;
+  margin: 6% 0;
+
+  .services-container {
+    padding: 4% 2%;
+    .section-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: $primary-color;
+      margin-bottom: 10px;
+      font-family: Lufga Medium;
+      .white-word {
+        color: #fff;
+      }
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      color: #ccc;
+      font-family: Lufga Regular;
+    }
+
+    .service-card-row {
+      .service-card {
+        background: #222;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 280px;
+
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .icon {
+          font-size: 2.5rem;
+          color: $primary-color;
+          margin-bottom: 15px;
+        }
+
+        h4 {
+          font-size: 1.5rem;
+          //   font-weight: bold;
+          margin-bottom: 10px;
+          font-family: Lufga SemiBold;
+        }
+
+        p {
+          font-size: 1rem;
+          color: #555;
+          line-height: 1.5;
+          font-family: Lufga Regular;
+        }
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 767px) {
+  .services-section {
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .service-card {
+      padding: 20px;
+    }
+  }
+}

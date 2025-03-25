@@ -1,14 +1,14 @@
 <div class="hero-section">
     <div class=" container-main-page m-auto">
         <div class="row align-items-center">
-           
+
             <div class="col-lg-2 col-md-12 sidebar-nav m-auto">
-                <a href="#"><i class="fas fa-home"></i></a>
-                <a href="#"><i class="fas fa-envelope"></i></a>
-                <a href="#"><i class="fas fa-user"></i></a>
+                <a routerLink="/home" routerLinkActive="active"><i class="fas fa-home"></i></a>
+                <a routerLink="/contact" routerLinkActive="active"><i class="fas fa-envelope"></i></a>
+                <a routerLink="/resume" routerLinkActive="active"><i class="fas fa-user"></i></a>
             </div>
-            
-          
+
+
             <div class="col-lg-5 col-md-12 text-center text-lg-start content-section">
                 <h2>Hello! I’m <span class="highlight">Swapnasheela</span>,</h2>
                 <h6>A Passionate Front End Developer</h6>
@@ -27,13 +27,13 @@
                             </mat-expansion-panel-header>
                             <div class="panel-content">
                                 <ul>
-                                    <li><strong>🔹 Front-End Development</strong> – Creating high-performance, scalable,
+                                    <li><strong class="strong">🔹 Front-End Development</strong> – Creating high-performance, scalable,
                                         and pixel-perfect web applications.</li>
-                                    <li><strong>🔹 UI/UX Design Implementation</strong> – Transforming designs into
+                                    <li><strong class="strong">🔹 UI/UX Design Implementation</strong> – Transforming designs into
                                         functional, aesthetically pleasing interfaces.</li>
-                                    <li><strong>🔹 Responsive Web Design</strong> – Ensuring seamless experiences across
+                                    <li><strong class="strong">🔹 Responsive Web Design</strong> – Ensuring seamless experiences across
                                         all devices.</li>
-                                    <li><strong>🔹 Performance Optimization</strong> – Improving loading speeds and
+                                    <li><strong class="strong">🔹 Performance Optimization</strong> – Improving loading speeds and
                                         accessibility.</li>
                                 </ul>
                             </div>
@@ -46,18 +46,18 @@
                             </mat-expansion-panel-header>
                             <div class="panel-content">
                                 <ul>
-                                    <li><strong>🚀 Languages & Frameworks:</strong> – Angular, TypeScript, JavaScript,
+                                    <li><strong class="strong">🚀 Languages & Frameworks:</strong> – Angular, TypeScript, JavaScript,
                                         Bootstrap, SCSS, HTML5, CSS3.</li>
-                                    <li><strong>⚙️ Tools & Platforms:</strong> – GitHub, VS Code, Figma, REST APIs,
+                                    <li><strong class="strong">⚙️ Tools & Platforms:</strong> – GitHub, VS Code, Figma, REST APIs,
                                         Firebase.</li>
-                                    <li><strong>🎨 Design Principles:</strong> – Material Design, Tailwind CSS, UI/UX
+                                    <li><strong class="strong">🎨 Design Principles:</strong> – Material Design, Tailwind CSS, UI/UX
                                         best practices.</li>
                                 </ul>
                             </div>
                         </mat-expansion-panel>
                     </mat-accordion>
                 </div>
-             
+
                 <div class="connect-container" [@fadeIn]>
                     <div class="connect-header">
                         <h3>Let's Connect!</h3>
@@ -69,10 +69,18 @@
                     </div>
                     <button class="btn btn-custom">More About Me</button>
 
-                  
+
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/swapnasheela-khandagale-01961820" target="_blank"
+                            rel="noopener noreferrer" onclick="event.stopPropagation();">
+                            <i class="fab fa-linkedin"></i>
+                        </a> 
+                        <a href="https://github.com/swapnasheela12" target="_blank"
+                            rel="noopener noreferrer" onclick="event.stopPropagation();">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <!-- <a href="www.linkedin.com/in/swapnasheela-khandagale-01961820" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a> -->
+                        <!-- <a href="#"><i class="fab fa-github"></i></a> -->
                         <a href="#"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
@@ -82,7 +90,7 @@
                 </div>
             </div>
 
-         
+
             <div class="col-lg-5 col-md-12 image-section">
                 <div class="image-wrapper">
                     <div class="circle-bg"></div>

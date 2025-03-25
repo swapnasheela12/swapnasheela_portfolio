@@ -75,6 +75,11 @@
 }
 
 @media (max-width: 1200px) {
+  .navbar-nav {
+    /* Ensure the navbar collapses properly on medium screens */
+    flex-direction: row;
+    justify-content: space-between !important;
+  }
 }
 
 /* Responsive adjustments */

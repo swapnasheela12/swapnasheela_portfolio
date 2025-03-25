@@ -1,0 +1,318 @@
+// Colors
+$primary-color: #f5c347;
+$bg-dark: #111;
+$text-light: #fff;
+$btn-color: #fd853a;
+
+.hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  border-radius: 30px;
+  margin: 6% 0;
+
+  .container-main-page {
+    display: flex;
+    background: #111;
+    color: white;
+    border-radius: 10px;
+    max-width: 85%;
+    width: 100%;
+    padding: 4% 2%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    // Sidebar Navigation
+    .sidebar-nav {
+      //   transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      a {
+        background: $primary-color;
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: $bg-dark;
+        width: 50px;
+        height: 50px;
+        transition: 0.3s;
+
+        &:hover {
+          background: darken($primary-color, 10%);
+        }
+      }
+    }
+    .content-section {
+      text-align: left;
+      //   padding-left: 80px;
+
+      h2 {
+        font-size: 40px;
+        font-weight: 700;
+        span.highlight {
+          color: $primary-color;
+        }
+      }
+
+      .description {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.5;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .accordion-exp {
+        mat-accordion {
+          width: 100%;
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 20px;
+        }
+
+        mat-expansion-panel {
+          margin-bottom: 10px;
+
+          .mat-expansion-panel-header {
+            background-color: #fd853a;
+            color: white;
+            font-weight: bold;
+          }
+          .mat-expansion-panel-header-title {
+            color: #fff;
+          }
+          .mat-expansion-panel-content {
+            padding: 15px;
+            background-color: #f5f5f5;
+            font-size: 1rem;
+          }
+
+          .panel-content {
+            ul {
+              list-style-type: none;
+              padding-left: 0;
+
+              li {
+                margin: 10px 0;
+              }
+            }
+          }
+        }
+
+        @media (max-width: 600px) {
+          mat-accordion {
+            padding: 10px;
+          }
+
+          .mat-expansion-panel-header {
+            font-size: 14px;
+          }
+
+          .mat-expansion-panel-content {
+            font-size: 0.9rem;
+          }
+        }
+      }
+
+      .connect-container {
+        //   display: flex;
+        //   flex-direction: column;
+        //   align-items: center;
+        //   text-align: center;
+        padding: 20px;
+
+        .connect-header {
+          h3 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+          }
+        }
+
+        .connect-description {
+          font-size: 1rem;
+          color: #555;
+          line-height: 1.5;
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
+        .btn-custom {
+          background: $btn-color;
+          border: none;
+          padding: 12px 24px;
+          font-size: 18px;
+          color: $text-light;
+          border-radius: 25px;
+          margin-top: 10px;
+          transition: 0.3s;
+
+          &:hover {
+            background: darken($btn-color, 10%);
+          }
+        }
+
+        .social-icons {
+          margin-top: 20px;
+          display: flex;
+          gap: 10px;
+
+          a {
+            background: rgba(255, 255, 255, 0.1);
+            color: $text-light;
+            padding: 8px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            font-size: 18px;
+            transition: 0.3s;
+
+            &:hover {
+              background: $primary-color;
+              color: $bg-dark;
+            }
+          }
+        }
+
+        // Responsive Design
+        @media (max-width: 767px) {
+          .connect-header {
+            font-size: 1.6rem;
+          }
+
+          .connect-description {
+            font-size: 1rem;
+          }
+
+          .connect-links div {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+
+    .image-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      //   padding: 20px;
+
+      .image-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 250px;
+        //   margin-bottom: 20px;
+
+        .circle-bg {
+          position: absolute;
+          top: -7%;
+          left: 50%;
+          transform: translateX(-50%);
+          background: #ffead5;
+          border-radius: 50%;
+          width: 350px;
+          height: 350px;
+          z-index: 1;
+        }
+
+        .profile-img {
+          width: 378px;
+          max-width: 373.5px;
+          border-radius: 50%;
+          z-index: 2;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+          transition: all 0.3s ease-in-out;
+          position: relative;
+          left: -62px;
+          bottom: 58px;
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      .journey-description {
+        padding: 10px;
+
+        .journey-title {
+          font-size: 1.8rem;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+
+        .journey-content {
+          font-size: 1rem;
+          color: #555;
+          line-height: 1.5;
+          max-width: 600px;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    .hero-section {
+      flex-direction: column;
+      text-align: center;
+      padding: 50px 20px;
+
+      .content-section {
+        padding-left: 0;
+      }
+
+      .image-section {
+        margin-top: 20px;
+
+        .circle-bg {
+          width: 250px;
+          height: 250px;
+        }
+
+        .profile-img {
+          width: 250px;
+        }
+      }
+    }
+
+    .sidebar-nav {
+      display: none;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .hero-section {
+      h2 {
+        font-size: 28px;
+      }
+
+      .description {
+        font-size: 16px;
+      }
+
+      .btn-custom {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
+
+      .image-section {
+        .circle-bg {
+          width: 200px;
+          height: 200px;
+        }
+
+        .profile-img {
+          width: 220px;
+        }
+      }
+    }
+  }
+}

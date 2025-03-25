@@ -5,3 +5,7 @@ node_modules
 .angular/
 .angular/cache/18.2.6/swapnasheela_portfolio/.tsbuildinfo
 .angular/cache/18.2.6/swapnasheela_portfolio/.tsbuildinfo
+.angular/cache/18.2.10/swapnasheela_portfolio/.tsbuildinfo
+.gitignore
+.angular/cache/18.2.10/swapnasheela_portfolio/.tsbuildinfo
+.angular/cache/18.2.10/swapnasheela_portfolio/vite/deps/_metadata.json

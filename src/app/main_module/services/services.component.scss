@@ -40,11 +40,12 @@ $btn-color: #fd853a;
     .service-card-row {
       .service-card {
         background: #222;
-        padding: 20px;
+        padding: 25px;
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        height: 280px;
+        height: 100% !important;
+        max-height: calc(100% - 10px) !important;
 
         &:hover {
           transform: translateY(-5px);
@@ -76,6 +77,32 @@ $btn-color: #fd853a;
 }
 
 // Responsive Design
+@media (max-width: 1200px) {
+  .services-section {
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .service-card {
+      padding: 20px;
+      height: 100% !important;
+      max-height: calc(100% - 10px) !important;
+    }
+  }
+}
+@media (max-width: 992px) {
+  .services-section {
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .service-card {
+      padding: 20px;
+      height: 100% !important;
+      max-height: calc(100% - 10px) !important;
+    }
+  }
+}
 @media (max-width: 767px) {
   .services-section {
     .section-title {
@@ -84,6 +111,19 @@ $btn-color: #fd853a;
 
     .service-card {
       padding: 20px;
+      height: auto !important;
+    }
+  }
+}
+@media (max-width: 576px) {
+  .services-section {
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .service-card {
+      padding: 20px;
+      height: auto !important;
     }
   }
 }

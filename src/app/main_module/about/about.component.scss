@@ -309,7 +309,7 @@ $btn-color: #fd853a;
         text-align: center;
 
         &:hover {
-          background: darken($primary-color, 10%);
+          // background: darken($primary-color, 10%);
           color: $text-light;
         }
       }
@@ -354,7 +354,7 @@ $btn-color: #fd853a;
             font-weight: bold;
 
             &:hover {
-              background: darken($primary-color, 10%);
+              // background: darken($primary-color, 10%);
               color: $text-light;
             }
           }
@@ -427,7 +427,7 @@ $btn-color: #fd853a;
           transition: 0.3s;
 
           &:hover {
-            background: darken($btn-color, 10%);
+            // background: darken($btn-color, 10%);
           }
         }
 

@@ -1,0 +1,33 @@
+.sidebar {
+  width: 280px;
+  background: #fff;
+  padding: 20px;
+  //   position: fixed;
+  height: 100vh;
+  border-right: 1px solid #ddd;
+
+  .profile {
+    text-align: center;
+    img {
+      width: 80px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+  }
+
+  .info,
+  .languages,
+  .skills {
+    margin-top: 20px;
+  }
+
+  .percent {
+    float: right;
+    font-weight: bold;
+  }
+
+  .btn {
+    width: 100%;
+    margin-top: 15px;
+  }
+}

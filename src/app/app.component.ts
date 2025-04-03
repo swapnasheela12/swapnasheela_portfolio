@@ -11,7 +11,7 @@ import { ToolbarComponent } from "./common_content/toolbar/toolbar.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FooterComponent, MyServicesComponent, HeaderComponent, ToolbarComponent, HomeComponent, AboutComponent, ContactComponent, ServicesComponent],
+  imports: [RouterOutlet, ToolbarComponent],
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

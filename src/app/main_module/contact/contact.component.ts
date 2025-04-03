@@ -3,10 +3,11 @@ import { FormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 
 @Component({
-    selector: 'app-contact',
-    imports: [FormsModule, GoogleMapsModule],
-    templateUrl: './contact.component.html',
-    styleUrl: './contact.component.scss'
+  selector: 'app-contact',
+  imports: [FormsModule, GoogleMapsModule],
+  standalone: true,
+  templateUrl: './contact.component.html',
+  styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
   title = 'google-maps-demo';

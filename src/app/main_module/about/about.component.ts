@@ -11,27 +11,26 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
-  selector: 'app-about',
-  standalone: true,
-  imports: [MatButtonModule,
-    MatExpansionModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDatepickerModule,
-    RouterLink,
-    RouterLinkActive
-  ],
-  templateUrl: './about.component.html',
-  styleUrl: './about.component.scss',
-  animations: [
-    trigger('fadeIn', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('1s ease-out', style({ opacity: 1 }))
-      ])
-    ])
-  ]
+    selector: 'app-about',
+    imports: [MatButtonModule,
+        MatExpansionModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDatepickerModule,
+        RouterLink,
+        RouterLinkActive
+    ],
+    templateUrl: './about.component.html',
+    styleUrl: './about.component.scss',
+    animations: [
+        trigger('fadeIn', [
+            transition(':enter', [
+                style({ opacity: 0 }),
+                animate('1s ease-out', style({ opacity: 1 }))
+            ])
+        ])
+    ]
 })
 export class AboutComponent {
   services = [

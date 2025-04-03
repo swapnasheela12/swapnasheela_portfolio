@@ -10,11 +10,10 @@ import { ServicesComponent } from './main_module/services/services.component';
 import { ToolbarComponent } from "./common_content/toolbar/toolbar.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, FooterComponent, MyServicesComponent, HeaderComponent, ToolbarComponent, HomeComponent, AboutComponent, ContactComponent, ServicesComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    imports: [RouterOutlet, FooterComponent, MyServicesComponent, HeaderComponent, ToolbarComponent, HomeComponent, AboutComponent, ContactComponent, ServicesComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'swapnasheela_portfolio';

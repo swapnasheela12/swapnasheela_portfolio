@@ -7,19 +7,18 @@ import { ResumeServicesComponent } from './resume-services/resume-services.compo
 import { ResumeSidebarComponent } from './resume-sidebar/resume-sidebar.component';
 
 @Component({
-  selector: 'app-resume',
-  standalone: true,
-  imports: [ResumeSidebarComponent, ResumeHeroComponent, ResumeServicesComponent, ResumeFlowchartComponent],
-  animations: [
-    trigger('fadeIn', [
-      transition('void => *', [
-        style({ opacity: 0 }),
-        animate(1000, style({ opacity: 1 }))
-      ])
-    ])
-  ],
-  templateUrl: './resume.component.html',
-  styleUrl: './resume.component.scss'
+    selector: 'app-resume',
+    imports: [ResumeSidebarComponent, ResumeHeroComponent, ResumeServicesComponent, ResumeFlowchartComponent],
+    animations: [
+        trigger('fadeIn', [
+            transition('void => *', [
+                style({ opacity: 0 }),
+                animate(1000, style({ opacity: 1 }))
+            ])
+        ])
+    ],
+    templateUrl: './resume.component.html',
+    styleUrl: './resume.component.scss'
 })
 export class ResumeComponent {
   services = [

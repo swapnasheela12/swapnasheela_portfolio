@@ -11,16 +11,15 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { routes } from '../../app.routes';
 
 @Component({
-  selector: 'app-my-services',
-  standalone: true,
-  imports: [
-    MatButtonModule,
-    WhyHireMeComponent,
-    DiscussProjectComponent,
-    Work_experinceComponent
-  ],
-  templateUrl: './my-services.component.html',
-  styleUrl: './my-services.component.scss',
+    selector: 'app-my-services',
+    imports: [
+        MatButtonModule,
+        WhyHireMeComponent,
+        DiscussProjectComponent,
+        Work_experinceComponent
+    ],
+    templateUrl: './my-services.component.html',
+    styleUrl: './my-services.component.scss'
 })
 export class MyServicesComponent {
   items = [

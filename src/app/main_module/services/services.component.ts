@@ -4,25 +4,24 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-services',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './services.component.html',
-  styleUrls: ['./services.component.scss'],
-  animations: [
-    trigger('fadeIn', [
-      transition(':enter', [
-        style({ opacity: 0 }),
-        animate('800ms ease-in', style({ opacity: 1 }))
-      ])
-    ]),
-    trigger('slideInUp', [
-      transition(':enter', [
-        style({ transform: 'translateY(30px)', opacity: 0 }),
-        animate('600ms ease-out', style({ transform: 'translateY(0)', opacity: 1 }))
-      ])
-    ])
-  ]
+    selector: 'app-services',
+    imports: [CommonModule],
+    templateUrl: './services.component.html',
+    styleUrls: ['./services.component.scss'],
+    animations: [
+        trigger('fadeIn', [
+            transition(':enter', [
+                style({ opacity: 0 }),
+                animate('800ms ease-in', style({ opacity: 1 }))
+            ])
+        ]),
+        trigger('slideInUp', [
+            transition(':enter', [
+                style({ transform: 'translateY(30px)', opacity: 0 }),
+                animate('600ms ease-out', style({ transform: 'translateY(0)', opacity: 1 }))
+            ])
+        ])
+    ]
 })
 export class ServicesComponent implements OnInit {
   services = [

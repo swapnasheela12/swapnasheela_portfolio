@@ -4,11 +4,10 @@ import { Component } from '@angular/core';
 import { ContactComponent } from '../../main_module/contact/contact.component';
 
 @Component({
-  selector: 'app-toolbar',
-  standalone: true,
-  imports: [ContactComponent, RouterLink, RouterLinkActive],
-  templateUrl: './toolbar.component.html',
-  styleUrl: './toolbar.component.scss'
+    selector: 'app-toolbar',
+    imports: [ContactComponent, RouterLink, RouterLinkActive],
+    templateUrl: './toolbar.component.html',
+    styleUrl: './toolbar.component.scss'
 })
 export class ToolbarComponent {
   // Function to handle the active state

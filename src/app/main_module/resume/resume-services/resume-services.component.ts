@@ -3,11 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-resume-services',
-  standalone: true,
-  imports: [CommonModule],  // <-- Add CommonModule in the imports
-  templateUrl: './resume-services.component.html',
-  styleUrls: ['./resume-services.component.scss']
+    selector: 'app-resume-services',
+    imports: [CommonModule], // <-- Add CommonModule in the imports
+    templateUrl: './resume-services.component.html',
+    styleUrls: ['./resume-services.component.scss']
 })
 export class ResumeServicesComponent implements OnInit {
   services = [

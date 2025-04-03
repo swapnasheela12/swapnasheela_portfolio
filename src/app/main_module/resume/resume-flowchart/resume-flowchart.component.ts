@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-resume-flowchart',
@@ -8,102 +8,105 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   templateUrl: './resume-flowchart.component.html',
   styleUrls: ['./resume-flowchart.component.scss']
 })
-export class ResumeFlowchartComponent implements OnInit {
-  @ViewChild('chart', { static: true }) private chartContainer!: ElementRef;
+export class ResumeFlowchartComponent implements AfterViewInit, OnChanges {
 
-  private data = {
-    name: 'Root',
-    children: [
-      {
-        name: 'Child 1',
-        children: [
-          { name: 'Grandchild 1' },
-          { name: 'Grandchild 2' }
-        ]
-      },
-      { name: 'Child 2' }
-    ]
-  };
-
-  private svg: any;
-  private treeLayout: any;
-  private nodes: any;
-  private links: any;
+  @ViewChild('treeContainer', { static: false }) private chartContainer: ElementRef | undefined;
+  private rootData: any;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.createChart();
-    this.updateChart(this.data);
+    // Any initialization that doesn't require DOM interaction
   }
-  createChart(): void {
-    const element = this.chartContainer.nativeElement;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // Handle changes if necessary
+  }
+
+  ngAfterViewInit() {
+    this.createTreeChart(); // Ensure chart is created after view is initialized
+  }
+
+  private createTreeChart() {
+    // Example data for the tree
+    this.rootData = {
+      name: 'Parent',
+      children: [
+        {
+          name: 'Child 1',
+          children: [{ name: 'Grandchild 1.1' }, { name: 'Grandchild 1.2' }]
+        },
+        { name: 'Child 2' },
+      ]
+    };
+
     const width = 600;
     const height = 400;
+    const margin = { top: 10, right: 90, bottom: 30, left: 90 };
 
-    this.svg = d3
-      .select(element)
-      .append('svg') // Append an SVG inside the container
-      .attr('width', width)
-      .attr('height', height)
-      .append('g')
-      .attr('transform', 'translate(50,20)'); // Add margin
+    // Ensure the chart is drawn only once
+    if (this.chartContainer?.nativeElement && !this.chartContainer.nativeElement.querySelector('svg')) {
+      const svg = d3.select(this.chartContainer.nativeElement)
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height)
+        .append('g')
+        .attr('transform', `translate(${margin.left},${margin.top})`);
 
-    this.treeLayout = d3.tree().size([height - 40, width - 100]);
+      const root = d3.hierarchy(this.rootData);
+      const treeLayout = d3.tree().size([height, width - 160]);
+
+      treeLayout(root);
+
+      // Links
+      svg.selectAll('.link')
+        .data(root.links())
+        .enter().append('line')
+        .attr('class', 'link')
+        .attr('x1', (d: any) => d.source.y)
+        .attr('y1', (d: any) => d.source.x)
+        .attr('x2', (d: any) => d.target.y)
+        .attr('y2', (d: any) => d.target.x)
+        .attr('stroke', '#ccc')
+        .attr('stroke-width', 2);
+
+      // Nodes
+      const node = svg.selectAll('.node')
+        .data(root.descendants())
+        .enter().append('g')
+        .attr('class', 'node')
+        .attr('transform', (d: any) => `translate(${d.y},${d.x})`)
+        .on('click', (event, d) => this.onNodeClick(event, d));
+
+      node.append('circle')
+        .attr('r', 10)
+        .attr('fill', '#69b3a2');
+
+      node.append('text')
+        .attr('dx', 12)
+        .attr('dy', 3)
+        .text((d: any) => d.data.name);
+    } else {
+      console.error('Tree container is not available or SVG already exists!');
+    }
   }
-  updateChart(data: any): void {
-    const root = d3.hierarchy(data);
-    this.nodes = this.treeLayout(root);
-    this.links = this.nodes.links();
 
-    // Remove previous elements before updating
-    this.svg.selectAll('.link').remove();
-    this.svg.selectAll('.node').remove();
+  private onNodeClick(event: any, d: any) {
+    // Prevent event propagation
+    event.stopPropagation();
 
-    // Draw Links
-    this.svg
-      .selectAll('.link')
-      .data(this.links)
-      .enter()
-      .append('path')
-      .attr('class', 'link')
-      .attr('fill', 'none')
-      .attr('stroke', '#ccc')
-      .attr('d', d3.linkHorizontal()
-        .x((d: any) => d.target.y)
-        .y((d: any) => d.target.x)
-      );
-
-    // Draw Nodes
-    const node = this.svg
-      .selectAll('.node')
-      .data(this.nodes.descendants())
-      .enter()
-      .append('g')
-      .attr('class', 'node')
-      .attr('transform', (d: any) => `translate(${d.y},${d.x})`)
-      .on('click', this.click);
-
-    node.append('circle')
-      .attr('r', 10)
-      .attr('fill', '#fff')
-      .attr('stroke', 'steelblue')
-      .attr('stroke-width', 2);
-
-    node.append('text')
-      .attr('dy', '.35em')
-      .attr('x', 15)
-      .text((d: any) => d.data.name);
-  }
-  click = (event: any, d: any) => {
+    // Toggle the node expansion
     if (d.children) {
+      // Collapse node
       d._children = d.children;
       d.children = null;
     } else {
+      // Expand node
       d.children = d._children;
       d._children = null;
     }
-    this.updateChart(this.data);
-  };
 
+    // Re-render the tree
+    this.createTreeChart();
+  }
 }

@@ -224,7 +224,7 @@ export class ResumeTreeComponent implements AfterViewInit {
     const rectW = 60;
     const rectH = 30;
     const zoom: any = d3.zoom().on("zoom", (event) => {
-      g.attr("transform", event.transform);
+      svg.attr("transform", event.transform);
     });
 
     const diagonal: any = d3.linkVertical()
@@ -238,13 +238,19 @@ export class ResumeTreeComponent implements AfterViewInit {
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .call(zoom) // Attach zoom behavior to the SVG
-      .append("g")
-      .attr("transform", "translate(" + 350 + "," + 20 + ")");
+      .append("g");
+    // .attr("transform", "translate(" + 350 + "," + 20 + ")");
 
-    const g = svg.append("g");
+    // Calculate the center position of the SVG (half of width and height)
+    const centerX = (width + margin.left + margin.right) / 2;
+    const centerY = (height + margin.top + margin.bottom) / 2;
+    // Apply the translation to center the group (g)
+    // const g = svg.append("g")
+    //   .attr("transform", `translate(${centerX}, ${centerY})`);
+    // const g = svg.append("g");
 
     // Set an initial translation to position the view
-    svg.call(zoom.transform, d3.zoomIdentity.translate(350, 20)); // Apply translation after zoom setup
+    svg.call(zoom.transform, d3.zoomIdentity.translate(centerX, centerY)); // Apply translation after zoom setup
 
     const treeLayout = d3.tree().size([height, width]);
     let i = 0;
@@ -281,7 +287,7 @@ export class ResumeTreeComponent implements AfterViewInit {
       });
 
       // Nodes
-      const node = g.selectAll('g.node')
+      const node = svg.selectAll('g.node')
         .data(nodes, (d: any) => d.id);
 
       const nodeEnter = node.enter().append('g')
@@ -313,7 +319,19 @@ export class ResumeTreeComponent implements AfterViewInit {
         .attr("y", rectH / 2)
         .attr("dy", ".35em")
         .attr("text-anchor", "middle")
-        .attr("color", "black")
+        .each(function (d: any) {
+          const text: any = d3.select(this);
+          const textWidth = text.node().getBBox().width; // Get the width of the text
+
+          // Scale font size to fit the rectangle
+          const scaleFactor = Math.min(rectW / textWidth, 1); // Keep scale factor <= 1
+          const fontSize = Math.max(10, scaleFactor * 14); // Avoid font being too small
+
+          text.attr("font-size", fontSize);  // Apply dynamic font size
+
+          // Reposition text vertically to account for any scaling
+          text.attr("y", rectH / 2 + (fontSize / 2) * 0.35);  // Adjust vertical positioning after scaling
+        })
         .text(function (d: any) {
           return d.data.name;
         });
@@ -342,7 +360,7 @@ export class ResumeTreeComponent implements AfterViewInit {
         .remove();
 
       // Links
-      const link = g.selectAll('path.link')
+      const link = svg.selectAll('path.link')
         .data(links, (d: any) => d.target.id);
 
       const linkEnter = link.enter().insert('path', "g")

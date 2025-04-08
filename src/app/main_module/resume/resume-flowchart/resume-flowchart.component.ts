@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
-
-import { AfterViewInit, Component, ElementRef, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, Inject, PLATFORM_ID, AfterViewChecked } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-resume-flowchart',
@@ -8,105 +9,220 @@ import { AfterViewInit, Component, ElementRef, OnChanges, SimpleChanges, ViewChi
   templateUrl: './resume-flowchart.component.html',
   styleUrls: ['./resume-flowchart.component.scss']
 })
-export class ResumeFlowchartComponent implements AfterViewInit, OnChanges {
+export class ResumeFlowchartComponent implements OnInit, AfterViewInit, OnChanges, AfterViewChecked {
+  @Input() data: any = {
+    name: "Resume",
+    children: [
+      {
+        name: "Education",
+        children: [
+          {
+            name: "Bachelor's Degree",
+            children: [
+              {
+                name: "University of XYZ",
+                children: [
+                  { name: "Graduation: 2022" }
+                ]
+              }
+            ]
+          },
+          {
+            name: "Master's Degree",
+            children: [
+              { name: "University of ABC" },
+              { name: "Graduation: 2024" }
+            ]
+          }
+        ]
+      },
+      {
+        name: "Work Experience",
+        children: [
+          {
+            name: "Software Engineer",
+            children: [
+              {
+                name: "Company XYZ",
+                children: [
+                  { name: "Jan 2022 - Present" }
+                ]
+              }
+            ]
+          },
+          {
+            name: "Intern",
+            children: [
+              {
+                name: "Company ABC",
+                children: [
+                  { name: "June 2021 - Aug 2021" }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        name: "Skills",
+        children: [
+          { name: "JavaScript" },
+          { name: "TypeScript" },
+          { name: "Angular" },
+          { name: "D3.js" }
+        ]
+      }
+    ]
+  };
 
-  @ViewChild('treeContainer', { static: false }) private chartContainer: ElementRef | undefined;
-  private rootData: any;
+  svg: any;
+  treeLayout: any;
+  g: any;
+  duration = 750;
 
-  constructor() { }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    // Any initialization that doesn't require DOM interaction
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    // Handle changes if necessary
-  }
-
-  ngAfterViewInit() {
-    this.createTreeChart(); // Ensure chart is created after view is initialized
-  }
-
-  private createTreeChart() {
-    // Example data for the tree
-    this.rootData = {
-      name: 'Parent',
-      children: [
-        {
-          name: 'Child 1',
-          children: [{ name: 'Grandchild 1.1' }, { name: 'Grandchild 1.2' }]
-        },
-        { name: 'Child 2' },
-      ]
-    };
-
-    const width = 600;
-    const height = 400;
-    const margin = { top: 10, right: 90, bottom: 30, left: 90 };
-
-    // Ensure the chart is drawn only once
-    if (this.chartContainer?.nativeElement && !this.chartContainer.nativeElement.querySelector('svg')) {
-      const svg = d3.select(this.chartContainer.nativeElement)
-        .append('svg')
-        .attr('width', width)
-        .attr('height', height)
-        .append('g')
-        .attr('transform', `translate(${margin.left},${margin.top})`);
-
-      const root = d3.hierarchy(this.rootData);
-      const treeLayout = d3.tree().size([height, width - 160]);
-
-      treeLayout(root);
-
-      // Links
-      svg.selectAll('.link')
-        .data(root.links())
-        .enter().append('line')
-        .attr('class', 'link')
-        .attr('x1', (d: any) => d.source.y)
-        .attr('y1', (d: any) => d.source.x)
-        .attr('x2', (d: any) => d.target.y)
-        .attr('y2', (d: any) => d.target.x)
-        .attr('stroke', '#ccc')
-        .attr('stroke-width', 2);
-
-      // Nodes
-      const node = svg.selectAll('.node')
-        .data(root.descendants())
-        .enter().append('g')
-        .attr('class', 'node')
-        .attr('transform', (d: any) => `translate(${d.y},${d.x})`)
-        .on('click', (event, d) => this.onNodeClick(event, d));
-
-      node.append('circle')
-        .attr('r', 10)
-        .attr('fill', '#69b3a2');
-
-      node.append('text')
-        .attr('dx', 12)
-        .attr('dy', 3)
-        .text((d: any) => d.data.name);
-    } else {
-      console.error('Tree container is not available or SVG already exists!');
+    if (isPlatformBrowser(this.platformId)) {
+      // Wait for the browser environment and initialize the SVG and tree layout
+      this.createSvg();
+      this.createTreeLayout();
     }
   }
 
-  private onNodeClick(event: any, d: any) {
-    // Prevent event propagation
-    event.stopPropagation();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (isPlatformBrowser(this.platformId) && changes['data'] && this.data) {
+      setTimeout(() => {
+        this.update(this.data);
+      }, 100);
+    }
+  }
 
-    // Toggle the node expansion
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      // Manually trigger change detection if necessary
+      this.cdr.detectChanges();
+    }
+  }
+
+  ngAfterViewChecked(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      // Ensure the flowchart is drawn after view is checked
+      this.update(this.data);
+    }
+  }
+
+  createSvg(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      // Check if SVG already exists, if not, create a new one
+      const container = d3.select('#tree-container');
+      if (!this.svg) {
+        this.svg = container.append('svg')
+          .attr('width', '100%')
+          .attr('height', 500)
+          .style('border', '1px solid black');  // Added border for visibility
+
+        this.g = this.svg.append('g')
+          .attr('transform', 'translate(50, 50)');
+      }
+    }
+  }
+
+  createTreeLayout(): void {
+    if (isPlatformBrowser(this.platformId) && !this.treeLayout) {
+      this.treeLayout = d3.tree().size([400, 400]);
+    }
+  }
+
+  update(sourceData: any): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const treeData = d3.hierarchy(sourceData);
+      treeData.descendants().forEach((d: any) => {
+        d._children = d.children;
+        if (d.depth !== 0 && !d.children) {  // Collapse non-root nodes
+          d.children = null;
+        }
+      });
+
+      const treeNodes = this.treeLayout(treeData);
+      const nodes = treeNodes.descendants();
+      const links = treeNodes.links();
+
+      // Create or update nodes
+      const node = this.g.selectAll('.node')
+        .data(nodes, (d: any) => d.id || (d.id = d.data.name));
+
+      const nodeEnter = node.enter().append('g')
+        .attr('class', 'node')
+        .attr('transform', (d: any) => `translate(${sourceData.y0 || 0}, ${sourceData.x0 || 0})`)
+        .on('click', (event: any, d: any) => {
+          this.toggleChildren(d);  // Toggle on click
+        });
+
+      nodeEnter.append('circle')
+        .attr('r', 10)
+        .style('fill', '#fff')
+        .style('stroke', 'steelblue')
+        .style('stroke-width', '3px');
+
+      nodeEnter.append('text')
+        .attr('x', (d: any) => d.children || d._children ? -15 : 15)
+        .attr('dy', '.35em')
+        .attr('text-anchor', (d: any) => d.children || d._children ? 'end' : 'start')
+        .text((d: any) => d.data.name);
+
+      const nodeUpdate = nodeEnter.merge(node);
+      nodeUpdate.transition()
+        .duration(this.duration)
+        .attr('transform', (d: any) => `translate(${d.y}, ${d.x})`);
+
+      // Create or update links
+      const link = this.g.selectAll('.link')
+        .data(links, (d: any) => d.target.id);
+
+      const linkEnter = link.enter().insert('path', '.node')
+        .attr('class', 'link')
+        .attr('d', (d: any) => {
+          const o = { x: sourceData.x0 || 0, y: sourceData.y0 || 0 };
+          return `M${o.y},${o.x}C${o.y + 50},${o.x} ${o.y + 50},${o.x} ${d.target.y},${d.target.x}`;
+        });
+
+      linkEnter.merge(link)
+        .transition()
+        .duration(this.duration)
+        .attr('d', (d: any) => {
+          return `M${d.source.y},${d.source.x}C${(d.source.y + d.target.y) / 2},${d.source.x} ${(d.source.y + d.target.y) / 2},${d.target.x} ${d.target.y},${d.target.x}`;
+        });
+
+      node.exit().transition()
+        .duration(this.duration)
+        .attr('transform', (d: any) => `translate(${sourceData.y}, ${sourceData.x})`)
+        .remove();
+
+      link.exit().transition()
+        .duration(this.duration)
+        .attr('d', (d: any) => {
+          const o = { x: sourceData.x, y: sourceData.y };
+          return `M${o.y},${o.x}C${o.y + 50},${o.x} ${o.y + 50},${o.x} ${o.y},${o.x}`;
+        })
+        .remove();
+
+      nodes.forEach((d: any) => {
+        d.x0 = d.x;
+        d.y0 = d.y;
+      });
+    }
+  }
+
+  toggleChildren(d: any): void {
     if (d.children) {
-      // Collapse node
       d._children = d.children;
       d.children = null;
     } else {
-      // Expand node
       d.children = d._children;
       d._children = null;
     }
 
-    // Re-render the tree
-    this.createTreeChart();
+    this.update(d);
   }
 }

@@ -1,17 +1,132 @@
+// .node {
+//   cursor: pointer;
+// }
+
+// .link {
+//   fill: none;
+//   stroke-width: 2;
+//   stroke: #ccc;
+// }
+
+// .node circle {
+//   transition: fill 0.3s ease;
+// }
+
+// .node:hover circle {
+//   fill: #ff5722; /* Change color on hover */
+// }
+
+// #tree-container {
+//   width: 100%;
+//   height: 100%;
+//   margin-top: 30px;
+// }
+
+// .node {
+//   cursor: pointer;
+//   text-anchor: start;
+// }
+
+// .node rect {
+//   stroke: gray;
+//   stroke-width: 1.5px;
+// }
+
+// .node text {
+//   font: 12px sans-serif;
+// }
+
+// .link,
+// .mpLink {
+//   fill: none;
+//   stroke: #ccc;
+// }
+
+// .link {
+//   fill: none; // No fill for the path
+//   stroke: #ccc; // Light gray stroke color
+//   stroke-width: 2px; // Stroke width for the lines
+//   stroke-dasharray: 5, 5; // Makes the lines dashed (optional)
+// }
+
+// .link:hover {
+//   stroke: steelblue; // Change stroke color on hover
+//   stroke-width: 3px; // Increase width on hover
+// }
+
+// Resume Flowchart SCSS Styling
+
+#tree-container {
+  width: 800px;
+  height: 500px;
+  overflow: auto; // Add scroll functionality in case the tree is too large
+  position: relative;
+  border: 1px solid #ddd; // Adds a light border around the tree container
+  background-color: #f9f9f9; // Light background color for the container
+  box-sizing: border-box;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+  border: none; // Remove the default border from the SVG
+}
+
 .node {
   cursor: pointer;
+  transition: transform 0.3s ease; // Smooth transition when nodes are updated
+}
+
+.node:hover {
+  opacity: 0.7; // Add hover effect on node
+}
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 3px;
+  transition: fill 0.3s ease; // Smooth transition for fill color
+}
+
+.node:hover circle {
+  fill: #4caf50; // Green color on hover
+}
+
+.node text {
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+  fill: #333;
+  font-weight: 500;
+  transition: transform 0.3s ease; // Smooth transition for text position
 }
 
 .link {
   fill: none;
-  stroke-width: 2;
-  stroke: #ccc;
+  stroke: #ccc; // Light gray color for the links
+  stroke-width: 2px;
+  transition: stroke 0.3s ease;
 }
 
-.node circle {
-  transition: fill 0.3s ease;
+.link:hover {
+  stroke: #000; // Darken the links on hover
 }
 
-.node:hover circle {
-  fill: #ff5722; /* Change color on hover */
+.node-enter {
+  transform: scale(0);
+}
+
+.node-exit {
+  transform: scale(0);
+}
+
+.node-update {
+  transform: scale(1);
+}
+
+.link-enter {
+  stroke: transparent;
+}
+
+.link-exit {
+  stroke: transparent;
 }

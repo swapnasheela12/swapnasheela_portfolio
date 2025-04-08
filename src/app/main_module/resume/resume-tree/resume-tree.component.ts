@@ -233,21 +233,16 @@ export class ResumeTreeComponent implements AfterViewInit {
 
     const svg = d3.select(this.treeContainer.nativeElement)
       .append("svg")
-      // .attr("width", 1000)
-      // .attr("height", 1000)
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .call(zoom) // Attach zoom behavior to the SVG
       .append("g");
-    // .attr("transform", "translate(" + 350 + "," + 20 + ")");
+
 
     // Calculate the center position of the SVG (half of width and height)
     const centerX = (width + margin.left + margin.right) / 2;
     const centerY = (height + margin.top + margin.bottom) / 2;
-    // Apply the translation to center the group (g)
-    // const g = svg.append("g")
-    //   .attr("transform", `translate(${centerX}, ${centerY})`);
-    // const g = svg.append("g");
+
 
     // Set an initial translation to position the view
     svg.call(zoom.transform, d3.zoomIdentity.translate(centerX, centerY)); // Apply translation after zoom setup

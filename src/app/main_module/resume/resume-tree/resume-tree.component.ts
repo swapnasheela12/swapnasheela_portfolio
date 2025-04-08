@@ -1,226 +1,376 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-import { Inject, PLATFORM_ID } from '@angular/core'; // Import PLATFORM_ID
 import * as d3 from 'd3';
+
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-resume-tree',
-  templateUrl: './resume-tree.component.html',
+  template: `<div #treeContainer class="tree-container"></div>`,
   styleUrls: ['./resume-tree.component.scss']
 })
-export class ResumeTreeComponent implements OnInit, AfterViewInit {
-  @ViewChild('treeContainer') private treeContainer: ElementRef | undefined;
-
-  private data = {
-    name: "Resume",
-    children: [
-      {
-        name: "Education",
-        children: [
-          {
-            name: "Bachelor's Degree",
-            children: [
-              {
-                name: "University of XYZ",
-                children: [
-                  { name: "Graduation: 2022" }
-                ]
-              }
-            ]
-          },
-          {
-            name: "Master's Degree",
-            children: [
-              { name: "University of ABC" },
-              { name: "Graduation: 2024" }
-            ]
-          }
-        ]
-      },
-      {
-        name: "Work Experience",
-        children: [
-          {
-            name: "Software Engineer",
-            children: [
-              {
-                name: "Company XYZ",
-                children: [
-                  { name: "Jan 2022 - Present" }
-                ]
-              }
-            ]
-          },
-          {
-            name: "Intern",
-            children: [
-              {
-                name: "Company ABC",
-                children: [
-                  { name: "June 2021 - Aug 2021" }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        name: "Skills",
-        children: [
-          { name: "JavaScript" },
-          { name: "TypeScript" },
-          { name: "Angular" },
-          { name: "D3.js" }
-        ]
-      }
-    ]
-  };
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
-
-  ngOnInit(): void {
-    // No D3 code here, as the container is not available yet
-  }
+export class ResumeTreeComponent implements AfterViewInit {
+  @ViewChild('treeContainer', { static: false }) treeContainer!: ElementRef;
 
   ngAfterViewInit(): void {
-    // Ensure this runs only in the browser
-    if (isPlatformBrowser(this.platformId)) {
-      // Ensure treeContainer is available
-      if (this.treeContainer) {
-        this.createTree();
-      } else {
-        console.error('Tree container is not defined!');
-      }
+    if (typeof document !== 'undefined') {
+      this.createTree();
     }
   }
 
+
   createTree() {
-    // Specify the charts’ dimensions. The height is variable, depending on the layout.
-    const width = 928;
-    const marginTop = 10;
-    const marginRight = 120;
-    const marginBottom = 10;
-    const marginLeft = 120;
+    const data = {
+      "name": "flare",
+      "children": [{
+        "name": "analytics",
+        "children": [{
+          "name": "cluster",
+          "children": [{
+            "name": "AgglomerativeCluster",
+            "size": 3938
+          }, {
+            "name": "CommunityStructure",
+            "size": 3812
+          }, {
+            "name": "HierarchicalCluster",
+            "size": 6714
+          }, {
+            "name": "MergeEdge",
+            "size": 743
+          }]
+        }, {
+          "name": "graph",
+          "children": [{
+            "name": "BetweennessCentrality",
+            "size": 3534
+          }, {
+            "name": "LinkDistance",
+            "size": 5731
+          }, {
+            "name": "MaxFlowMinCut",
+            "size": 7840
+          }, {
+            "name": "ShortestPaths",
+            "size": 5914
+          }, {
+            "name": "SpanningTree",
+            "size": 3416
+          }]
+        }, {
+          "name": "optimization",
+          "children": [{
+            "name": "AspectRatioBanker",
+            "size": 7074
+          }]
+        }]
+      }, {
+        "name": "animate",
+        "children": [{
+          "name": "Easing",
+          "size": 17010
+        }, {
+          "name": "FunctionSequence",
+          "size": 5842
+        }, {
+          "name": "interpolate",
+          "children": [{
+            "name": "ArrayInterpolator",
+            "size": 1983
+          }, {
+            "name": "ColorInterpolator",
+            "size": 2047
+          }, {
+            "name": "DateInterpolator",
+            "size": 1375
+          }, {
+            "name": "Interpolator",
+            "size": 8746
+          }, {
+            "name": "MatrixInterpolator",
+            "size": 2202
+          }, {
+            "name": "NumberInterpolator",
+            "size": 1382
+          }, {
+            "name": "ObjectInterpolator",
+            "size": 1629
+          }, {
+            "name": "PointInterpolator",
+            "size": 1675
+          }, {
+            "name": "RectangleInterpolator",
+            "size": 2042
+          }]
+        }, {
+          "name": "ISchedulable",
+          "size": 1041
+        }, {
+          "name": "Parallel",
+          "size": 5176
+        }, {
+          "name": "Pause",
+          "size": 449
+        }, {
+          "name": "Scheduler",
+          "size": 5593
+        }, {
+          "name": "Sequence",
+          "size": 5534
+        }, {
+          "name": "Transition",
+          "size": 9201
+        }, {
+          "name": "Transitioner",
+          "size": 19975
+        }, {
+          "name": "TransitionEvent",
+          "size": 1116
+        }, {
+          "name": "Tween",
+          "size": 6006
+        }]
+      }, {
+        "name": "data",
+        "children": [{
+          "name": "converters",
+          "children": [{
+            "name": "Converters",
+            "size": 721
+          }, {
+            "name": "DelimitedTextConverter",
+            "size": 4294
+          }, {
+            "name": "GraphMLConverter",
+            "size": 9800
+          }, {
+            "name": "IDataConverter",
+            "size": 1314
+          }, {
+            "name": "JSONConverter",
+            "size": 2220
+          }]
+        }, {
+          "name": "DataField",
+          "size": 1759
+        }, {
+          "name": "DataSchema",
+          "size": 2165
+        }, {
+          "name": "DataSet",
+          "size": 586
+        }, {
+          "name": "DataSource",
+          "size": 3331
+        }, {
+          "name": "DataTable",
+          "size": 772
+        }, {
+          "name": "DataUtil",
+          "size": 3322
+        }]
+      }, {
+        "name": "display",
+        "children": [{
+          "name": "DirtySprite",
+          "size": 8833
+        }, {
+          "name": "LineSprite",
+          "size": 1732
+        }, {
+          "name": "RectSprite",
+          "size": 3623
+        }, {
+          "name": "TextSprite",
+          "size": 10066
+        }]
+      }, {
+        "name": "flex",
+        "children": [{
+          "name": "FlareVis",
+          "size": 4116
+        }]
+      }, {
+        "name": "physics",
+        "children": [{
+          "name": "DragForce",
+          "size": 1082
+        }, {
+          "name": "GravityForce",
+          "size": 1336
+        }, {
+          "name": "IForce",
+          "size": 319
+        }, {
+          "name": "NBodyForce",
+          "size": 10498
+        }, {
+          "name": "Particle",
+          "size": 2822
+        }, {
+          "name": "Simulation",
+          "size": 9983
+        }, {
+          "name": "Spring",
+          "size": 2213
+        }, {
+          "name": "SpringForce",
+          "size": 1681
+        }]
+      }]
+    };
 
-    const root: any = d3.hierarchy(this.data);
-    const dx = 10;
-    const dy = (width * 2 - marginRight - marginLeft) / (1 + root.height);
+    const margin = { top: 20, right: 120, bottom: 20, left: 120 };
+    const width = 960 - margin.left - margin.right;
+    const height = 800 - margin.top - margin.bottom;
+    const rectW = 60;
+    const rectH = 30;
+    const zoom: any = d3.zoom().on("zoom", (event) => {
+      g.attr("transform", event.transform);
+    });
 
-    // Define the tree layout and the shape for links.
-    const tree = d3.tree().size([dx, dy]);
-    const diagonal: any = d3.linkHorizontal().x((d: any) => d.y).y((d: any) => d.x);
+    const diagonal: any = d3.linkVertical()
+      .x((d: any) => d.x + rectW / 2)
+      .y((d: any) => d.y + rectH / 2);
 
-    // Create the SVG container, a layer for the links and a layer for the nodes.
-    const svg = d3.create("svg")
-      .attr("width", width)
-      .attr("height", dx)
-      .attr("viewBox", [-marginLeft, -marginTop, width, dx])
-      .attr("style", "max-width: 100%; height: auto; font: 10px sans-serif; user-select: none;");
+    const svg = d3.select(this.treeContainer.nativeElement)
+      .append("svg")
+      // .attr("width", 1000)
+      // .attr("height", 1000)
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .call(zoom) // Attach zoom behavior to the SVG
+      .append("g")
+      .attr("transform", "translate(" + 350 + "," + 20 + ")");
 
-    const gLink = svg.append("g")
-      .attr("fill", "none")
-      .attr("stroke", "#555")
-      .attr("stroke-opacity", 0.4)
-      .attr("stroke-width", 1.5);
+    const g = svg.append("g");
 
-    const gNode = svg.append("g")
-      .attr("cursor", "pointer")
-      .attr("pointer-events", "all");
+    // Set an initial translation to position the view
+    svg.call(zoom.transform, d3.zoomIdentity.translate(350, 20)); // Apply translation after zoom setup
 
-    function update(event: any, source: any) {
-      const duration = event?.altKey ? 2500 : 250;
-      const nodes = root.descendants().reverse();
-      const links = root.links();
+    const treeLayout = d3.tree().size([height, width]);
+    let i = 0;
+    const duration = 750;
 
-      // Compute the new tree layout.
-      tree(root);
+    const root: any = d3.hierarchy(data);// 'data' is your hierarchical structure
+    root.x0 = 0;
+    root.y0 = height / 2;
 
-      let left = root;
-      let right = root;
-      root.eachBefore((node: any) => {
-        if (node.x < left.x) left = node;
-        if (node.x > right.x) right = node;
+    function collapse(d: any) {
+      if (d.children) {
+        d._children = d.children;
+        d._children.forEach(collapse);
+        d.children = null;
+      }
+    }
+
+    root.children?.forEach(collapse);
+    update(root);
+    function update(source: any) {
+      const treeData = treeLayout(root); // Compute the new tree layout
+      const nodes = treeData.descendants(); // Get all nodes
+      const links = treeData.links(); // Get all links
+
+      nodes.forEach((d: any, index: number) => {
+        d.id = d.id || index; // Assign ID if it doesn't exist
       });
 
-      const height = right.x - left.x + marginTop + marginBottom;
+      links.forEach((d: any) => {
+        d.source.id = d.source.id || `source-${Math.random()}`;
+        d.target.id = d.target.id || `target-${Math.random()}`;
+      });
 
-      const transition: any = svg.transition()
-        .duration(duration)
-        .attr("height", height)
-        .attr("viewBox", `${-marginLeft} ${left.x - marginTop} ${width} ${height}`);
+      nodes.forEach(d => d.y = d.depth * 180); // Adjust horizontal positioning
 
-      const node = gNode.selectAll("g")
+      // Nodes
+      const node = g.selectAll('g.node')
         .data(nodes, (d: any) => d.id);
 
-      const nodeEnter: any = node.enter().append("g")
-        .attr("transform", d => `translate(${source.y0},${source.x0})`)
-        .attr("fill-opacity", 0)
-        .attr("stroke-opacity", 0)
-        .on("click", (event: any, d: any) => {
-          d.children = d.children ? null : d._children;
-          update(event, d);
+      const nodeEnter = node.enter().append('g')
+        .attr('class', 'node')
+        .attr('transform', d => `translate(${source.x},${source.y})`) // Position nodes based on the source
+        .on('click', (event: any, d: any) => {
+          if (d.children) {
+            d._children = d.children;
+            d.children = null;
+          } else {
+            d.children = d._children;
+            d._children = null;
+          }
+          update(d);
         });
 
-      nodeEnter.append("circle")
-        .attr("r", 2.5)
-        .attr("fill", (d: any) => d._children ? "#555" : "#999")
-        .attr("stroke-width", 10);
+      nodeEnter.append("rect")
+        .attr("width", rectW)
+        .attr("height", rectH)
+        .attr("stroke", "black")
+        .attr("stroke-width", 1)
+        .style("fill", function (d: any) {
+          return d._children ? "lightsteelblue" : "#fff";
+        });
 
       nodeEnter.append("text")
-        .attr("dy", "0.31em")
-        .attr("x", (d: any) => d._children ? -6 : 6)
-        .attr("text-anchor", (d: any) => d._children ? "end" : "start")
-        .text((d: any) => d.data.name)
-        .attr("stroke-linejoin", "round")
-        .attr("stroke-width", 3)
-        .attr("stroke", "white")
-        .attr("paint-order", "stroke");
+        .attr("x", rectW / 2)
+        .attr("y", rectH / 2)
+        .attr("dy", ".35em")
+        .attr("text-anchor", "middle")
+        .attr("color", "black")
+        .text(function (d) {
+          return d.name;
+        });
 
-      const nodeUpdate = node.merge(nodeEnter).transition(transition)
-        .attr("transform", (d: any) => `translate(${d.y},${d.x})`)
-        .attr("fill-opacity", 1)
-        .attr("stroke-opacity", 1);
+      const nodeUpdate = nodeEnter.merge(node as any)
+        .transition()
+        .duration(duration)
+        .attr('transform', d => `translate(${d.x},${d.y})`); // Update position of nodes
 
-      const nodeExit = node.exit().transition(transition).remove()
-        .attr("transform", d => `translate(${source.y},${source.x})`)
-        .attr("fill-opacity", 0)
-        .attr("stroke-opacity", 0);
+      nodeUpdate.select("rect")
+        .attr("width", rectW)
+        .attr("height", rectH)
+        .attr("stroke", "black")
+        .attr("stroke-width", 1)
+        .style("fill", function (d: any) {
+          return d._children ? "lightsteelblue" : "#fff";
+        });
 
-      const link: any = gLink.selectAll("path")
+      nodeUpdate.select('text')
+        .style('fill-opacity', 1);
+
+      const nodeExit = node.exit()
+        .transition()
+        .duration(duration)
+        .attr('transform', d => `translate(${source.x},${source.y})`)
+        .remove();
+
+      // Links
+      const link = g.selectAll('path.link')
         .data(links, (d: any) => d.target.id);
 
-      const linkEnter = link.enter().append("path")
-        .attr("d", (d: any) => {
-          const o = [source.y0, source.x0];
+
+
+      const linkEnter = link.enter().insert('path', "g")
+        .attr('class', 'link')
+        .attr('d', (d: any) => {
+          const o = { x: source.x, y: source.y }; // Start at the source position
           return diagonal({ source: o, target: o });
         });
 
-      link.merge(linkEnter).transition(transition)
-        .attr("d", diagonal);
+      linkEnter.merge(link as any)
+        .transition()
+        .duration(duration)
+        .attr('d', d => diagonal(d)) // Make sure the link follows the correct path
+        .attr('transform', (d: any) => `translate(${d.x},${d.y})`); // Make sure links are also positioned at the correct coordinates
 
-      link.exit().transition(transition).remove()
-        .attr("d", (d: any) => {
-          const o = [source.y, source.y];
+      link.exit().transition().duration(duration)
+        .attr('d', d => {
+          const o = { x: source.x, y: source.y };
           return diagonal({ source: o, target: o });
-        });
+        }).remove();
 
-      root.eachBefore((d: any) => {
+      // Save the positions for the next update
+      nodes.forEach((d: any) => {
         d.x0 = d.x;
         d.y0 = d.y;
       });
     }
 
-    root.x0 = dy / 2;
-    root.y0 = 0;
-    root.descendants().forEach((d: any, i: any) => {
-      d.id = i;
-      d._children = d.children;
-      if (d.depth && d.data.name.length !== 7) d.children = null;
-    });
-
-    update(null, root);
-
-    // Append the svg node to the container element
-    this.treeContainer?.nativeElement.appendChild(svg.node());
   }
 }

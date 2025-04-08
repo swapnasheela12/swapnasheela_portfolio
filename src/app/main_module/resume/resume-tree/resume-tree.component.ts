@@ -269,8 +269,10 @@ export class ResumeTreeComponent implements AfterViewInit {
       const nodes = treeData.descendants(); // Get all nodes
       const links = treeData.links(); // Get all links
 
+      // Assign unique ID and initialize x and y for each node
       nodes.forEach((d: any, index: number) => {
         d.id = d.id || index; // Assign ID if it doesn't exist
+        d.y = d.depth * 180; // Set y position based on depth
       });
 
       links.forEach((d: any) => {
@@ -278,16 +280,15 @@ export class ResumeTreeComponent implements AfterViewInit {
         d.target.id = d.target.id || `target-${Math.random()}`;
       });
 
-      nodes.forEach(d => d.y = d.depth * 180); // Adjust horizontal positioning
-
       // Nodes
       const node = g.selectAll('g.node')
         .data(nodes, (d: any) => d.id);
 
       const nodeEnter = node.enter().append('g')
         .attr('class', 'node')
-        .attr('transform', d => `translate(${source.x},${source.y})`) // Position nodes based on the source
+        .attr('transform', (d: any) => `translate(${source.x0 || 0},${source.y0 || 0})`) // Use source.x0 and source.y0 as fallback
         .on('click', (event: any, d: any) => {
+          // Toggle children visibility
           if (d.children) {
             d._children = d.children;
             d.children = null;
@@ -313,14 +314,14 @@ export class ResumeTreeComponent implements AfterViewInit {
         .attr("dy", ".35em")
         .attr("text-anchor", "middle")
         .attr("color", "black")
-        .text(function (d) {
-          return d.name;
+        .text(function (d: any) {
+          return d.data.name;
         });
 
       const nodeUpdate = nodeEnter.merge(node as any)
         .transition()
         .duration(duration)
-        .attr('transform', d => `translate(${d.x},${d.y})`); // Update position of nodes
+        .attr('transform', (d: any) => `translate(${d.x},${d.y})`); // Update the position based on the new x and y
 
       nodeUpdate.select("rect")
         .attr("width", rectW)
@@ -337,27 +338,31 @@ export class ResumeTreeComponent implements AfterViewInit {
       const nodeExit = node.exit()
         .transition()
         .duration(duration)
-        .attr('transform', d => `translate(${source.x},${source.y})`)
+        .attr('transform', (d: any) => `translate(${source.x},${source.y})`)
         .remove();
 
       // Links
       const link = g.selectAll('path.link')
         .data(links, (d: any) => d.target.id);
 
-
-
       const linkEnter = link.enter().insert('path', "g")
         .attr('class', 'link')
         .attr('d', (d: any) => {
           const o = { x: source.x, y: source.y }; // Start at the source position
           return diagonal({ source: o, target: o });
-        });
+        })
+        .style("stroke-width", 1.5)  // Make link line thinner
+        .style("stroke", "#ccc")  // Set a light color for the links, if desired
+        .style("fill", "none");    // Ensure there is no fill color;
 
       linkEnter.merge(link as any)
         .transition()
         .duration(duration)
-        .attr('d', d => diagonal(d)) // Make sure the link follows the correct path
-        .attr('transform', (d: any) => `translate(${d.x},${d.y})`); // Make sure links are also positioned at the correct coordinates
+        .attr('d', d => diagonal(d)) // Ensure the link follows the correct path
+        .attr('transform', (d: any) => `translate(${d.x},${d.y})`)
+        .style("stroke-width", 1.5)  // Apply thin line style
+        .style("stroke", "#ccc")    // Light grey color
+        .style("fill", "none");     // No fill;
 
       link.exit().transition().duration(duration)
         .attr('d', d => {
@@ -371,6 +376,7 @@ export class ResumeTreeComponent implements AfterViewInit {
         d.y0 = d.y;
       });
     }
+
 
   }
 }

@@ -19,51 +19,155 @@ export class ResumeTreeComponent implements AfterViewInit {
 
   createTree() {
     const data = {
-      "name": "flare",
+      "name": "Swapnasheela",
+      "current_designation": "Lead Assistant Manager",
+      "Stream": "Front End Developer",
       "children": [{
-        "name": "analytics",
+        "name": "Technical Skill",
         "children": [{
-          "name": "cluster",
+          "name": "Front-End Technologies",
           "children": [{
-            "name": "AgglomerativeCluster",
-            "size": 3938
-          }, {
-            "name": "CommunityStructure",
+            "name": "HTML & HTML5",
             "size": 3812
           }, {
-            "name": "HierarchicalCluster",
-            "size": 6714
+            "name": "CSS,CSS3,SCSS",
+            "size": 3812
           }, {
-            "name": "MergeEdge",
-            "size": 743
+            "name": "BootStrap & Material UI",
+            "size": 3812
+          }, {
+            "name": "Angular Js & Angular above version",
+            "size": 3812
+          }, {
+            "name": "Javascript, TypeScripts & Jquery",
+            "size": 3812
+          }, {
+            "name": "React Js",
+            "size": 3812
           }]
         }, {
-          "name": "graph",
+          "name": "Frameworks & Libraries",
           "children": [{
-            "name": "BetweennessCentrality",
+            "name": "Underscore.js & Lodash",
             "size": 3534
           }, {
-            "name": "LinkDistance",
+            "name": "Ag grid and Data Table",
             "size": 5731
           }, {
-            "name": "MaxFlowMinCut",
+            "name": "Leaflet Js, Google Maps & Cesium JS",
             "size": 7840
           }, {
-            "name": "ShortestPaths",
+            "name": "Three js",
             "size": 5914
           }, {
-            "name": "SpanningTree",
+            "name": "Highcharts, D3 Js & Chart.js",
             "size": 3416
+          }, {
+            "name": "RxJS, NgRx & Redux",
+            "size": 3534
           }]
         }, {
-          "name": "optimization",
+          "name": "UI/UX Design & Implementation",
           "children": [{
-            "name": "AspectRatioBanker",
+            "name": "Responsive Web Design",
+            "size": 7074
+          }, {
+            "name": "Cross-browser Compatibility",
+            "size": 7074
+          }, {
+            "name": "Figma, Adobe XD, Sketch",
+            "size": 7074
+          }, {
+            "name": "SEO Best Practices",
+            "size": 7074
+          }]
+        }, {
+          "name": "Performance Optimization",
+          "children": [{
+            "name": "Lazy Loading, Code Splitting",
+            "size": 7074
+          }, {
+            "name": "Lighthouse Audits",
+            "size": 7074
+          }, {
+            "name": "DOM Virtualization",
+            "size": 7074
+          }, {
+            "name": "Caching, Minification",
+            "size": 7074
+          }]
+        }, {
+          "name": "Build Tools & Package Managers",
+          "children": [{
+            "name": "Webpack, Vite, Gulp",
+            "size": 7074
+          }, {
+            "name": "npm, yarn",
+            "size": 7074
+          }]
+        }, {
+          "name": "Version Control & Collaboration",
+          "children": [{
+            "name": "Git, GitHub, GitLab, Bitbucket",
+            "size": 7074
+          }, {
+            "name": "Agile/Scrum workflows",
+            "size": 7074
+          }, {
+            "name": "Jira",
+            "size": 7074
+          }]
+        }, {
+          "name": "Testing & Debugging",
+          "children": [{
+            "name": "Chrome DevTools, ESLint",
+            "size": 7074
+          }, {
+            "name": "Unit testing, Karma and Jasmine",
+            "size": 7074
+          }]
+        }, {
+          "name": "Back-End Basics",
+          "children": [{
+            "name": "REST APIs",
+            "size": 7074
+          }, {
+            "name": "Node.js",
+            "size": 7074
+          }, {
+            "name": "Firebase",
+            "size": 7074
+          }, {
+            "name": "Oracle SQL",
+            "size": 7074
+          }, {
+            "name": "Python Basics",
+            "size": 7074
+          }, {
+            "name": "Core Java",
+            "size": 7074
+          }, {
+            "name": "PHP",
+            "size": 7074
+          }]
+        }, {
+          "name": "Deployment & CI/CD",
+          "children": [{
+            "name": "Azure DevOps, AWS Amplify",
+            "size": 7074
+          }, {
+            "name": "Netlify",
+            "size": 7074
+          }, {
+            "name": "GitHub Pages",
+            "size": 7074
+          }, {
+            "name": "Docker (basic)",
             "size": 7074
           }]
         }]
       }, {
-        "name": "animate",
+        "name": "Work Experience",
         "children": [{
           "name": "Easing",
           "size": 17010
@@ -129,7 +233,7 @@ export class ResumeTreeComponent implements AfterViewInit {
           "size": 6006
         }]
       }, {
-        "name": "data",
+        "name": "Education Summary",
         "children": [{
           "name": "converters",
           "children": [{
@@ -168,7 +272,7 @@ export class ResumeTreeComponent implements AfterViewInit {
           "size": 3322
         }]
       }, {
-        "name": "display",
+        "name": "Personal Details",
         "children": [{
           "name": "DirtySprite",
           "size": 8833
@@ -182,45 +286,12 @@ export class ResumeTreeComponent implements AfterViewInit {
           "name": "TextSprite",
           "size": 10066
         }]
-      }, {
-        "name": "flex",
-        "children": [{
-          "name": "FlareVis",
-          "size": 4116
-        }]
-      }, {
-        "name": "physics",
-        "children": [{
-          "name": "DragForce",
-          "size": 1082
-        }, {
-          "name": "GravityForce",
-          "size": 1336
-        }, {
-          "name": "IForce",
-          "size": 319
-        }, {
-          "name": "NBodyForce",
-          "size": 10498
-        }, {
-          "name": "Particle",
-          "size": 2822
-        }, {
-          "name": "Simulation",
-          "size": 9983
-        }, {
-          "name": "Spring",
-          "size": 2213
-        }, {
-          "name": "SpringForce",
-          "size": 1681
-        }]
       }]
     };
 
     const margin = { top: 20, right: 120, bottom: 20, left: 120 };
-    const width = 960 - margin.left - margin.right;
-    const height = 800 - margin.top - margin.bottom;
+    const width = 600 - margin.left - margin.right;
+    const height = 600 - margin.top - margin.bottom;
     const rectW = 60;
     const rectH = 30;
     const zoom: any = d3.zoom().on("zoom", (event) => {
@@ -235,7 +306,8 @@ export class ResumeTreeComponent implements AfterViewInit {
       .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
-      .call(zoom) // Attach zoom behavior to the SVG
+      // .attr('transform', `translate(${width / 2},100)`)
+      // .call(zoom) // Attach zoom behavior to the SVG
       .append("g");
 
 
@@ -245,7 +317,7 @@ export class ResumeTreeComponent implements AfterViewInit {
 
 
     // Set an initial translation to position the view
-    svg.call(zoom.transform, d3.zoomIdentity.translate(centerX, centerY)); // Apply translation after zoom setup
+    // svg.call(zoom.transform, d3.zoomIdentity.translate(centerX, centerY)); // Apply translation after zoom setup
 
     const treeLayout = d3.tree().size([height, width]);
     let i = 0;

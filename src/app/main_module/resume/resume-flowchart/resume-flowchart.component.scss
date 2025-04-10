@@ -3,6 +3,10 @@
   height: 600px; /* Set a height for visibility */
   overflow: hidden;
 }
+.tree-container1 svg {
+  display: block;
+  margin: 0 auto;
+}
 
 .node-card {
   padding: 5px;

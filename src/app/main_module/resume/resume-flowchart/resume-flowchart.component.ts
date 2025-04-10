@@ -303,9 +303,13 @@ export class ResumeFlowchartComponent implements AfterViewInit {
     const svg = d3.select(this.treeContainer1.nativeElement)
       .append("svg")
       .attr("width", width)
-      .attr("height", height);
+      .attr("height", height)
+      .attr("viewBox", `0 0 ${width} ${height}`);  // ViewBox controls the scaling and centering
 
-    const g = svg.append("g");
+    // const g = svg.append("g");
+    const g = svg.append("g")
+      .attr("transform", `translate(0, 100)`);  // Adjust only the vertical translation
+
 
     const root: any = d3.hierarchy(data);
     root.x0 = width / 2;
@@ -322,7 +326,22 @@ export class ResumeFlowchartComponent implements AfterViewInit {
     svg.call(zoom);
 
     // Collapse all children except root
-    root.children?.forEach(collapse);
+    if (root.children && root.children.length > 0) {
+      // Keep the first child of root visible, collapse its children
+      const firstChild = root.children[0];
+
+      // Collapse all siblings of the first child
+      for (let i = 1; i < root.children.length; i++) {
+        collapse(root.children[i]);
+      }
+
+      // Collapse children of the first child
+      if (firstChild.children) {
+        firstChild._children = firstChild.children;
+        firstChild._children.forEach(collapse);
+        firstChild.children = null;
+      }
+    }
 
     update(root);
 
@@ -352,19 +371,24 @@ export class ResumeFlowchartComponent implements AfterViewInit {
         .attr("class", "node")
         .attr("transform", (d: any) => `translate(${source.x0},${source.y0})`)
         .on("click", (event, d: any) => {
-          // Collapse all nodes except this one
-          root.children?.forEach((child: any) => {
-            if (child !== d) collapse(child);
-          });
+          // Only trigger the click event if the node has children
+          if (d.children || d._children) {
+            if (d.parent && d.parent.children) {
+              d.parent.children.forEach((sibling: any) => {
+                if (sibling !== d) collapse(sibling);
+              });
+            }
 
-          if (d.children) {
-            d._children = d.children;
-            d.children = null;
-          } else {
-            d.children = d._children;
-            d._children = null;
+            if (d.children) {
+              d._children = d.children;
+              d.children = null;
+            } else {
+              d.children = d._children;
+              d._children = null;
+            }
+
+            update(d);
           }
-          update(d);
         });
 
       nodeEnter.append("circle")

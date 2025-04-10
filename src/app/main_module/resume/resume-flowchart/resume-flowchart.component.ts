@@ -1,228 +1,440 @@
 import * as d3 from 'd3';
-import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, Inject, PLATFORM_ID, AfterViewChecked } from '@angular/core';
+
+import { AfterViewInit, Component, ElementRef, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-resume-flowchart',
-  standalone: true,
   templateUrl: './resume-flowchart.component.html',
   styleUrls: ['./resume-flowchart.component.scss']
 })
-export class ResumeFlowchartComponent implements OnInit, AfterViewInit, OnChanges, AfterViewChecked {
-  @Input() data: any = {
-    name: "Resume",
-    children: [
-      {
-        name: "Education",
-        children: [
-          {
-            name: "Bachelor's Degree",
-            children: [
-              {
-                name: "University of XYZ",
-                children: [
-                  { name: "Graduation: 2022" }
-                ]
-              }
-            ]
-          },
-          {
-            name: "Master's Degree",
-            children: [
-              { name: "University of ABC" },
-              { name: "Graduation: 2024" }
-            ]
-          }
-        ]
-      },
-      {
-        name: "Work Experience",
-        children: [
-          {
-            name: "Software Engineer",
-            children: [
-              {
-                name: "Company XYZ",
-                children: [
-                  { name: "Jan 2022 - Present" }
-                ]
-              }
-            ]
-          },
-          {
-            name: "Intern",
-            children: [
-              {
-                name: "Company ABC",
-                children: [
-                  { name: "June 2021 - Aug 2021" }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        name: "Skills",
-        children: [
-          { name: "JavaScript" },
-          { name: "TypeScript" },
-          { name: "Angular" },
-          { name: "D3.js" }
-        ]
-      }
-    ]
-  };
-
-  svg: any;
-  treeLayout: any;
-  g: any;
-  duration = 750;
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, private cdr: ChangeDetectorRef) { }
-
-  ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      // Wait for the browser environment and initialize the SVG and tree layout
-      this.createSvg();
-      this.createTreeLayout();
-    }
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    if (isPlatformBrowser(this.platformId) && changes['data'] && this.data) {
-      setTimeout(() => {
-        this.update(this.data);
-      }, 100);
-    }
-  }
+export class ResumeFlowchartComponent implements AfterViewInit {
+  @ViewChild('treeContainer1', { static: false }) treeContainer1!: ElementRef;
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      // Manually trigger change detection if necessary
-      this.cdr.detectChanges();
+      console.log('Tree container available, creating tree...');
+      this.createTree();
     }
   }
+  createTree() {
+    const data = {
+      "name": "Swapnasheela",
+      "current_designation": "Lead Assistant Manager",
+      "Stream": "Front End Developer",
+      "children": [{
+        "name": "Technical Skill",
+        "icon": "💬",
+        "color": "#2B87C6",
+        "children": [{
+          "name": "Front-End Technologies",
+          "children": [{
+            "name": "HTML & HTML5",
+            "size": 3812
+          }, {
+            "name": "CSS,CSS3,SCSS",
+            "size": 3812
+          }, {
+            "name": "BootStrap & Material UI",
+            "size": 3812
+          }, {
+            "name": "Angular Js & Angular above version",
+            "size": 3812
+          }, {
+            "name": "Javascript, TypeScripts & Jquery",
+            "size": 3812
+          }, {
+            "name": "React Js",
+            "size": 3812
+          }]
+        }, {
+          "name": "Frameworks & Libraries",
+          "children": [{
+            "name": "Underscore.js & Lodash",
+            "size": 3534
+          }, {
+            "name": "Ag grid and Data Table",
+            "size": 5731
+          }, {
+            "name": "Leaflet Js, Google Maps & Cesium JS",
+            "size": 7840
+          }, {
+            "name": "Three js",
+            "size": 5914
+          }, {
+            "name": "Highcharts, D3 Js & Chart.js",
+            "size": 3416
+          }, {
+            "name": "RxJS, NgRx & Redux",
+            "size": 3534
+          }]
+        }, {
+          "name": "UI/UX Design & Implementation",
+          "children": [{
+            "name": "Responsive Web Design",
+            "size": 7074
+          }, {
+            "name": "Cross-browser Compatibility",
+            "size": 7074
+          }, {
+            "name": "Figma, Adobe XD, Sketch",
+            "size": 7074
+          }, {
+            "name": "SEO Best Practices",
+            "size": 7074
+          }]
+        }, {
+          "name": "Performance Optimization",
+          "children": [{
+            "name": "Lazy Loading, Code Splitting",
+            "size": 7074
+          }, {
+            "name": "Lighthouse Audits",
+            "size": 7074
+          }, {
+            "name": "DOM Virtualization",
+            "size": 7074
+          }, {
+            "name": "Caching, Minification",
+            "size": 7074
+          }]
+        }, {
+          "name": "Build Tools & Package Managers",
+          "children": [{
+            "name": "Webpack, Vite, Gulp",
+            "size": 7074
+          }, {
+            "name": "npm, yarn",
+            "size": 7074
+          }]
+        }, {
+          "name": "Version Control & Collaboration",
+          "children": [{
+            "name": "Git, GitHub, GitLab, Bitbucket",
+            "size": 7074
+          }, {
+            "name": "Agile/Scrum workflows",
+            "size": 7074
+          }, {
+            "name": "Jira",
+            "size": 7074
+          }]
+        }, {
+          "name": "Testing & Debugging",
+          "children": [{
+            "name": "Chrome DevTools, ESLint",
+            "size": 7074
+          }, {
+            "name": "Unit testing, Karma and Jasmine",
+            "size": 7074
+          }]
+        }, {
+          "name": "Back-End Basics",
+          "children": [{
+            "name": "REST APIs",
+            "size": 7074
+          }, {
+            "name": "Node.js",
+            "size": 7074
+          }, {
+            "name": "Firebase",
+            "size": 7074
+          }, {
+            "name": "Oracle SQL",
+            "size": 7074
+          }, {
+            "name": "Python Basics",
+            "size": 7074
+          }, {
+            "name": "Core Java",
+            "size": 7074
+          }, {
+            "name": "PHP",
+            "size": 7074
+          }]
+        }, {
+          "name": "Deployment & CI/CD",
+          "children": [{
+            "name": "Azure DevOps, AWS Amplify",
+            "size": 7074
+          }, {
+            "name": "Netlify",
+            "size": 7074
+          }, {
+            "name": "GitHub Pages",
+            "size": 7074
+          }, {
+            "name": "Docker (basic)",
+            "size": 7074
+          }]
+        }]
+      }, {
+        "name": "Work Experience",
+        "icon": "📈",
+        "color": "#3DBBC6",
+        "children": [{
+          "name": "Easing",
+          "size": 17010
+        }, {
+          "name": "FunctionSequence",
+          "size": 5842
+        }, {
+          "name": "interpolate",
+          "children": [{
+            "name": "ArrayInterpolator",
+            "size": 1983
+          }, {
+            "name": "ColorInterpolator",
+            "size": 2047
+          }, {
+            "name": "DateInterpolator",
+            "size": 1375
+          }, {
+            "name": "Interpolator",
+            "size": 8746
+          }, {
+            "name": "MatrixInterpolator",
+            "size": 2202
+          }, {
+            "name": "NumberInterpolator",
+            "size": 1382
+          }, {
+            "name": "ObjectInterpolator",
+            "size": 1629
+          }, {
+            "name": "PointInterpolator",
+            "size": 1675
+          }, {
+            "name": "RectangleInterpolator",
+            "size": 2042
+          }]
+        }, {
+          "name": "ISchedulable",
+          "size": 1041
+        }, {
+          "name": "Parallel",
+          "size": 5176
+        }, {
+          "name": "Pause",
+          "size": 449
+        }, {
+          "name": "Scheduler",
+          "size": 5593
+        }, {
+          "name": "Sequence",
+          "size": 5534
+        }, {
+          "name": "Transition",
+          "size": 9201
+        }, {
+          "name": "Transitioner",
+          "size": 19975
+        }, {
+          "name": "TransitionEvent",
+          "size": 1116
+        }, {
+          "name": "Tween",
+          "size": 6006
+        }]
+      }, {
+        "name": "Education Summary",
+        "icon": "⚙️",
+        "color": "#F3A433",
+        "children": [{
+          "name": "converters",
+          "children": [{
+            "name": "Converters",
+            "size": 721
+          }, {
+            "name": "DelimitedTextConverter",
+            "size": 4294
+          }, {
+            "name": "GraphMLConverter",
+            "size": 9800
+          }, {
+            "name": "IDataConverter",
+            "size": 1314
+          }, {
+            "name": "JSONConverter",
+            "size": 2220
+          }]
+        }, {
+          "name": "DataField",
+          "size": 1759
+        }, {
+          "name": "DataSchema",
+          "size": 2165
+        }, {
+          "name": "DataSet",
+          "size": 586
+        }, {
+          "name": "DataSource",
+          "size": 3331
+        }, {
+          "name": "DataTable",
+          "size": 772
+        }, {
+          "name": "DataUtil",
+          "size": 3322
+        }]
+      }, {
+        "name": "Personal Details",
+        "icon": "📊",
+        "color": "#872B8E",
+        "children": [{
+          "name": "DirtySprite",
+          "size": 8833
+        }, {
+          "name": "LineSprite",
+          "size": 1732
+        }, {
+          "name": "RectSprite",
+          "size": 3623
+        }, {
+          "name": "TextSprite",
+          "size": 10066
+        }]
+      }]
+    };
+    const width = 800;
+    const height = 600;
+    let i = 0;
+    const svg = d3.select(this.treeContainer1.nativeElement)
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height);
 
-  ngAfterViewChecked(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      // Ensure the flowchart is drawn after view is checked
-      this.update(this.data);
-    }
-  }
+    const g = svg.append("g");
 
-  createSvg(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      // Check if SVG already exists, if not, create a new one
-      const container = d3.select('#tree-container');
-      if (!this.svg) {
-        this.svg = container.append('svg')
-          .attr('width', '100%')
-          .attr('height', 500)
-          .style('border', '1px solid black');  // Added border for visibility
+    const root: any = d3.hierarchy(data);
+    root.x0 = width / 2;
+    root.y0 = 0;
 
-        this.g = this.svg.append('g')
-          .attr('transform', 'translate(50, 50)');
-      }
-    }
-  }
+    const treeLayout = d3.tree().size([width, height]);
 
-  createTreeLayout(): void {
-    if (isPlatformBrowser(this.platformId) && !this.treeLayout) {
-      this.treeLayout = d3.tree().size([400, 400]);
-    }
-  }
-
-  update(sourceData: any): void {
-    if (isPlatformBrowser(this.platformId)) {
-      const treeData = d3.hierarchy(sourceData);
-      treeData.descendants().forEach((d: any) => {
-        d._children = d.children;
-        if (d.depth !== 0 && !d.children) {  // Collapse non-root nodes
-          d.children = null;
-        }
+    const zoom: any = d3.zoom()
+      .scaleExtent([0.5, 2])
+      .on("zoom", (event) => {
+        g.attr("transform", event.transform);
       });
 
-      const treeNodes = this.treeLayout(treeData);
-      const nodes = treeNodes.descendants();
-      const links = treeNodes.links();
+    svg.call(zoom);
 
-      // Create or update nodes
-      const node = this.g.selectAll('.node')
-        .data(nodes, (d: any) => d.id || (d.id = d.data.name));
+    // Collapse all children except root
+    root.children?.forEach(collapse);
 
-      const nodeEnter = node.enter().append('g')
-        .attr('class', 'node')
-        .attr('transform', (d: any) => `translate(${sourceData.y0 || 0}, ${sourceData.x0 || 0})`)
-        .on('click', (event: any, d: any) => {
-          this.toggleChildren(d);  // Toggle on click
+    update(root);
+
+    function collapse(d: any) {
+      if (d.children) {
+        d._children = d.children;
+        d._children.forEach(collapse);
+        d.children = null;
+      }
+    }
+
+    function update(source: any) {
+      treeLayout(root);
+
+      const nodes = root.descendants();
+      const links = root.links();
+
+      // Normalize depth spacing
+      nodes.forEach((d: any) => d.y = d.depth * 120);
+
+      // JOIN NODES
+      const node = g.selectAll("g.node")
+        .data(nodes, (d: any) => d.id || (d.id = ++i));
+
+      const nodeEnter = node.enter()
+        .append("g")
+        .attr("class", "node")
+        .attr("transform", (d: any) => `translate(${source.x0},${source.y0})`)
+        .on("click", (event, d: any) => {
+          // Collapse all nodes except this one
+          root.children?.forEach((child: any) => {
+            if (child !== d) collapse(child);
+          });
+
+          if (d.children) {
+            d._children = d.children;
+            d.children = null;
+          } else {
+            d.children = d._children;
+            d._children = null;
+          }
+          update(d);
         });
 
-      nodeEnter.append('circle')
-        .attr('r', 10)
-        .style('fill', '#fff')
-        .style('stroke', 'steelblue')
-        .style('stroke-width', '3px');
+      nodeEnter.append("circle")
+        .attr("r", (d: any) => d.depth === 0 ? 45 : 25)
+        .attr("fill", (d: any) => d.data.color || "#d9534f")
+        .attr("stroke", "#fff")
+        .attr("stroke-width", 2);
 
-      nodeEnter.append('text')
-        .attr('x', (d: any) => d.children || d._children ? -15 : 15)
-        .attr('dy', '.35em')
-        .attr('text-anchor', (d: any) => d.children || d._children ? 'end' : 'start')
-        .text((d: any) => d.data.name);
+      nodeEnter.append("text")
+        .attr("text-anchor", "middle")
+        .attr("dy", "0.35em")
+        .style("fill", "#fff")
+        .style("font-size", (d: any) => d.depth === 0 ? "20px" : "16px")
+        .text((d: any) => d.data.icon || "👥");
 
-      const nodeUpdate = nodeEnter.merge(node);
-      nodeUpdate.transition()
-        .duration(this.duration)
-        .attr('transform', (d: any) => `translate(${d.y}, ${d.x})`);
-
-      // Create or update links
-      const link = this.g.selectAll('.link')
-        .data(links, (d: any) => d.target.id);
-
-      const linkEnter = link.enter().insert('path', '.node')
-        .attr('class', 'link')
-        .attr('d', (d: any) => {
-          const o = { x: sourceData.x0 || 0, y: sourceData.y0 || 0 };
-          return `M${o.y},${o.x}C${o.y + 50},${o.x} ${o.y + 50},${o.x} ${d.target.y},${d.target.x}`;
-        });
-
-      linkEnter.merge(link)
+      const nodeUpdate = nodeEnter.merge(node as any)
         .transition()
-        .duration(this.duration)
-        .attr('d', (d: any) => {
-          return `M${d.source.y},${d.source.x}C${(d.source.y + d.target.y) / 2},${d.source.x} ${(d.source.y + d.target.y) / 2},${d.target.x} ${d.target.y},${d.target.x}`;
-        });
+        .duration(300)
+        .attr("transform", (d: any) => `translate(${d.x},${d.y})`);
 
-      node.exit().transition()
-        .duration(this.duration)
-        .attr('transform', (d: any) => `translate(${sourceData.y}, ${sourceData.x})`)
+      node.exit()
+        .transition()
+        .duration(300)
+        .attr("transform", (d: any) => `translate(${source.x},${source.y})`)
         .remove();
 
-      link.exit().transition()
-        .duration(this.duration)
-        .attr('d', (d: any) => {
-          const o = { x: sourceData.x, y: sourceData.y };
-          return `M${o.y},${o.x}C${o.y + 50},${o.x} ${o.y + 50},${o.x} ${o.y},${o.x}`;
+      // JOIN LINKS
+      const link = g.selectAll("path.link")
+        .data(links, (d: any) => d.target.id);
+
+      const linkEnter = link.enter()
+        .insert("path", "g")
+        .attr("class", "link")
+        .attr("fill", "none")
+        .attr("stroke", "#ccc")
+        .attr("d", (d: any) => {
+          const o = { x: source.x0, y: source.y0 };
+          return diagonal({ source: o, target: o });
+        });
+
+      linkEnter.merge(link as any)
+        .transition()
+        .duration(300)
+        .attr("d", diagonal);
+
+      link.exit()
+        .transition()
+        .duration(300)
+        .attr("d", (d: any) => {
+          const o = { x: source.x, y: source.y };
+          return diagonal({ source: o, target: o });
         })
         .remove();
 
+      // Save current positions for transition
       nodes.forEach((d: any) => {
         d.x0 = d.x;
         d.y0 = d.y;
       });
     }
-  }
 
-  toggleChildren(d: any): void {
-    if (d.children) {
-      d._children = d.children;
-      d.children = null;
-    } else {
-      d.children = d._children;
-      d._children = null;
+    function diagonal(d: any) {
+      return d3.linkVertical()
+        .x((d: any) => d.x)
+        .y((d: any) => d.y)(d);
     }
 
-    this.update(d);
+
   }
+
+
+
 }

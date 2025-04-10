@@ -12,7 +12,7 @@ export class ResumeTreeComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     if (typeof document !== 'undefined') {
-      this.createTree();
+      // this.createTree();
     }
   }
 

@@ -1,5 +1,6 @@
-import * as d3 from 'd3';
 
+
+import * as d3 from 'd3';
 import { AfterViewInit, Component, ElementRef, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -18,6 +19,7 @@ export class ResumeFlowchartComponent implements AfterViewInit {
       this.createTree();
     }
   }
+
   createTree() {
     const data = {
       "name": "Swapnasheela",
@@ -297,19 +299,19 @@ export class ResumeFlowchartComponent implements AfterViewInit {
         }]
       }]
     };
+
     const width = 800;
     const height = 600;
     let i = 0;
+
     const svg = d3.select(this.treeContainer1.nativeElement)
       .append("svg")
       .attr("width", width)
       .attr("height", height)
-      .attr("viewBox", `0 0 ${width} ${height}`);  // ViewBox controls the scaling and centering
+      .attr("viewBox", `0 0 ${width} ${height}`);
 
-    // const g = svg.append("g");
     const g = svg.append("g")
-      .attr("transform", `translate(0, 100)`);  // Adjust only the vertical translation
-
+      .attr("transform", `translate(0, 100)`);
 
     const root: any = d3.hierarchy(data);
     root.x0 = width / 2;
@@ -327,15 +329,10 @@ export class ResumeFlowchartComponent implements AfterViewInit {
 
     // Collapse all children except root
     if (root.children && root.children.length > 0) {
-      // Keep the first child of root visible, collapse its children
       const firstChild = root.children[0];
-
-      // Collapse all siblings of the first child
       for (let i = 1; i < root.children.length; i++) {
         collapse(root.children[i]);
       }
-
-      // Collapse children of the first child
       if (firstChild.children) {
         firstChild._children = firstChild.children;
         firstChild._children.forEach(collapse);
@@ -359,7 +356,6 @@ export class ResumeFlowchartComponent implements AfterViewInit {
       const nodes = root.descendants();
       const links = root.links();
 
-      // Normalize depth spacing
       nodes.forEach((d: any) => d.y = d.depth * 120);
 
       // JOIN NODES
@@ -371,7 +367,6 @@ export class ResumeFlowchartComponent implements AfterViewInit {
         .attr("class", "node")
         .attr("transform", (d: any) => `translate(${source.x0},${source.y0})`)
         .on("click", (event, d: any) => {
-          // Only trigger the click event if the node has children
           if (d.children || d._children) {
             if (d.parent && d.parent.children) {
               d.parent.children.forEach((sibling: any) => {
@@ -391,23 +386,38 @@ export class ResumeFlowchartComponent implements AfterViewInit {
           }
         });
 
-      nodeEnter.append("circle")
+      // Create a group to hold circle + name text
+      const nodeGroup = nodeEnter.append("g")
+        .attr("class", "node-group")
+        .attr("transform", "translate(0, 0)");
+
+      // Circle
+      nodeGroup.append("circle")
         .attr("r", (d: any) => d.depth === 0 ? 45 : 25)
         .attr("fill", (d: any) => d.data.color || "#d9534f")
         .attr("stroke", "#fff")
         .attr("stroke-width", 2);
 
-      nodeEnter.append("text")
+      // Icon inside circle
+      nodeGroup.append("text")
         .attr("text-anchor", "middle")
         .attr("dy", "0.35em")
         .style("fill", "#fff")
         .style("font-size", (d: any) => d.depth === 0 ? "20px" : "16px")
         .text((d: any) => d.data.icon || "👥");
 
+      // Name below the circle with spacing
+      nodeGroup.append("text")
+        .attr("text-anchor", "middle")
+        .attr("dy", (d: any) => d.depth === 0 ? "4em" : "3em")
+        .style("fill", "#000")
+        .style("font-size", "12px")
+        .text((d: any) => d.data.name);
+
       const nodeUpdate = nodeEnter.merge(node as any)
         .transition()
         .duration(300)
-        .attr("transform", (d: any) => `translate(${d.x},${d.y})`);
+        .attr("transform", (d: any) => `translate(${d.x},${d.y + 30})`);
 
       node.exit()
         .transition()
@@ -443,7 +453,6 @@ export class ResumeFlowchartComponent implements AfterViewInit {
         })
         .remove();
 
-      // Save current positions for transition
       nodes.forEach((d: any) => {
         d.x0 = d.x;
         d.y0 = d.y;
@@ -451,14 +460,10 @@ export class ResumeFlowchartComponent implements AfterViewInit {
     }
 
     function diagonal(d: any) {
+      const verticalMargin = 45; // Shift down so link stops *below* the node group
       return d3.linkVertical()
         .x((d: any) => d.x)
-        .y((d: any) => d.y)(d);
+        .y((d: any) => d.y + verticalMargin)(d);
     }
-
-
   }
-
-
-
 }

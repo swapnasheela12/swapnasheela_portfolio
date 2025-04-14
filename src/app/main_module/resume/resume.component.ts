@@ -5,11 +5,12 @@ import { ResumeFlowchartComponent } from './resume-flowchart/resume-flowchart.co
 import { ResumeHeroComponent } from './resume-hero/resume-hero.component';
 import { ResumeServicesComponent } from './resume-services/resume-services.component';
 import { ResumeSidebarComponent } from './resume-sidebar/resume-sidebar.component';
+import { ResumeTimelineComponent } from './resume-timeline/resume-timeline.component';
 import { ResumeTreeComponent } from './resume-tree/resume-tree.component';
 
 @Component({
   selector: 'app-resume',
-  imports: [ResumeSidebarComponent, ResumeHeroComponent, ResumeServicesComponent, ResumeFlowchartComponent, ResumeTreeComponent],
+  imports: [ResumeSidebarComponent, ResumeHeroComponent, ResumeServicesComponent, ResumeFlowchartComponent, ResumeTreeComponent, ResumeTimelineComponent],
   standalone: true,
   animations: [
     trigger('fadeIn', [

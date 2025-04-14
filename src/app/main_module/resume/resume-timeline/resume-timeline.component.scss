@@ -1,0 +1,9 @@
+.timeline-wrapper {
+  width: 100%;
+  min-width: 800px; // or whatever works for your layout
+  overflow-x: auto; // allow scrolling if needed
+
+  svg {
+    font-family: "Segoe UI", sans-serif;
+  }
+}

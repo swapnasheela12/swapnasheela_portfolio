@@ -62,3 +62,35 @@ body {
     border-color: #fd853a !important; // Border color on hover
   }
 }
+
+// .custom-dialog-container {
+//   // .mat-dialog-container {
+//   background: transparent !important;
+//   box-shadow: none !important;
+//   padding: 0 !important;
+//   overflow: visible !important;
+//   height: 100%;
+//   width: 100%;
+//   .mat-mdc-dialog-inner-container {
+//     .mat-mdc-dialog-surface {
+//       background: #10141400 !important;
+//       transform: translate(-50%, -50%) !important; // centers at click
+//     }
+//   }
+//   // }
+// }
+
+// .transparent-backdrop {
+//   background-color: transparent !important;
+// }
+
+.transparent-dialog .mat-mdc-dialog-surface {
+  background: transparent !important;
+  box-shadow: none;
+  padding: 0;
+  overflow: visible;
+}
+
+.transparent-backdrop {
+  background: rgba(0, 0, 0, 0.4) !important;
+}

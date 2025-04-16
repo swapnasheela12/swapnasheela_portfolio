@@ -7,3 +7,16 @@
     font-family: "Segoe UI", sans-serif;
   }
 }
+
+.transparent-dialog {
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+
+  .mat-dialog-container {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+}

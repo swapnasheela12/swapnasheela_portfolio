@@ -1,0 +1,38 @@
+
+<div class="popup-card container">
+  <div class="popup-banner row align-items-center px-3 py-2">
+    <div class="col-8 banner-text">{{ data.name |uppercase}}</div>
+    <div class="col-4 text-end">
+      <button class="banner-icon btn p-0 close-btn" mat-fab (click)="onClose()" aria-label="Close">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="popup-body">
+    <div class="dialog-scroll-container">
+      <div class="dialog-paper">
+        <!-- <h2 class="dialog-title">Projects at {{ data.project_no }}</h2> -->
+
+        <section *ngFor="let project of data.project_experience; trackBy: trackByFn" class="project-section">
+          <h3>Project {{ project.project_no }}: {{ project.project_title }}</h3>
+
+          <h4>Roles & Responsibilities:</h4>
+          <ul>
+            <li *ngFor="let item of project.role_and_responsibilities">{{ item }}</li>
+          </ul>
+
+          <h4>Environment:</h4>
+          <ul class="env-list">
+            <li *ngFor="let env of project.environment">{{ env }}</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="popup-tail d-flex">
+    <div class="tail-left"></div>
+    <div class="tail-right"></div>
+  </div> -->
+</div>

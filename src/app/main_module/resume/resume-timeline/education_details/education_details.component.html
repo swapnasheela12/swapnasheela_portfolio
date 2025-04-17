@@ -1,0 +1,18 @@
+
+<div class="row justify-content-center">
+  @for (step of steps; track step.id) {
+    <div class="col-12 col-sm-6 col-lg-4 mb-4" >
+      <div class="card-edu" [style.borderColor]="step.color">
+        <div class="step-card-wrapper" [@fadeInUp] >
+          <div class="ribbon" [style.backgroundColor]="step.color">{{ step.title }}</div>
+          <div class="step-card">
+            <h2>{{ step.year }}</h2>
+            <p>{{ step.desc }}</p>
+            <i [class]="step.title" [style.color]="step.color"></i>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  }
+</div>

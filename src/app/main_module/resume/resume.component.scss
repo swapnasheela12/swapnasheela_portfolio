@@ -9,8 +9,20 @@
 .main-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  // align-items: center;
+  // justify-content: center;
   min-height: 100vh;
   background-color: #ffffff;
+}
+
+.dual-infographics {
+  display: flex;
+  flex-direction: column; // or row for side-by-side
+  gap: 3rem;
+
+  app-infographic-d3,
+  app-another-infographic {
+    flex: 1;
+    max-width: 100%;
+  }
 }

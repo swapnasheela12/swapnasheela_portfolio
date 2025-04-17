@@ -1,13 +1,15 @@
 import { Component, ElementRef, Inject, PLATFORM_ID, ViewChild, OnInit } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import * as d3 from 'd3';
-import { Work_experince_detailsComponent } from './work_experince_details/work_experince_details.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ProjectExperienceDialogComponent } from './projectExperienceDialog/projectExperienceDialog.component';
 @Component({
   selector: 'app-resume-timeline',
   standalone: true,
   templateUrl: './resume-timeline.component.html',
-  styleUrls: ['./resume-timeline.component.scss']
+  styleUrls: ['./resume-timeline.component.scss'],
+  imports: [CommonModule, MatDialogModule], // Make sure it's here
+
 })
 export class ResumeTimelineComponent implements OnInit {
 
@@ -526,132 +528,140 @@ export class ResumeTimelineComponent implements OnInit {
   }
 
   private handleNodeClick(event: PointerEvent, d: any, target: SVGGElement): void {
-    console.log(d, '====================================');
+    this.dialog.open(ProjectExperienceDialogComponent, {
+      data: d,
+      panelClass: 'custom-popup-panel',
+      backdropClass: 'custom-popup-backdrop',
+      // disableClose: true
+    });
 
-    const nodeGroup = d3.select(target);
-    const isLeft = d.id % 2 !== 0;
-    const boxWidth = 300;
-    const boxHeight = 400;
-    const boxY = 0;
-
-    const xCenter = this.timelineLineX;
-    const xStart = isLeft ? this.timelineLineX + 180 : this.timelineLineX - boxWidth - 180;
-
-    // === Close previous unrolled box if different node clicked ===
-    if (this.currentOpenNode && this.currentOpenNode !== target) {
-      const prev = d3.select(this.currentOpenNode);
-      prev.select('.unroll-group').remove();
-
-      // Show previous title & description
-      prev.selectAll('text')
-        .filter(function () {
-          const type = d3.select(this).attr('data-type');
-          return type === 'title' || type === 'desc';
-        })
-        .transition()
-        .duration(300)
-        .style('opacity', 1);
-    }
-
-    // === Clear current if exists ===
-    nodeGroup.select('.unroll-group').remove();
-
-    // === Fade out title & description ===
-    nodeGroup.selectAll('text')
-      .filter(function () {
-        const type = d3.select(this).attr('data-type');
-        return type === 'title' || type === 'desc';
-      })
-      .transition()
-      .duration(300)
-      .style('opacity', 0);
-
-    // === Create unroll group ===
-    const unrollGroup = nodeGroup.append('g')
-      .attr('class', 'unroll-group');
-
-    // === Append the box with smoother unroll animation ===
-    const box = unrollGroup.append('rect')
-      .attr('x', xCenter)
-      .attr('y', boxY)
-      .attr('height', boxHeight)
-      .attr('width', 0)
-      .attr('fill', '#fef3c7')
-      .attr('rx', 10)
-      .attr('ry', 10)
-      .style('filter', 'drop-shadow(0 2px 8px rgba(0,0,0,0.2))');
-
-    box.transition()
-      .duration(500)
-      .ease(d3.easeCubicOut)
-      .attrTween('x', function () {
-        const interpolateX = d3.interpolateNumber(xCenter, xStart);
-        return function (t) {
-          return interpolateX(t).toString();
-        };
-      })
-      .attrTween('width', function () {
-        const interpolateW = d3.interpolateNumber(0, boxWidth);
-        return function (t) {
-          return interpolateW(t).toString();
-        };
-      })
-      .on('end', () => {
-        const foreignObject = unrollGroup.append('foreignObject')
-          .attr('x', xStart + 10)
-          .attr('y', boxY + 10)
-          .attr('width', boxWidth - 20)
-          .attr('height', boxHeight - 20)
-          .style('opacity', 0);
-
-        foreignObject
-          .append('xhtml:div')
-          .style('font-size', '14px')
-          .style('color', '#333')
-          .style('line-height', '1.6')
-          .style('height', '100%')
-          .style('overflow-y', 'auto')
-          .html(this.generateDummyText(d));
-
-        foreignObject.transition()
-          .duration(2000)
-          .style('opacity', 1);
-      });
-
-    // Track this node
-    this.currentOpenNode = target;
   }
 
+  // private handleNodeClick(event: PointerEvent, d: any, target: SVGGElement): void {
+  //   console.log(d, '====================================');
 
-  private generateDummyText(data: any): string {
+  //   const nodeGroup = d3.select(target);
+  //   const isLeft = d.id % 2 !== 0;
+  //   const boxWidth = 300;
+  //   const boxHeight = 400;
+  //   const boxY = 0;
 
-    // Generate heading and bullet list from data.projectlist
-    let projectListHTML = '';
-    if (Array.isArray(data.project_experience)) {
+  //   const xCenter = this.timelineLineX;
+  //   const xStart = isLeft ? this.timelineLineX + 180 : this.timelineLineX - boxWidth - 180;
 
-      data.project_experience.forEach((project: any) => {
-        projectListHTML += `<h4>Project Experience :${project.project_no}</h4>`;
-        projectListHTML += `<h5>Project Title :${project.project_title}</h5>`;
-        projectListHTML += `<h6>Project Role & Responsibilities: </h6><ul>`;
-        project.role_and_responsibilities.forEach((roleandresponsibilities: any) => {
-          projectListHTML += `<li>${roleandresponsibilities}</li>`;
-        })
-        projectListHTML += `</ul>`;
-        projectListHTML += `<h6>Project Environment: </h6><ul>`;
-        project.environment.forEach((_environment: any) => {
-          projectListHTML += `<li>${_environment}</li>`;
-        })
-        projectListHTML += `</ul>`;
-      });
+  //   // === Close previous unrolled box if different node clicked ===
+  //   if (this.currentOpenNode && this.currentOpenNode !== target) {
+  //     const prev = d3.select(this.currentOpenNode);
+  //     prev.select('.unroll-group').remove();
 
-    }
+  //     // Show previous title & description
+  //     prev.selectAll('text')
+  //       .filter(function () {
+  //         const type = d3.select(this).attr('data-type');
+  //         return type === 'title' || type === 'desc';
+  //       })
+  //       .transition()
+  //       .duration(300)
+  //       .style('opacity', 1);
+  //   }
 
-    return `
-      <div>
-        ${projectListHTML}
-      </div>
-    `;
-  }
+  //   // === Clear current if exists ===
+  //   nodeGroup.select('.unroll-group').remove();
+
+  //   // === Fade out title & description ===
+  //   nodeGroup.selectAll('text')
+  //     .filter(function () {
+  //       const type = d3.select(this).attr('data-type');
+  //       return type === 'title' || type === 'desc';
+  //     })
+  //     .transition()
+  //     .duration(300)
+  //     .style('opacity', 0);
+
+  //   // === Create unroll group ===
+  //   const unrollGroup = nodeGroup.append('g')
+  //     .attr('class', 'unroll-group');
+
+  //   // === Append the box with smoother unroll animation ===
+  //   const box = unrollGroup.append('rect')
+  //     .attr('x', xCenter)
+  //     .attr('y', boxY)
+  //     .attr('height', boxHeight)
+  //     .attr('width', 0)
+  //     .attr('fill', '#fef3c7')
+  //     .attr('rx', 10)
+  //     .attr('ry', 10)
+  //     .style('filter', 'drop-shadow(0 2px 8px rgba(0,0,0,0.2))');
+
+  //   box.transition()
+  //     .duration(500)
+  //     .ease(d3.easeCubicOut)
+  //     .attrTween('x', function () {
+  //       const interpolateX = d3.interpolateNumber(xCenter, xStart);
+  //       return function (t) {
+  //         return interpolateX(t).toString();
+  //       };
+  //     })
+  //     .attrTween('width', function () {
+  //       const interpolateW = d3.interpolateNumber(0, boxWidth);
+  //       return function (t) {
+  //         return interpolateW(t).toString();
+  //       };
+  //     })
+  //     .on('end', () => {
+  //       const foreignObject = unrollGroup.append('foreignObject')
+  //         .attr('x', xStart + 10)
+  //         .attr('y', boxY + 10)
+  //         .attr('width', boxWidth - 20)
+  //         .attr('height', boxHeight - 20)
+  //         .style('opacity', 0);
+
+  //       foreignObject
+  //         .append('xhtml:div')
+  //         .style('font-size', '14px')
+  //         .style('color', '#333')
+  //         .style('line-height', '1.6')
+  //         .style('height', '100%')
+  //         .style('overflow-y', 'auto')
+  //         .html(this.generateDummyText(d));
+
+  //       foreignObject.transition()
+  //         .duration(2000)
+  //         .style('opacity', 1);
+  //     });
+
+  //   // Track this node
+  //   this.currentOpenNode = target;
+  // }
+
+
+  // private generateDummyText(data: any): string {
+
+  //   // Generate heading and bullet list from data.projectlist
+  //   let projectListHTML = '';
+  //   if (Array.isArray(data.project_experience)) {
+  //     data.project_experience.forEach((project: any) => {
+  //       projectListHTML += `<h4>Project Experience :${project.project_no}</h4>`;
+  //       projectListHTML += `<h5>Project Title :${project.project_title}</h5>`;
+  //       projectListHTML += `<h6>Project Role & Responsibilities: </h6><ul>`;
+  //       project.role_and_responsibilities.forEach((roleandresponsibilities: any) => {
+  //         projectListHTML += `<li>${roleandresponsibilities}</li>`;
+  //       })
+  //       projectListHTML += `</ul>`;
+  //       projectListHTML += `<h6>Project Environment: </h6><ul>`;
+  //       project.environment.forEach((_environment: any) => {
+  //         projectListHTML += `<li>${_environment}</li>`;
+  //       })
+  //       projectListHTML += `</ul>`;
+  //     });
+  //   }
+
+  //   return `
+  //     <div>
+  //       ${projectListHTML}
+  //     </div>
+  //   `;
+  // }
 
 
 }

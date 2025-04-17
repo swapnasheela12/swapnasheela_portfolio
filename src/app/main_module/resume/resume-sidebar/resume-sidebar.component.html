@@ -1,32 +1,46 @@
-<div class="sidebar">
+
+
+
+<div class="sidebar" [@fadeSlideIn]>
   <div class="profile">
-    <img src="assets/profile.jpg" alt="Rayan Adlrdard">
-    <h3>Rayan Adlrdard</h3>
-    <p>Front-End Developer</p>
+    <img src="../../../../assets/image/PNG/img_swapna_left.png" alt="Rayan Adlrdard" />
+    <h3>Swapnasheela Khandagale</h3>
+    <p class="designation">Front-End Developer</p>
   </div>
 
-  <div class="info">
-    <p><strong>Age:</strong> 24</p>
-    <p><strong>Residence:</strong> BD</p>
-    <p><strong>Freelance:</strong> <span class="available">Available</span></p>
-    <p><strong>Address:</strong> Dhaka, Bangladesh</p>
+  <div class="info section">
+    <!-- <p><strong>Age:</strong> 38</p> -->
+    <p><strong>Residence:</strong> USA</p>
+    <p><strong>Freelance:</strong> <span class="status available">Available</span></p>
+    <p><strong>Address:</strong>New Jersey, USA</p>
+    <p><strong>Visa Status:</strong>H4-EAD</p>
   </div>
 
-  <div class="languages">
+  <div class="languages section">
     <h4>Languages</h4>
-    <p>Bangla <span class="percent">100%</span></p>
-    <p>English <span class="percent">80%</span></p>
-    <p>Spanish <span class="percent">60%</span></p>
+    @for (lang of languages; track lang.id) {
+    <div>
+      <span>{{ lang.name }}</span>
+      <span class="percent">{{ lang.level }}</span>
+    </div>
+    }
+    @empty {
+    <p>No languages available.</p>
+    }
   </div>
 
-  <div class="skills">
+  <div class="skills section">
     <h4>Skills</h4>
-    <p>HTML <span class="percent">90%</span></p>
-    <p>CSS <span class="percent">85%</span></p>
-    <p>JavaScript <span class="percent">80%</span></p>
-    <p>PHP <span class="percent">75%</span></p>
-    <p>WordPress <span class="percent">85%</span></p>
+    @for (skill of skills; track skill.id) {
+    <div>
+      <span>{{ skill.name }}</span>
+      <span class="percent">{{ skill.level }}</span>
+    </div>
+    }
+    @empty {
+    <p>No skills added.</p>
+    }
   </div>
 
-  <button class="btn btn-warning">Download CV</button>
+  <button class="btn btn-download" (click)="downloadCV()">Download CV</button>
 </div>

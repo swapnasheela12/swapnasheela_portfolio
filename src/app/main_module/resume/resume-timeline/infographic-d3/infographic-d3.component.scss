@@ -1,0 +1,35 @@
+.infographic-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+svg {
+  font-family: "Segoe UI", sans-serif;
+
+  .band {
+    cursor: pointer;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  .band-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    fill: #fff;
+  }
+
+  .band-title {
+    font-size: 1rem;
+    font-weight: bold;
+    fill: #fff;
+  }
+
+  .band-desc {
+    font-size: 0.85rem;
+    fill: #fff;
+  }
+}

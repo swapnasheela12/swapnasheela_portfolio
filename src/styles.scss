@@ -63,34 +63,24 @@ body {
   }
 }
 
-// .custom-dialog-container {
-//   // .mat-dialog-container {
-//   background: transparent !important;
-//   box-shadow: none !important;
-//   padding: 0 !important;
-//   overflow: visible !important;
-//   height: 100%;
-//   width: 100%;
-//   .mat-mdc-dialog-inner-container {
-//     .mat-mdc-dialog-surface {
-//       background: #10141400 !important;
-//       transform: translate(-50%, -50%) !important; // centers at click
-//     }
-//   }
-//   // }
-// }
-
-// .transparent-backdrop {
-//   background-color: transparent !important;
-// }
-
-.transparent-dialog .mat-mdc-dialog-surface {
-  background: transparent !important;
+.custom-popup-panel {
+  background: transparent;
   box-shadow: none;
-  padding: 0;
-  overflow: visible;
+  transform-origin: top center;
+  animation: unrollDialog 0.6s ease-out;
 }
 
-.transparent-backdrop {
-  background: rgba(0, 0, 0, 0.4) !important;
+.custom-popup-backdrop {
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(3px);
+}
+@keyframes unrollDialog {
+  0% {
+    transform: scaleY(0.2) translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1) translateY(0);
+    opacity: 1;
+  }
 }

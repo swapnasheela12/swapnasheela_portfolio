@@ -1,6 +1,8 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 
 import { Component } from '@angular/core';
+import { Education_detailsComponent } from './resume-timeline/education_details/education_details.component';
+import { InfographicD3Component } from './resume-timeline/infographic-d3/infographic-d3.component';
 import { ResumeFlowchartComponent } from './resume-flowchart/resume-flowchart.component';
 import { ResumeHeroComponent } from './resume-hero/resume-hero.component';
 import { ResumeServicesComponent } from './resume-services/resume-services.component';
@@ -10,7 +12,7 @@ import { ResumeTreeComponent } from './resume-tree/resume-tree.component';
 
 @Component({
   selector: 'app-resume',
-  imports: [ResumeSidebarComponent, ResumeHeroComponent, ResumeServicesComponent, ResumeFlowchartComponent, ResumeTreeComponent, ResumeTimelineComponent],
+  imports: [ResumeSidebarComponent, ResumeHeroComponent, ResumeServicesComponent, ResumeFlowchartComponent, ResumeTreeComponent, ResumeTimelineComponent, Education_detailsComponent, InfographicD3Component],
   standalone: true,
   animations: [
     trigger('fadeIn', [

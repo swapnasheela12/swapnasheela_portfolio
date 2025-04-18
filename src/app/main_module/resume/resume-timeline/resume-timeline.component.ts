@@ -530,10 +530,10 @@ export class ResumeTimelineComponent implements OnInit {
 
   private drawHorizontalTimeline(): void {
     const container = this.timelineContainer.nativeElement;
-    const padding = 100;
+    const padding = 0;
     const spacing = 280;
     const width = this.data.length * spacing + padding * 2;
-    const height = 500;
+    const height = 400;
 
     const svg = d3.select(container)
       .append('svg')
@@ -561,7 +561,7 @@ export class ResumeTimelineComponent implements OnInit {
       .enter()
       .append('g')
       .attr('class', 'event')
-      .attr('transform', (d, i) => `translate(${i * spacing + padding + 100}, ${centerY})`)
+      .attr('transform', (d, i) => `translate(${i * spacing + padding + 140}, ${centerY})`)
       .style('opacity', 0)
       .on('click', (event, d) => this.handleNodeClick(event, d, event.currentTarget))
       .transition()

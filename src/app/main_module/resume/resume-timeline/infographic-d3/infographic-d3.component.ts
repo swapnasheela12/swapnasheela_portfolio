@@ -204,6 +204,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  HostListener,
   Inject,
   PLATFORM_ID,
   ViewChild
@@ -219,7 +220,10 @@ import * as d3 from 'd3';
 })
 export class InfographicD3Component implements AfterViewInit {
   @ViewChild('infographicSvg', { static: true }) svgRef!: ElementRef<SVGSVGElement>;
-
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.ngAfterViewInit(); // or extract layout logic into a reusable function
+  }
   treeData = {
     name: 'Technical Skills',
     color: '#1E88E5',
@@ -260,12 +264,29 @@ export class InfographicD3Component implements AfterViewInit {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
   ngAfterViewInit(): void {
+    // if (!isPlatformBrowser(this.platformId)) return;
+
+    // const svg = d3.select(this.svgRef.nativeElement);
+    // const width = 945;
+    // const height = 600;
+    // const margin = { top: 0, right: 40, bottom: 0, left: 40 };
+
     if (!isPlatformBrowser(this.platformId)) return;
 
-    const svg = d3.select(this.svgRef.nativeElement);
-    const width = 1000;
+    const container = this.svgRef.nativeElement.parentElement;
+    const bounding = container?.getBoundingClientRect();
+    const width = bounding?.width || 945;
     const height = 600;
-    const margin = { top: 20, right: 20, bottom: 20, left: 20 };
+    const margin = { top: 0, right: 40, bottom: 0, left: 40 };
+
+    const svg = d3.select(this.svgRef.nativeElement);
+    svg.selectAll('*').remove(); // Clear before rendering
+
+    svg
+      .attr('viewBox', `0 0 ${width} ${height}`)
+      .attr('preserveAspectRatio', 'xMidYMid meet')
+      .style('width', '100%')
+      .style('height', 'auto');
 
     // Create main group
     const g = svg
@@ -310,7 +331,7 @@ export class InfographicD3Component implements AfterViewInit {
         .on('click', () => {
           if (!treeInitialized) {
             root = d3.hierarchy(this.treeData, (d: any) => d.children);
-            root.x0 = height / 2;
+            root.x0 = width / 2;
             root.y0 = 0;
             treeInitialized = true;
           } else {
@@ -329,12 +350,12 @@ export class InfographicD3Component implements AfterViewInit {
         .attr('href', '../../../../../assets/image/SVG/humeheadcropped.svg')
         .attr('x', -100)
         .attr('y', -100)
-        .attr('width', 200)
-        .attr('height', 200);
+        .attr('width', 400)
+        .attr('height', 400);
 
       headNode.merge(headEnter)
         .transition().duration(600)
-        .attr('transform', d => `translate(${d.y},${d.x})`);
+        .attr('transform', d => `translate(${d.y - 130},${d.x})`);
 
       // === LINK + NODE GROUPS ===
       const linkGroups = g.selectAll('g.link-node-group')
@@ -375,7 +396,7 @@ export class InfographicD3Component implements AfterViewInit {
         const node = d3.select(this);
         const dNode = d.target;
 
-        const blockWidth = 400;
+        const blockWidth = 350;
         const blockHeight = 80;
         const paddingX = 20;
         const textMaxWidth = blockWidth - paddingX * 2;
@@ -459,7 +480,7 @@ export class InfographicD3Component implements AfterViewInit {
       .on('click', () => {
         if (!treeInitialized) {
           root = d3.hierarchy(this.treeData, (d: any) => d.children);
-          root.x0 = height / 2;
+          root.x0 = (width / 2);
           root.y0 = 0;
           treeInitialized = true;
         } else {
@@ -476,7 +497,7 @@ export class InfographicD3Component implements AfterViewInit {
 
     headEnter.append('image')
       .attr('href', '../../../../../assets/image/SVG/humeheadcropped.svg')
-      .attr('x', -300)
+      .attr('x', -180)
       .attr('y', -200)
       .attr('width', 400)
       .attr('height', 400);

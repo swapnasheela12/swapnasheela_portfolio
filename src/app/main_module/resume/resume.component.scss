@@ -15,14 +15,14 @@
   background-color: #ffffff;
 }
 
-.dual-infographics {
-  display: flex;
-  flex-direction: column; // or row for side-by-side
-  gap: 3rem;
+// .dual-infographics {
+//   display: flex;
+//   flex-direction: column; // or row for side-by-side
+//   gap: 3rem;
 
-  app-infographic-d3,
-  app-another-infographic {
-    flex: 1;
-    max-width: 100%;
-  }
-}
+//   app-infographic-d3,
+//   app-another-infographic {
+//     flex: 1;
+//     max-width: 100%;
+//   }
+// }

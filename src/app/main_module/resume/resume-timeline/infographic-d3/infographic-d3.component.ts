@@ -221,17 +221,42 @@ export class InfographicD3Component implements AfterViewInit {
   @ViewChild('infographicSvg', { static: true }) svgRef!: ElementRef<SVGSVGElement>;
 
   treeData = {
-    name: 'Human Head',
+    name: 'Technical Skills',
     color: '#1E88E5',
     children: [
-      { name: '01 INFOGRAPHIC', desc: 'Lorem ipsum dolor sit amet...', color: '#FDD835' },
-      { name: '02 INFOGRAPHIC', desc: 'Lorem ipsum dolor sit amet...', color: '#FB8C00' },
-      { name: '03 INFOGRAPHIC', desc: 'Lorem ipsum dolor sit amet...', color: '#E53935' },
-      { name: '04 INFOGRAPHIC', desc: 'Lorem ipsum dolor sit amet...', color: '#43A047' },
-      { name: '05 INFOGRAPHIC', desc: 'Lorem ipsum dolor sit amet...', color: '#00ACC1' },
-      { name: '06 INFOGRAPHIC', desc: 'Lorem ipsum dolor sit amet...', color: '#1E88E5' }
+      {
+        name: 'Web Languages',
+        desc: 'HTML, CSS, Bootstrap, AngularJS & Angular 8 to 13, JavaScript, jQuery, Typescripts',
+        color: '#FDD835'
+      },
+      {
+        name: 'Languages',
+        desc: 'Core JAVA, PHP',
+        color: '#FB8C00'
+      },
+      {
+        name: 'Database Version',
+        desc: 'SQL, MYSQL, Node Js',
+        color: '#E53935'
+      },
+      {
+        name: 'Tools',
+        desc: 'Visual Studio Code, Atom, Eclipse, SVN, Git, Phabricator, bitbucket',
+        color: '#43A047'
+      },
+      {
+        name: 'Server',
+        desc: 'Xamp, Wamp',
+        color: '#00ACC1'
+      },
+      {
+        name: 'Operating System',
+        desc: 'Windows XP, 7,10 and MacOS, Ubuntu',
+        color: '#1E88E5'
+      }
     ]
   };
+
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
   ngAfterViewInit(): void {
@@ -350,36 +375,60 @@ export class InfographicD3Component implements AfterViewInit {
         const node = d3.select(this);
         const dNode = d.target;
 
-        const blockWidth = 300;
-        const blockHeight = 60;
+        const blockWidth = 400;
+        const blockHeight = 80;
+        const paddingX = 20;
+        const textMaxWidth = blockWidth - paddingX * 2;
 
+        // Custom shaped block
         node.append('path')
           .attr('d', `M0,0 H${blockWidth - 20} L${blockWidth},${blockHeight / 2} L${blockWidth - 20},${blockHeight} H0 Z`)
           .attr('fill', dNode.data.color);
 
+        // Title text
         node.append('text')
-          .attr('x', 20)
+          .attr('x', paddingX)
           .attr('y', 22)
           .attr('fill', '#fff')
           .attr('font-size', '16px')
           .attr('font-weight', 'bold')
-          .text(dNode.data.name.split(' ')[0]);
+          .text(dNode.data.name);
 
-        node.append('text')
-          .attr('x', 80)
-          .attr('y', 22)
-          .attr('fill', '#fff')
-          .attr('font-size', '14px')
-          .attr('font-weight', 'bold')
-          .text(dNode.data.name.split(' ').slice(1).join(' '));
-
-        node.append('text')
-          .attr('x', 80)
+        // Description with wrapping
+        const descGroup = node.append('text')
+          .attr('x', paddingX)
           .attr('y', 42)
           .attr('fill', '#fff')
-          .attr('font-size', '12px')
-          .text(dNode.data.desc);
+          .attr('font-size', '12px');
+
+        const words = dNode.data.desc.split(' ');
+        let line: string[] = [];
+        let lineNumber = 0;
+        const lineHeight = 14;
+
+        let tspan = descGroup.append('tspan')
+          .attr('x', paddingX)
+          .attr('dy', 0);
+
+        words.forEach((word: any, index: any) => {
+          line.push(word);
+          tspan.text(line.join(' '));
+
+          const currentLength = (tspan.node() as SVGTextContentElement).getComputedTextLength();
+          if (currentLength > textMaxWidth) {
+            line.pop(); // Remove last word (it caused overflow)
+            tspan.text(line.join(' ')); // Re-render previous line
+
+            line = [word]; // Start new line with this word
+            tspan = descGroup.append('tspan')
+              .attr('x', paddingX)
+              .attr('dy', lineHeight)
+              .text(word); // Directly render the new line
+          }
+        });
       });
+
+
 
       const groupUpdate = groupEnter.merge(linkGroups as any);
       groupUpdate.transition().duration(600)

@@ -320,212 +320,481 @@ export class ResumeTimelineComponent implements OnInit {
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.drawTimeline();
+      // this.drawTimeline();
+      this.drawHorizontalTimeline();
     }
   }
 
-  private drawTimeline(): void {
+  // private drawTimeline(): void {
+  //   const container = this.timelineContainer.nativeElement;
+  //   const width = container.offsetWidth + 200;
+  //   const topPadding = 60;
+  //   const height = this.data.length * 180 + topPadding;
+
+  //   const svg = d3.select(container)
+  //     .append('svg')
+  //     .attr('width', '100%')
+  //     .attr('height', height)
+  //     .attr('viewBox', `0 0 ${width} ${height}`)
+  //     .attr('preserveAspectRatio', 'xMidYMin meet');
+
+  //   this.timelineLineX = width / 2;
+  //   const timelineLineX = this.timelineLineX;
+
+  //   // Main vertical line
+  //   svg.append('line')
+  //     .attr('x1', timelineLineX)
+  //     .attr('y1', topPadding)
+  //     .attr('x2', timelineLineX)
+  //     .attr('y2', topPadding)
+  //     .attr('stroke', '#ccc')
+  //     .attr('stroke-width', 3)
+  //     .transition()
+  //     .duration(1000)
+  //     .attr('y2', height);
+  //   const self = this;
+  //   const nodes = svg.selectAll('.event')
+  //     .data(this.data)
+  //     .enter()
+  //     .append('g')
+  //     .attr('class', 'event')
+  //     .attr('opacity', 0)
+  //     .attr('transform', (d, i) => `translate(0, ${i * 180 + topPadding})`)
+  //     // .on('click', (event, d) => this.openPopup(d)) // 👈 Click handler
+  //     .on('click', function (event, d) {
+  //       self.handleNodeClick(event, d, this); // 'this' is the SVG element (SVGGElement)
+  //     })
+  //     .transition()
+  //     .delay((d, i) => i * 300)
+  //     .duration(500)
+  //     .attr('opacity', 1);
+
+  //   const eventGroups = svg.selectAll('.event');
+
+  //   // Year Dots with 3D effect
+  //   eventGroups.append('circle')
+  //     .attr('cx', timelineLineX)
+  //     .attr('cy', 0)
+  //     .attr('r', 0)
+  //     .attr('fill', (d: any) => d.color)
+  //     .transition()
+  //     .delay((d, i) => i * 300)
+  //     .duration(600)
+  //     .attr('r', 8)
+  //     .style('filter', 'drop-shadow(0px 2px 10px rgba(0, 0, 0, 0.5))');
+
+  //   // Year Labels Box with 3D effect
+  //   eventGroups.append('path')
+  //     .attr('d', (d, i) => {
+  //       const x = i % 2 === 0 ? timelineLineX - 40 : timelineLineX - 35;
+  //       const y = 70;
+  //       const w = 80;
+  //       const h = 40;
+  //       const r = 10; // curvature
+  //       return `
+  //         M${x},${y + r}
+  //         Q${x},${y} ${x + r},${y}
+  //         H${x + w - r}
+  //         Q${x + w},${y} ${x + w},${y + r}
+  //         L${x + w},${y + h - r}
+  //         Q${x + w},${y + h} ${x + w - r},${y + h}
+  //         H${x + r}
+  //         Q${x},${y + h} ${x},${y + h - r}
+  //         Z
+  //       `;
+  //     })
+  //     .attr('fill', (d: any) => d.color)
+  //     .attr('stroke', '#fff')
+  //     .attr('stroke-width', 1.5)
+  //     .style('filter', 'drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.3))')
+  //     .style('opacity', 0)
+  //     .transition()
+  //     .delay((d, i) => i * 300 + 300)
+  //     .duration(500)
+  //     .style('opacity', 1);
+
+  //   // Year Labels with smooth fade in
+  //   eventGroups.append('text')
+  //     .attr('x', (d, i) => i % 2 === 0 ? timelineLineX : timelineLineX - 5)
+  //     .attr('y', 97)
+  //     .attr('text-anchor', 'middle')
+  //     .attr('fill', '#fff')
+  //     .attr('font-size', '18px')
+  //     .style('opacity', 0)
+  //     .text((d: any) => d.year)
+  //     .transition()
+  //     .delay((d, i) => i * 300 + 400)
+  //     .duration(500)
+  //     .style('opacity', 1);
+
+  //   // White border circle (slightly larger, behind the main one)
+  //   eventGroups.append('circle')
+  //     .attr('cx', (d, i) => i % 2 === 0 ? timelineLineX - 90 : timelineLineX + 90)
+  //     .attr('cy', 90)
+  //     .attr('r', 0)
+  //     .attr('fill', '#fff')
+  //     .style('filter', 'drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2))')
+  //     .transition()
+  //     .delay((d, i) => i * 300 + 400)
+  //     .duration(600)
+  //     .attr('r', 66); // Slightly larger than main circle (60 + stroke-width)
+
+  //   // Main icon circle (on top, with stroke and shadow)
+  //   eventGroups.append('circle')
+  //     .attr('cx', (d, i) => i % 2 === 0 ? timelineLineX - 90 : timelineLineX + 90)
+  //     .attr('cy', 90)
+  //     .attr('r', 0)
+  //     .attr('fill', '#fff')
+  //     .attr('stroke', (d: any) => d.color)
+  //     .attr('stroke-width', 12)
+  //     .style('filter', 'drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.3))')
+  //     .transition()
+  //     .delay((d, i) => i * 300 + 500)
+  //     .duration(600)
+  //     .attr('r', 60)
+  //     .style('opacity', 1);
+
+
+  //   // Icon Image with fade-in animation
+  //   eventGroups.append('image')
+  //     .attr('xlink:href', (d: any) => d.icon)
+  //     .attr('x', (d, i) => i % 2 === 0 ? timelineLineX - 115 : timelineLineX + 65)
+  //     .attr('y', 65)
+  //     .attr('width', 50)
+  //     .attr('height', 50)
+  //     .style('opacity', 0)
+  //     .transition()
+  //     .delay((d, i) => i * 300 + 600)
+  //     .duration(400)
+  //     .style('opacity', 1);
+
+  //   // Title Text with smooth fade-in animation
+  //   eventGroups.append('text')
+  //     .attr('data-type', 'title')
+  //     .attr('x', (d, i) => i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
+  //     .attr('y', 80)
+  //     .attr('font-size', '16px')
+  //     .attr('fill', (d: any) => d.color)
+  //     .style('opacity', 0)
+  //     .text((d: any) => d.title)
+  //     .transition()
+  //     .delay((d, i) => i * 300 + 700)
+  //     .duration(400)
+  //     .style('opacity', 1);
+
+  //   // Description Text with fade-in
+  //   eventGroups.append('text')
+  //     .attr('data-type', 'desc')
+  //     .attr('x', (d, i) => i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
+  //     .attr('y', 100)
+  //     .attr('font-size', '14px')
+  //     .attr('fill', '#667085')
+  //     .style('opacity', 0)
+  //     .each(function (d: any, i) {
+  //       const textEl = d3.select(this);
+  //       const words = d.desc.split(/\s+/);
+  //       const lineHeight = 14; // approx line height in px
+  //       const maxWidth = 180;
+
+  //       let line: string[] = [];
+  //       let lineNumber = 0;
+  //       let tspan = textEl.append('tspan')
+  //         .attr('x', i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
+  //         .attr('y', 100)
+  //         .attr('dy', '0em');
+
+  //       for (let word of words) {
+  //         line.push(word);
+  //         tspan.text(line.join(' '));
+
+  //         if (tspan.node()!.getComputedTextLength() > maxWidth) {
+  //           line.pop();
+  //           tspan.text(line.join(' '));
+  //           line = [word];
+  //           lineNumber++;
+
+  //           tspan = textEl.append('tspan')
+  //             .attr('x', i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
+  //             .attr('y', 100)
+  //             .attr('dy', `${lineHeight}px`)
+  //             .text(word);
+  //         }
+  //       }
+  //     })
+  //     .transition()
+  //     .delay((d, i) => i * 300 + 800)
+  //     .duration(400)
+  //     .style('opacity', 1);
+
+  // }
+
+  private drawHorizontalTimeline(): void {
     const container = this.timelineContainer.nativeElement;
-    const width = container.offsetWidth + 200;
-    const topPadding = 60;
-    const height = this.data.length * 180 + topPadding;
+    const padding = 100;
+    const spacing = 280;
+    const width = this.data.length * spacing + padding * 2;
+    const height = 500;
 
     const svg = d3.select(container)
       .append('svg')
       .attr('width', '100%')
       .attr('height', height)
       .attr('viewBox', `0 0 ${width} ${height}`)
-      .attr('preserveAspectRatio', 'xMidYMin meet');
+      .attr('preserveAspectRatio', 'xMidYMid meet');
 
-    this.timelineLineX = width / 2;
-    const timelineLineX = this.timelineLineX;
+    const centerY = height / 2;
 
-    // Main vertical line
+    // Horizontal Line
     svg.append('line')
-      .attr('x1', timelineLineX)
-      .attr('y1', topPadding)
-      .attr('x2', timelineLineX)
-      .attr('y2', topPadding)
+      .attr('x1', padding)
+      .attr('x2', padding)
+      .attr('y1', centerY)
+      .attr('y2', centerY)
       .attr('stroke', '#ccc')
       .attr('stroke-width', 3)
       .transition()
       .duration(1000)
-      .attr('y2', height);
-    const self = this;
-    const nodes = svg.selectAll('.event')
+      .attr('x2', width - padding);
+
+    const groups = svg.selectAll('.event')
       .data(this.data)
       .enter()
       .append('g')
       .attr('class', 'event')
-      .attr('opacity', 0)
-      .attr('transform', (d, i) => `translate(0, ${i * 180 + topPadding})`)
-      // .on('click', (event, d) => this.openPopup(d)) // 👈 Click handler
-      .on('click', function (event, d) {
-        self.handleNodeClick(event, d, this); // 'this' is the SVG element (SVGGElement)
-      })
+      .attr('transform', (d, i) => `translate(${i * spacing + padding + 100}, ${centerY})`)
+      .style('opacity', 0)
+      .on('click', (event, d) => this.handleNodeClick(event, d, event.currentTarget))
       .transition()
-      .delay((d, i) => i * 300)
+      .delay((_, i) => i * 300)
       .duration(500)
-      .attr('opacity', 1);
+      .style('opacity', 1);
 
-    const eventGroups = svg.selectAll('.event');
+    // // Append dot
+    // svg.selectAll('.event')
+    //   .append('circle')
+    //   .attr('r', 0)
+    //   .attr('fill', (d: any) => d.color)
+    //   .transition()
+    //   .duration(600)
+    //   .attr('r', 14)
+    //   .style('filter', 'drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5))');
 
-    // Year Dots with 3D effect
-    eventGroups.append('circle')
-      .attr('cx', timelineLineX)
-      .attr('cy', 0)
-      .attr('r', 0)
-      .attr('fill', (d: any) => d.color)
-      .transition()
-      .delay((d, i) => i * 300)
-      .duration(600)
-      .attr('r', 8)
-      .style('filter', 'drop-shadow(0px 2px 10px rgba(0, 0, 0, 0.5))');
-
-    // Year Labels Box with 3D effect
-    eventGroups.append('path')
-      .attr('d', (d, i) => {
-        const x = i % 2 === 0 ? timelineLineX - 40 : timelineLineX - 35;
-        const y = 70;
-        const w = 80;
-        const h = 40;
-        const r = 10; // curvature
-        return `
-          M${x},${y + r}
-          Q${x},${y} ${x + r},${y}
-          H${x + w - r}
-          Q${x + w},${y} ${x + w},${y + r}
-          L${x + w},${y + h - r}
-          Q${x + w},${y + h} ${x + w - r},${y + h}
-          H${x + r}
-          Q${x},${y + h} ${x},${y + h - r}
-          Z
-        `;
-      })
+    // Year label box
+    svg.selectAll('.event')
+      .append('rect')
+      .attr('x', -76)
+      .attr('y', -25)
+      .attr('width', 150)
+      .attr('height', 50)
+      .attr('rx', 8)
       .attr('fill', (d: any) => d.color)
       .attr('stroke', '#fff')
-      .attr('stroke-width', 1.5)
-      .style('filter', 'drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.3))')
+      .style('filter', 'drop-shadow(2px 2px 6px rgba(0, 0, 0, 0.3))')
       .style('opacity', 0)
       .transition()
-      .delay((d, i) => i * 300 + 300)
-      .duration(500)
+      .delay((_, i) => i * 300 + 300)
+      .duration(400)
       .style('opacity', 1);
 
-    // Year Labels with smooth fade in
-    eventGroups.append('text')
-      .attr('x', (d, i) => i % 2 === 0 ? timelineLineX : timelineLineX - 5)
-      .attr('y', 97)
+    // Year text
+    svg.selectAll('.event')
+      .append('text')
+      .attr('x', 0)
+      .attr('y', 10)
       .attr('text-anchor', 'middle')
       .attr('fill', '#fff')
-      .attr('font-size', '18px')
-      .style('opacity', 0)
+      .attr('font-size', '32px')
       .text((d: any) => d.year)
+      .style('opacity', 0)
       .transition()
-      .delay((d, i) => i * 300 + 400)
-      .duration(500)
+      .delay((_, i) => i * 300 + 400)
+      .duration(400)
       .style('opacity', 1);
 
-    // White border circle (slightly larger, behind the main one)
-    eventGroups.append('circle')
-      .attr('cx', (d, i) => i % 2 === 0 ? timelineLineX - 90 : timelineLineX + 90)
-      .attr('cy', 90)
-      .attr('r', 0)
-      .attr('fill', '#fff')
-      .style('filter', 'drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2))')
-      .transition()
-      .delay((d, i) => i * 300 + 400)
-      .duration(600)
-      .attr('r', 66); // Slightly larger than main circle (60 + stroke-width)
-
-    // Main icon circle (on top, with stroke and shadow)
-    eventGroups.append('circle')
-      .attr('cx', (d, i) => i % 2 === 0 ? timelineLineX - 90 : timelineLineX + 90)
-      .attr('cy', 90)
+    // Image icon circle (border)
+    svg.selectAll('.event')
+      .append('circle')
+      .attr('cx', 0)
+      // .attr('cy', -160)
+      .attr('cy', (d, i) => (i % 2 === 0 ? -180 : 180)) // left/right from center
       .attr('r', 0)
       .attr('fill', '#fff')
       .attr('stroke', (d: any) => d.color)
-      .attr('stroke-width', 12)
-      .style('filter', 'drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.3))')
+      .attr('stroke-width', 10)
+      .style('filter', 'drop-shadow(3px 3px 6px rgba(0,0,0,0.2))')
       .transition()
-      .delay((d, i) => i * 300 + 500)
-      .duration(600)
-      .attr('r', 60)
-      .style('opacity', 1);
+      .delay((_, i) => i * 300 + 500)
+      .duration(500)
+      .attr('r', 100);
 
-
-    // Icon Image with fade-in animation
-    eventGroups.append('image')
+    // Image icon inside
+    svg.selectAll('.event')
+      .append('image')
       .attr('xlink:href', (d: any) => d.icon)
-      .attr('x', (d, i) => i % 2 === 0 ? timelineLineX - 115 : timelineLineX + 65)
-      .attr('y', 65)
-      .attr('width', 50)
-      .attr('height', 50)
+      .attr('x', -50)
+      // .attr('y', 105)
+      .attr('y', (d, i) => (i % 2 === 0 ? -230 : 140)) // left/right from center
+      .attr('width', 100)
+      .attr('height', 100)
       .style('opacity', 0)
       .transition()
-      .delay((d, i) => i * 300 + 600)
+      .delay((_, i) => i * 300 + 600)
       .duration(400)
       .style('opacity', 1);
 
-    // Title Text with smooth fade-in animation
-    eventGroups.append('text')
-      .attr('data-type', 'title')
-      .attr('x', (d, i) => i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
-      .attr('y', 80)
-      .attr('font-size', '16px')
+    // // Title
+    // svg.selectAll('.event')
+    //   .append('text')
+    //   .attr('x', 0)
+    //   // .attr('y', 320)
+    //   .attr('y', (d, i) => (i % 2 === 0 ? 230 : -140)) // left/right from center
+    //   .attr('width', '200px')
+    //   .attr('text-anchor', 'middle')
+    //   .attr('font-size', '32px')
+    //   .attr('fill', (d: any) => d.color)
+    //   .text((d: any) => d.title)
+    //   .style('opacity', 0)
+    //   .transition()
+    //   .delay((_, i) => i * 300 + 700)
+    //   .duration(400)
+    //   .style('opacity', 1);
+
+    //   // Description
+    //   svg.selectAll('.event')
+    //     .append('text')
+    //     .attr('x', 0)
+    //     // .attr('y', 380)
+    //     .attr('width', '200px')
+    //     .attr('y', (d, i) => (i % 2 === 0 ? 230 : -140)) // left/right from center
+    //     .attr('text-anchor', 'middle')
+    //     .attr('font-size', '28px')
+    //     .attr('fill', '#667085')
+    //     .each(function (d: any) {
+    //       const text = d3.select(this);
+    //       const words = d.desc.split(' ');
+    //       const lineHeight = 15;
+    //       const maxWidth = 200;
+    //       let line: string[] = [];
+    //       let tspan: d3.Selection<SVGTSpanElement, any, SVGTextElement, unknown> | any = null;
+
+    //       words.forEach((word: any, i: any) => {
+    //         line.push(word);
+    //         if (!tspan) {
+    //           tspan = text.append('tspan')
+    //             .attr('x', 0)
+    //             .attr('dy', i === 0 ? 0 : `${lineHeight}px`)
+    //             .text(line.join(' '));
+    //         } else {
+    //           tspan.text(line.join(' '));
+    //           if (tspan.node()!.getComputedTextLength() > maxWidth) {
+    //             line.pop();
+    //             tspan.text(line.join(' '));
+    //             line = [word];
+    //             tspan = text.append('tspan')
+    //               .attr('x', 0)
+    //               .attr('dy', `${lineHeight}px`)
+    //               .text(word);
+    //           }
+    //         }
+    //       });
+    //     })
+
+    //     .style('opacity', 0)
+    //     .transition()
+    //     .delay((_, i) => i * 300 + 800)
+    //     .duration(400)
+    //     .style('opacity', 1);
+
+    const maxWidth = 220;
+    const lineHeight = 32; // px
+
+    // TITLE
+    svg.selectAll('.event')
+      .append('text')
+      .attr('class', 'event-title')
+      .attr('x', 0)
+      .attr('y', (d, i) => (i % 2 === 0 ? 125 : -200)) // Adjust vertical placement
+      .attr('text-anchor', 'middle')
+      .attr('font-size', '28px')
       .attr('fill', (d: any) => d.color)
       .style('opacity', 0)
-      .text((d: any) => d.title)
-      .transition()
-      .delay((d, i) => i * 300 + 700)
-      .duration(400)
-      .style('opacity', 1);
-
-    // Description Text with fade-in
-    eventGroups.append('text')
-      .attr('data-type', 'desc')
-      .attr('x', (d, i) => i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
-      .attr('y', 100)
-      .attr('font-size', '14px')
-      .attr('fill', '#667085')
-      .style('opacity', 0)
-      .each(function (d: any, i) {
-        const textEl = d3.select(this);
-        const words = d.desc.split(/\s+/);
-        const lineHeight = 14; // approx line height in px
-        const maxWidth = 180;
-
+      .each(function (d: any) {
+        const text = d3.select(this);
+        const words = d.title.split(/\s+/);
+        const lineHeight = 32;
+        const maxWidth = 220;
         let line: string[] = [];
-        let lineNumber = 0;
-        let tspan = textEl.append('tspan')
-          .attr('x', i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
-          .attr('y', 100)
+        let tspan = text.append('tspan')
+          .attr('x', 0)
           .attr('dy', '0em');
 
-        for (let word of words) {
+        words.forEach((word: any) => {
           line.push(word);
           tspan.text(line.join(' '));
-
           if (tspan.node()!.getComputedTextLength() > maxWidth) {
             line.pop();
             tspan.text(line.join(' '));
             line = [word];
-            lineNumber++;
-
-            tspan = textEl.append('tspan')
-              .attr('x', i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
-              .attr('y', 100)
+            tspan = text.append('tspan')
+              .attr('x', 0)
               .attr('dy', `${lineHeight}px`)
               .text(word);
           }
-        }
+        });
       })
       .transition()
-      .delay((d, i) => i * 300 + 800)
+      .delay((_, i) => i * 300 + 700)
       .duration(400)
       .style('opacity', 1);
 
+
+
+    // DESCRIPTION
+    svg.selectAll('.event')
+      .append('text')
+      .attr('class', 'event-desc')
+      .attr('x', 0)
+      .attr('y', (d, i) => (i % 2 === 0 ? 200 : -130)) // Below title
+      .attr('text-anchor', 'middle')
+      .attr('font-size', '20px')
+      .attr('fill', '#667085')
+      .style('opacity', 0)
+      .each(function (d: any) {
+        const text = d3.select(this);
+        const words = d.desc.split(/\s+/);
+        const lineHeight = 28;
+        const maxWidth = 220;
+        let line: string[] = [];
+        let tspan = text.append('tspan')
+          .attr('x', 0)
+          .attr('dy', '0em');
+
+        words.forEach((word: any) => {
+          line.push(word);
+          tspan.text(line.join(' '));
+          if (tspan.node()!.getComputedTextLength() > maxWidth) {
+            line.pop();
+            tspan.text(line.join(' '));
+            line = [word];
+            tspan = text.append('tspan')
+              .attr('x', 0)
+              .attr('dy', `${lineHeight}px`)
+              .text(word);
+          }
+        });
+      })
+      .transition()
+      .delay((_, i) => i * 300 + 800)
+      .duration(400)
+      .style('opacity', 1);
+
+
+
+
+
+
   }
+
 
   private handleNodeClick(event: PointerEvent, d: any, target: SVGGElement): void {
     this.dialog.open(ProjectExperienceDialogComponent, {
@@ -537,131 +806,7 @@ export class ResumeTimelineComponent implements OnInit {
 
   }
 
-  // private handleNodeClick(event: PointerEvent, d: any, target: SVGGElement): void {
-  //   console.log(d, '====================================');
 
-  //   const nodeGroup = d3.select(target);
-  //   const isLeft = d.id % 2 !== 0;
-  //   const boxWidth = 300;
-  //   const boxHeight = 400;
-  //   const boxY = 0;
-
-  //   const xCenter = this.timelineLineX;
-  //   const xStart = isLeft ? this.timelineLineX + 180 : this.timelineLineX - boxWidth - 180;
-
-  //   // === Close previous unrolled box if different node clicked ===
-  //   if (this.currentOpenNode && this.currentOpenNode !== target) {
-  //     const prev = d3.select(this.currentOpenNode);
-  //     prev.select('.unroll-group').remove();
-
-  //     // Show previous title & description
-  //     prev.selectAll('text')
-  //       .filter(function () {
-  //         const type = d3.select(this).attr('data-type');
-  //         return type === 'title' || type === 'desc';
-  //       })
-  //       .transition()
-  //       .duration(300)
-  //       .style('opacity', 1);
-  //   }
-
-  //   // === Clear current if exists ===
-  //   nodeGroup.select('.unroll-group').remove();
-
-  //   // === Fade out title & description ===
-  //   nodeGroup.selectAll('text')
-  //     .filter(function () {
-  //       const type = d3.select(this).attr('data-type');
-  //       return type === 'title' || type === 'desc';
-  //     })
-  //     .transition()
-  //     .duration(300)
-  //     .style('opacity', 0);
-
-  //   // === Create unroll group ===
-  //   const unrollGroup = nodeGroup.append('g')
-  //     .attr('class', 'unroll-group');
-
-  //   // === Append the box with smoother unroll animation ===
-  //   const box = unrollGroup.append('rect')
-  //     .attr('x', xCenter)
-  //     .attr('y', boxY)
-  //     .attr('height', boxHeight)
-  //     .attr('width', 0)
-  //     .attr('fill', '#fef3c7')
-  //     .attr('rx', 10)
-  //     .attr('ry', 10)
-  //     .style('filter', 'drop-shadow(0 2px 8px rgba(0,0,0,0.2))');
-
-  //   box.transition()
-  //     .duration(500)
-  //     .ease(d3.easeCubicOut)
-  //     .attrTween('x', function () {
-  //       const interpolateX = d3.interpolateNumber(xCenter, xStart);
-  //       return function (t) {
-  //         return interpolateX(t).toString();
-  //       };
-  //     })
-  //     .attrTween('width', function () {
-  //       const interpolateW = d3.interpolateNumber(0, boxWidth);
-  //       return function (t) {
-  //         return interpolateW(t).toString();
-  //       };
-  //     })
-  //     .on('end', () => {
-  //       const foreignObject = unrollGroup.append('foreignObject')
-  //         .attr('x', xStart + 10)
-  //         .attr('y', boxY + 10)
-  //         .attr('width', boxWidth - 20)
-  //         .attr('height', boxHeight - 20)
-  //         .style('opacity', 0);
-
-  //       foreignObject
-  //         .append('xhtml:div')
-  //         .style('font-size', '14px')
-  //         .style('color', '#333')
-  //         .style('line-height', '1.6')
-  //         .style('height', '100%')
-  //         .style('overflow-y', 'auto')
-  //         .html(this.generateDummyText(d));
-
-  //       foreignObject.transition()
-  //         .duration(2000)
-  //         .style('opacity', 1);
-  //     });
-
-  //   // Track this node
-  //   this.currentOpenNode = target;
-  // }
-
-
-  // private generateDummyText(data: any): string {
-
-  //   // Generate heading and bullet list from data.projectlist
-  //   let projectListHTML = '';
-  //   if (Array.isArray(data.project_experience)) {
-  //     data.project_experience.forEach((project: any) => {
-  //       projectListHTML += `<h4>Project Experience :${project.project_no}</h4>`;
-  //       projectListHTML += `<h5>Project Title :${project.project_title}</h5>`;
-  //       projectListHTML += `<h6>Project Role & Responsibilities: </h6><ul>`;
-  //       project.role_and_responsibilities.forEach((roleandresponsibilities: any) => {
-  //         projectListHTML += `<li>${roleandresponsibilities}</li>`;
-  //       })
-  //       projectListHTML += `</ul>`;
-  //       projectListHTML += `<h6>Project Environment: </h6><ul>`;
-  //       project.environment.forEach((_environment: any) => {
-  //         projectListHTML += `<li>${_environment}</li>`;
-  //       })
-  //       projectListHTML += `</ul>`;
-  //     });
-  //   }
-
-  //   return `
-  //     <div>
-  //       ${projectListHTML}
-  //     </div>
-  //   `;
-  // }
 
 
 }

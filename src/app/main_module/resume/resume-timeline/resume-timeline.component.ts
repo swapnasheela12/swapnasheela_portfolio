@@ -3,6 +3,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import * as d3 from 'd3';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ProjectExperienceDialogComponent } from './projectExperienceDialog/projectExperienceDialog.component';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 @Component({
   selector: 'app-resume-timeline',
   standalone: true,
@@ -13,7 +14,7 @@ import { ProjectExperienceDialogComponent } from './projectExperienceDialog/proj
 })
 export class ResumeTimelineComponent implements OnInit {
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, private dialog: MatDialog) { }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private dialog: MatDialog, private breakpointObserver: BreakpointObserver) { }
   private timelineLineX: number = 0;
   private currentOpenNode: SVGGElement | null = null;
 
@@ -77,6 +78,7 @@ export class ResumeTimelineComponent implements OnInit {
         {
           "project_no": 1,
           "project_title": "S4 Portal ABB (Web)",
+          "project_link": "https://login.microsoftonline.com/372ee9e0-9ce0-4033-a64a-c07073a91ecd/saml2?SAMLRequest=jVLBbtswDP0VQ3fbipzEjRAHyBIMC9B1RpP1sBsj06kAWfJEOd3%2Bfq6Sod1hQS86UI%2FvPT5ySdAZ0cv1EJ7tI%2F4ckELyqzOW5OWnYoO30gFpkhY6JBmU3K%2B%2F3kuRcdl7F5xyhiVrIvRBO7txloYO%2FR79WSv8%2FnhfsecQepJ5DsdjRpd6at1LplyXWzj3cMKscSzZjurawivNW5NxJ22zTivvyLXBWaMtxtaiFIgL5OlCjc%2BUF0UK8ymkipe8LGAxQdXkcQyWfHZeYZyyYi0YQpbsthXbP2xwOpvzu9kERMuhVXdNybEoy0Lgoh35yxFINRDpM761Eg24sxTAhooJLmYpn6ZCHLiQnEsxz%2Baz4gdL6ms%2Bn7RttD3dDvN4AZH8cjjUaf1tf4gEZ92gfxjRH8%2FxCT3FDEdatlrGCGT07N8v97Yd%2BLtRtrqhu8zfs1%2B1evnqd7etndHqd7I2xr1sPEIYZwh%2BwLiODsL%2FDUyySazoJm0jVA6WelS61diwfHWV%2FfdwV38A&RelayState=https%3A%2F%2Fabb.service-now.com%2Fmyservices%3Fid%3Dmyis",
           "role_and_responsibilities": [
             "Service and Consulting Solutions Application Suite consists of business applications available to Hitachi Energy users. They consist of 4 categories: engagement, partnership, consulting, and sustainability.",
             "Provides a unified architecture and platform across applications. Core functionality includes role-based access control, project and task management, model execution management, prepare-execute-collect results, sync and async model execution, user dashboards.",
@@ -95,6 +97,7 @@ export class ResumeTimelineComponent implements OnInit {
         {
           "project_no": 2,
           "project_title": "RelCare Hitachi ABB (Web)",
+          "project_link": "https://login.microsoftonline.com/7831e6d9-dc6c-4cd1-9ec6-1dc2b4133195/resume?ctx=rQQIARAAjZHPa9NwAMXzXbeuFlyrgu6gUKSIONP8_lWo2HVzS20T1t-tB0mTb5q0aZIlabsW_wBPspOIJxUPMhgMUZBd9LzTjuJhTLzIDmN42kns_gPh8eA9eJfPi4apFMmn8HshMoWnkwwLeZqhOZQUcAWlIU6gAlQIFOdIUqE4rQ15yrsajWeevARy7cGzz8jpfnK-BHfAbSMIXD-NYarjpgwzUFTDhDb0OuOU6vQxZRAYXwA4BOA3ADszSZwQWKZNaSjDMjTKKTSLTgsB5WlOoygoEApF_ZiJydnpjrwwxzMn8M9MRPeUTh_aweuQC8d5t5UTWbGb3ZIrTaLZlXqFSpWU1pqBNJlmkzAkUpwU6s2RtFIdtVaWreJaqVfMib7YJyxtbdWUbd9U6gzeauSNJlVy2yRThY1lS-w6ptqv9ZRG3mpSG6bewDMfQ0mOpwjIagKqqayK0qp2wUdlUUJTyTZNUBQhMAehW44LbVNLuJ6jmxZMOLpumTZ8qqgq9P3vIXA4C05mr0dC8ZuLSAK5ewefS0ci0XhscT6BnM-Cd3NTxAur77-e_T16-Gm3jJz8uoEczGHVcqdY2Gi5vUk-y3sBafe2YC2rS4oh05XhuuTkCl7T6ZdUDM8waWI7DLbD1w7Csb6vWKmun2p7zsiH3lkYPJ9H9i_9x2WvomAnuiRKOd4ctvjqsMxpWXu8MZJYsVzRaWL4SO4UJzrZkVk71-FcdS8Kvl1Gzhd2X_x8--bD8en6Sez-cAmzMb-2aWFDfLBc3yTyMp9VBoPOuEpaXZ4f1h9jan_VJaVsZi-OHE91BfkH0",
           "role_and_responsibilities": [
             "RelCare is a digital partnership agreement combining asset management software with Hitachi Energy expertise.",
             "Enables asset managers to optimize system performance and protect crucial power assets. Location tracing and signal range detection using OpenStreetMap, Canvas, SVG, and GoJS.",
@@ -120,6 +123,7 @@ export class ResumeTimelineComponent implements OnInit {
         {
           "project_no": 1,
           "project_title": "Reliance JIO Cognitive Platform JCP3.0 (Mobile & Web)",
+          "project_link": "https://jcp.jioconnect.com/jcpnewbeta/",
           "role_and_responsibilities": [
             "Jio cognitive platform developed for telecom employees and admin to find the signal tower coverage range.",
             "Used maps, canvas, SVG, and Leaflet for tracing tower locations and signal ranges.",
@@ -145,6 +149,7 @@ export class ResumeTimelineComponent implements OnInit {
         {
           "project_no": 2,
           "project_title": "Net Velocity Speed Test (Mobile & Web)",
+          "project_link": "https://play.google.com/store/apps/details?id=com.inn.nvengineer&pcampaignid=web_share",
           "role_and_responsibilities": [
             "Internet speed test application to measure download/upload speed between home network and Jio broadband.",
             "Gauge meter and animated waves display speed; detailed info shown in tables with history view.",
@@ -183,6 +188,7 @@ export class ResumeTimelineComponent implements OnInit {
         {
           "project_no": 4,
           "project_title": "Reliance JIO Coverage Platform JCP2.0 (Web)",
+          "project_link": "https://jcp.jioconnect.com/jcpnewbeta/",
           "role_and_responsibilities": [
             "Platform to trace signal tower locations and signal coverage for telecom employees.",
             "Used Google Maps, canvas, SVG, and Leaflet for location tracing.",
@@ -204,6 +210,7 @@ export class ResumeTimelineComponent implements OnInit {
         {
           "project_no": 5,
           "project_title": "Reliance JIO Coverage Platform JCP1.0 (Web)",
+          "project_link": "https://jcp.jioconnect.com/jcpnewbeta/",
           "role_and_responsibilities": [
             "Developed to help telecom employees trace signal tower coverage.",
             "Used Google Maps, canvas, SVG, and Leaflet for mapping.",
@@ -226,6 +233,7 @@ export class ResumeTimelineComponent implements OnInit {
         {
           "project_no": 1,
           "project_title": "Reliance JIO Coverage Platform JCP2 (Client)",
+          "project_link": "https://jcp.jioconnect.com/jcpnewbeta/",
           "role_and_responsibilities": [
             "Developed a platform for telecom employees and admins to trace signal tower coverage.",
             "Used Google Maps, canvas, SVG, and Leaflet to trace tower locations and coverage range.",
@@ -267,7 +275,7 @@ export class ResumeTimelineComponent implements OnInit {
         {
           "project_no": 1,
           "project_title": "Pix Transmissions Ltd",
-          "project_url": "http://www.pixtrans.com/",
+          "project_link": "http://www.pixtrans.com/",
           "role_and_responsibilities": [
             "Planned structure and design as per client requirements.",
             "Designed and coded multiple web pages.",
@@ -282,7 +290,7 @@ export class ResumeTimelineComponent implements OnInit {
         {
           "project_no": 2,
           "project_title": "Hire4Hotel",
-          "project_url": "http://www.hire4hotel.com",
+          "project_link": "http://www.hire4hotel.com",
           "role_and_responsibilities": [
             "Designed and developed responsive web pages for the site.",
             "Planned and designed structure based on client needs.",
@@ -298,7 +306,7 @@ export class ResumeTimelineComponent implements OnInit {
         {
           "project_no": 3,
           "project_title": "Xovient Technology Pvt Ltd",
-          "project_url": "https://www.xovient.com",
+          "project_link": "https://www.xovient.com",
           "role_and_responsibilities": [
             "Designed and coded responsive web pages.",
             "Collaborated on structure planning and designing as per client requirements.",
@@ -319,219 +327,403 @@ export class ResumeTimelineComponent implements OnInit {
   ngOnInit(): void { }
 
   ngAfterViewInit(): void {
+    console.log('isPlatformBrowser:', isPlatformBrowser(this.platformId));
+
     if (isPlatformBrowser(this.platformId)) {
-      // this.drawTimeline();
-      this.drawHorizontalTimeline();
+
+
+      this.breakpointObserver.observe([
+        Breakpoints.Handset,      // mobile
+        Breakpoints.Tablet,       // tablet
+        Breakpoints.Web           // desktop
+      ]).subscribe(result => {
+
+        // 🔁 Clear existing SVG
+        d3.select(this.timelineContainer.nativeElement).selectAll('*').remove();
+
+        // 🔁 Redraw based on matched breakpoint
+        const breakpoints = result.breakpoints;
+        if (breakpoints[Breakpoints.HandsetPortrait] || breakpoints[Breakpoints.HandsetLandscape]) {
+          console.log('Mobile matched');
+          this.drawTimeline('mobile');
+        } else if (breakpoints[Breakpoints.TabletPortrait] || breakpoints[Breakpoints.TabletLandscape]) {
+          console.log('Tablet matched');
+          this.drawTimeline('tablet');
+        } else if (breakpoints[Breakpoints.WebPortrait] || breakpoints[Breakpoints.WebLandscape]) {
+          console.log('Desktop matched');
+          this.drawHorizontalTimeline();
+        } else {
+          console.log('Fallback');
+          this.drawTimeline('desktop');
+        }
+      });
+
+
     }
   }
 
-  // private drawTimeline(): void {
-  //   const container = this.timelineContainer.nativeElement;
-  //   const width = container.offsetWidth + 200;
-  //   const topPadding = 60;
-  //   const height = this.data.length * 180 + topPadding;
+  private drawTimeline(device: 'mobile' | 'tablet' | 'desktop' = 'desktop'): void {
+    const container = this.timelineContainer.nativeElement;
+    // const width = container.offsetWidth + 200;
+    let baseWidth = container.offsetWidth;
 
-  //   const svg = d3.select(container)
-  //     .append('svg')
-  //     .attr('width', '100%')
-  //     .attr('height', height)
-  //     .attr('viewBox', `0 0 ${width} ${height}`)
-  //     .attr('preserveAspectRatio', 'xMidYMin meet');
+    // 🔧 Adjust internal drawing width based on device
+    let width: number;
+    switch (device) {
+      case 'mobile':
+        width = baseWidth; // full width for stacking
+        break;
+      case 'tablet':
+        width = baseWidth + 100;
+        break;
+      case 'desktop':
+      default:
+        width = baseWidth + 200;
+        break;
+    }
 
-  //   this.timelineLineX = width / 2;
-  //   const timelineLineX = this.timelineLineX;
+    const topPadding = 60;
+    const height = this.data.length * 180 + topPadding;
+    console.log('Device:', device, '| Container width:', baseWidth, '| SVG viewBox width:', width);
 
-  //   // Main vertical line
-  //   svg.append('line')
-  //     .attr('x1', timelineLineX)
-  //     .attr('y1', topPadding)
-  //     .attr('x2', timelineLineX)
-  //     .attr('y2', topPadding)
-  //     .attr('stroke', '#ccc')
-  //     .attr('stroke-width', 3)
-  //     .transition()
-  //     .duration(1000)
-  //     .attr('y2', height);
-  //   const self = this;
-  //   const nodes = svg.selectAll('.event')
-  //     .data(this.data)
-  //     .enter()
-  //     .append('g')
-  //     .attr('class', 'event')
-  //     .attr('opacity', 0)
-  //     .attr('transform', (d, i) => `translate(0, ${i * 180 + topPadding})`)
-  //     // .on('click', (event, d) => this.openPopup(d)) // 👈 Click handler
-  //     .on('click', function (event, d) {
-  //       self.handleNodeClick(event, d, this); // 'this' is the SVG element (SVGGElement)
-  //     })
-  //     .transition()
-  //     .delay((d, i) => i * 300)
-  //     .duration(500)
-  //     .attr('opacity', 1);
+    const svg = d3.select(container)
+      .append('svg')
+      .attr('width', '100%')
+      .attr('height', height)
+      .attr('viewBox', `0 0 ${width} ${height}`)
+      .attr('preserveAspectRatio', 'xMidYMin meet');
 
-  //   const eventGroups = svg.selectAll('.event');
+    this.timelineLineX = width / 2;
+    const timelineLineX = this.timelineLineX;
 
-  //   // Year Dots with 3D effect
-  //   eventGroups.append('circle')
-  //     .attr('cx', timelineLineX)
-  //     .attr('cy', 0)
-  //     .attr('r', 0)
-  //     .attr('fill', (d: any) => d.color)
-  //     .transition()
-  //     .delay((d, i) => i * 300)
-  //     .duration(600)
-  //     .attr('r', 8)
-  //     .style('filter', 'drop-shadow(0px 2px 10px rgba(0, 0, 0, 0.5))');
+    // Main vertical line
+    svg.append('line')
+      .attr('x1', timelineLineX)
+      .attr('y1', topPadding)
+      .attr('x2', timelineLineX)
+      .attr('y2', topPadding)
+      .attr('stroke', '#ccc')
+      .attr('stroke-width', 3)
+      .transition()
+      .duration(1000)
+      .attr('y2', height);
+    const self = this;
+    const nodes = svg.selectAll('.event')
+      .data(this.data)
+      .enter()
+      .append('g')
+      .attr('class', 'event')
+      .attr('opacity', 0)
+      .attr('transform', (d, i) => `translate(0, ${i * 180 + topPadding})`)
+      // .on('click', (event, d) => this.openPopup(d)) // 👈 Click handler
+      .on('click', function (event, d) {
+        self.handleNodeClick(event, d, this); // 'this' is the SVG element (SVGGElement)
+      })
+      .transition()
+      .delay((d, i) => i * 300)
+      .duration(500)
+      .attr('opacity', 1);
 
-  //   // Year Labels Box with 3D effect
-  //   eventGroups.append('path')
-  //     .attr('d', (d, i) => {
-  //       const x = i % 2 === 0 ? timelineLineX - 40 : timelineLineX - 35;
-  //       const y = 70;
-  //       const w = 80;
-  //       const h = 40;
-  //       const r = 10; // curvature
-  //       return `
-  //         M${x},${y + r}
-  //         Q${x},${y} ${x + r},${y}
-  //         H${x + w - r}
-  //         Q${x + w},${y} ${x + w},${y + r}
-  //         L${x + w},${y + h - r}
-  //         Q${x + w},${y + h} ${x + w - r},${y + h}
-  //         H${x + r}
-  //         Q${x},${y + h} ${x},${y + h - r}
-  //         Z
-  //       `;
-  //     })
-  //     .attr('fill', (d: any) => d.color)
-  //     .attr('stroke', '#fff')
-  //     .attr('stroke-width', 1.5)
-  //     .style('filter', 'drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.3))')
-  //     .style('opacity', 0)
-  //     .transition()
-  //     .delay((d, i) => i * 300 + 300)
-  //     .duration(500)
-  //     .style('opacity', 1);
+    const eventGroups = svg.selectAll('.event');
 
-  //   // Year Labels with smooth fade in
-  //   eventGroups.append('text')
-  //     .attr('x', (d, i) => i % 2 === 0 ? timelineLineX : timelineLineX - 5)
-  //     .attr('y', 97)
-  //     .attr('text-anchor', 'middle')
-  //     .attr('fill', '#fff')
-  //     .attr('font-size', '18px')
-  //     .style('opacity', 0)
-  //     .text((d: any) => d.year)
-  //     .transition()
-  //     .delay((d, i) => i * 300 + 400)
-  //     .duration(500)
-  //     .style('opacity', 1);
+    // Year Dots with 3D effect
+    eventGroups.append('circle')
+      .attr('cx', timelineLineX)
+      .attr('cy', 0)
+      .attr('r', 0)
+      .attr('fill', (d: any) => d.color)
+      .transition()
+      .delay((d, i) => i * 300)
+      .duration(600)
+      .attr('r', 8)
+      .style('filter', 'drop-shadow(0px 2px 10px rgba(0, 0, 0, 0.5))');
 
-  //   // White border circle (slightly larger, behind the main one)
-  //   eventGroups.append('circle')
-  //     .attr('cx', (d, i) => i % 2 === 0 ? timelineLineX - 90 : timelineLineX + 90)
-  //     .attr('cy', 90)
-  //     .attr('r', 0)
-  //     .attr('fill', '#fff')
-  //     .style('filter', 'drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2))')
-  //     .transition()
-  //     .delay((d, i) => i * 300 + 400)
-  //     .duration(600)
-  //     .attr('r', 66); // Slightly larger than main circle (60 + stroke-width)
+    // Year Labels Box with 3D effect
+    eventGroups.append('path')
+      .attr('d', (d, i) => {
+        const x = i % 2 === 0 ? timelineLineX - 40 : timelineLineX - 35;
+        const y = 70;
+        const w = 80;
+        const h = 40;
+        const r = 10; // curvature
+        return `
+          M${x},${y + r}
+          Q${x},${y} ${x + r},${y}
+          H${x + w - r}
+          Q${x + w},${y} ${x + w},${y + r}
+          L${x + w},${y + h - r}
+          Q${x + w},${y + h} ${x + w - r},${y + h}
+          H${x + r}
+          Q${x},${y + h} ${x},${y + h - r}
+          Z
+        `;
+      })
+      .attr('fill', (d: any) => d.color)
+      .attr('stroke', '#fff')
+      .attr('stroke-width', 1.5)
+      .style('filter', 'drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.3))')
+      .style('opacity', 0)
+      .transition()
+      .delay((d, i) => i * 300 + 300)
+      .duration(500)
+      .style('opacity', 1);
 
-  //   // Main icon circle (on top, with stroke and shadow)
-  //   eventGroups.append('circle')
-  //     .attr('cx', (d, i) => i % 2 === 0 ? timelineLineX - 90 : timelineLineX + 90)
-  //     .attr('cy', 90)
-  //     .attr('r', 0)
-  //     .attr('fill', '#fff')
-  //     .attr('stroke', (d: any) => d.color)
-  //     .attr('stroke-width', 12)
-  //     .style('filter', 'drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.3))')
-  //     .transition()
-  //     .delay((d, i) => i * 300 + 500)
-  //     .duration(600)
-  //     .attr('r', 60)
-  //     .style('opacity', 1);
+    // Year Labels with smooth fade in
+    eventGroups.append('text')
+      .attr('x', (d, i) => i % 2 === 0 ? timelineLineX : timelineLineX - 5)
+      .attr('y', 97)
+      .attr('text-anchor', 'middle')
+      .attr('fill', '#fff')
+      .attr('font-size', '18px')
+      .style('opacity', 0)
+      .text((d: any) => d.year)
+      .transition()
+      .delay((d, i) => i * 300 + 400)
+      .duration(500)
+      .style('opacity', 1);
+
+    // White border circle (slightly larger, behind the main one)
+    eventGroups.append('circle')
+      .attr('cx', (d, i) => i % 2 === 0 ? timelineLineX - 90 : timelineLineX + 90)
+      .attr('cy', 90)
+      .attr('r', 0)
+      .attr('fill', '#fff')
+      .style('filter', 'drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2))')
+      .transition()
+      .delay((d, i) => i * 300 + 400)
+      .duration(600)
+      .attr('r', 66); // Slightly larger than main circle (60 + stroke-width)
+
+    // Main icon circle (on top, with stroke and shadow)
+    eventGroups.append('circle')
+      .attr('cx', (d, i) => i % 2 === 0 ? timelineLineX - 90 : timelineLineX + 90)
+      .attr('cy', 90)
+      .attr('r', 0)
+      .attr('fill', '#fff')
+      .attr('stroke', (d: any) => d.color)
+      .attr('stroke-width', 12)
+      .style('filter', 'drop-shadow(4px 4px 6px rgba(0, 0, 0, 0.3))')
+      .transition()
+      .delay((d, i) => i * 300 + 500)
+      .duration(600)
+      .attr('r', 60)
+      .style('opacity', 1);
 
 
-  //   // Icon Image with fade-in animation
-  //   eventGroups.append('image')
-  //     .attr('xlink:href', (d: any) => d.icon)
-  //     .attr('x', (d, i) => i % 2 === 0 ? timelineLineX - 115 : timelineLineX + 65)
-  //     .attr('y', 65)
-  //     .attr('width', 50)
-  //     .attr('height', 50)
-  //     .style('opacity', 0)
-  //     .transition()
-  //     .delay((d, i) => i * 300 + 600)
-  //     .duration(400)
-  //     .style('opacity', 1);
+    // Icon Image with fade-in animation
+    eventGroups.append('image')
+      .attr('xlink:href', (d: any) => d.icon)
+      .attr('x', (d, i) => i % 2 === 0 ? timelineLineX - 115 : timelineLineX + 65)
+      .attr('y', 65)
+      .attr('width', 50)
+      .attr('height', 50)
+      .style('opacity', 0)
+      .transition()
+      .delay((d, i) => i * 300 + 600)
+      .duration(400)
+      .style('opacity', 1);
 
-  //   // Title Text with smooth fade-in animation
-  //   eventGroups.append('text')
-  //     .attr('data-type', 'title')
-  //     .attr('x', (d, i) => i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
-  //     .attr('y', 80)
-  //     .attr('font-size', '16px')
-  //     .attr('fill', (d: any) => d.color)
-  //     .style('opacity', 0)
-  //     .text((d: any) => d.title)
-  //     .transition()
-  //     .delay((d, i) => i * 300 + 700)
-  //     .duration(400)
-  //     .style('opacity', 1);
+    // Title Text with smooth fade-in animation
+    // eventGroups.append('text')
+    //   .attr('data-type', 'title')
+    //   .attr('x', (d, i) => i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
+    //   .attr('y', 80)
+    //   .attr('font-size', '16px')
+    //   .attr('fill', (d: any) => d.color)
+    //   .style('opacity', 0)
+    //   .text((d: any) => d.title)
+    //   .transition()
+    //   .delay((d, i) => i * 300 + 700)
+    //   .duration(400)
+    //   .style('opacity', 1);
 
-  //   // Description Text with fade-in
-  //   eventGroups.append('text')
-  //     .attr('data-type', 'desc')
-  //     .attr('x', (d, i) => i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
-  //     .attr('y', 100)
-  //     .attr('font-size', '14px')
-  //     .attr('fill', '#667085')
-  //     .style('opacity', 0)
-  //     .each(function (d: any, i) {
-  //       const textEl = d3.select(this);
-  //       const words = d.desc.split(/\s+/);
-  //       const lineHeight = 14; // approx line height in px
-  //       const maxWidth = 180;
+    eventGroups.append('text')
+      .attr('data-type', 'title')
+      .attr('font-size', '16px')
+      .attr('fill', (d: any) => d.color)
+      .style('opacity', 0)
+      .attr('text-anchor', 'start') // default
+      .each(function (d: any, i: number) {
+        const text = d3.select(this);
+        const words = d.title.split(/\s+/);
+        const lineHeight = 18;
 
-  //       let line: string[] = [];
-  //       let lineNumber = 0;
-  //       let tspan = textEl.append('tspan')
-  //         .attr('x', i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
-  //         .attr('y', 100)
-  //         .attr('dy', '0em');
+        // 🧠 Determine side based on even/odd
+        const isEven = i % 2 === 0;
 
-  //       for (let word of words) {
-  //         line.push(word);
-  //         tspan.text(line.join(' '));
+        // 🎯 Calculate x, y, and maxWidth per breakpoint + side
+        let x, y, maxWidth, textAnchor;
 
-  //         if (tspan.node()!.getComputedTextLength() > maxWidth) {
-  //           line.pop();
-  //           tspan.text(line.join(' '));
-  //           line = [word];
-  //           lineNumber++;
+        if (device === 'mobile') {
+          x = isEven ? timelineLineX + 50 : timelineLineX - 150;
+          y = 80;
+          maxWidth = 130;
+          textAnchor = 'start';
+        } else if (device === 'tablet') {
+          x = isEven ? timelineLineX + 50 : timelineLineX - 220;
+          y = 80;
+          maxWidth = 200;
+          textAnchor = 'start';
+        } else {
+          // desktop
+          x = isEven ? timelineLineX + 50 : timelineLineX - 260;
+          y = 80;
+          maxWidth = 220;
+          textAnchor = 'start';
+        }
 
-  //           tspan = textEl.append('tspan')
-  //             .attr('x', i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
-  //             .attr('y', 100)
-  //             .attr('dy', `${lineHeight}px`)
-  //             .text(word);
-  //         }
-  //       }
-  //     })
-  //     .transition()
-  //     .delay((d, i) => i * 300 + 800)
-  //     .duration(400)
-  //     .style('opacity', 1);
+        text.attr('x', x).attr('y', y).attr('text-anchor', textAnchor);
 
-  // }
+        // 💬 Word wrapping logic
+        let line: string[] = [];
+        let lineNumber = 0;
+        let tspan = text.append('tspan')
+          .attr('x', x)
+          .attr('y', y)
+          .attr('dy', '0em');
 
-  private drawHorizontalTimeline(): void {
+        for (const word of words) {
+          line.push(word);
+          tspan.text(line.join(' '));
+          if (tspan.node()!.getComputedTextLength() > maxWidth) {
+            line.pop();
+            tspan.text(line.join(' '));
+            line = [word];
+            lineNumber++;
+
+            tspan = text.append('tspan')
+              .attr('x', x)
+              .attr('y', y)
+              .attr('dy', `${lineNumber * lineHeight}px`)
+              .text(word);
+          }
+        }
+      })
+      .transition()
+      .delay((d, i) => i * 300 + 700)
+      .duration(400)
+      .style('opacity', 1);
+
+
+    // Description Text with fade-in
+    // eventGroups.append('text')
+    //   .attr('data-type', 'desc')
+    //   .attr('x', (d, i) => i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
+    //   .attr('y', 100)
+    //   .attr('font-size', '14px')
+    //   .attr('fill', '#667085')
+    //   .style('opacity', 0)
+    //   .each(function (d: any, i) {
+    //     const textEl = d3.select(this);
+    //     const words = d.desc.split(/\s+/);
+    //     const lineHeight = 14; // approx line height in px
+    //     const maxWidth = 180;
+
+    //     let line: string[] = [];
+    //     let lineNumber = 0;
+    //     let tspan = textEl.append('tspan')
+    //       .attr('x', i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
+    //       .attr('y', 100)
+    //       .attr('dy', '0em');
+
+    //     for (let word of words) {
+    //       line.push(word);
+    //       tspan.text(line.join(' '));
+
+    //       if (tspan.node()!.getComputedTextLength() > maxWidth) {
+    //         line.pop();
+    //         tspan.text(line.join(' '));
+    //         line = [word];
+    //         lineNumber++;
+
+    //         tspan = textEl.append('tspan')
+    //           .attr('x', i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
+    //           .attr('y', 100)
+    //           .attr('dy', `${lineHeight}px`)
+    //           .text(word);
+    //       }
+    //     }
+    //   })
+    //   .transition()
+    //   .delay((d, i) => i * 300 + 800)
+    //   .duration(400)
+    //   .style('opacity', 1);
+
+    eventGroups.append('text')
+      .attr('data-type', 'desc')
+      .attr('font-size', '14px')
+      .attr('fill', '#667085')
+      .style('opacity', 0)
+      .each(function (d: any, i) {
+        const isEven = i % 2 === 0;
+
+        const textEl = d3.select(this);
+        const words = d.desc.split(/\s+/);
+        const lineHeight = 16;
+
+        // 👇 Set device-specific layout
+        let x, baseY, maxWidth;
+
+        if (device === 'mobile') {
+          x = isEven ? timelineLineX + 50 : timelineLineX - 150;
+          baseY = 80; // title y
+          maxWidth = 130;
+        } else if (device === 'tablet') {
+          x = isEven ? timelineLineX + 50 : timelineLineX - 220;
+          baseY = 80;
+          maxWidth = 200;
+        } else {
+          x = isEven ? timelineLineX + 50 : timelineLineX - 260;
+          baseY = 80;
+          maxWidth = 220;
+        }
+
+        // 👇 Count number of title lines
+        const parentGroup = d3.select(this.parentNode as SVGGElement);
+        const titleText = parentGroup.select('[data-type="title"]');
+
+        const titleLines = titleText.selectAll('tspan').size();
+        const y = baseY + titleLines * 18 + 8; // 18px title lineHeight + 8px spacing
+
+        let line: string[] = [];
+        let lineNumber = 0;
+
+        let tspan = textEl.append('tspan')
+          .attr('x', x)
+          .attr('y', y)
+          .attr('dy', '0em');
+
+        for (const word of words) {
+          line.push(word);
+          tspan.text(line.join(' '));
+
+          if (tspan.node()!.getComputedTextLength() > maxWidth) {
+            line.pop();
+            tspan.text(line.join(' '));
+            line = [word];
+            lineNumber++;
+
+            tspan = textEl.append('tspan')
+              .attr('x', x)
+              .attr('y', y)
+              .attr('dy', `${lineNumber * lineHeight}px`)
+              .text(word);
+          }
+        }
+      })
+      .transition()
+      .delay((d, i) => i * 300 + 800)
+      .duration(400)
+      .style('opacity', 1);
+
+
+  }
+
+  private drawHorizontalTimeline(device: 'mobile' | 'tablet' | 'desktop' = 'desktop'): void {
     const container = this.timelineContainer.nativeElement;
     const padding = 0;
-    const spacing = 280;
+    // const spacing = 280;
+    const spacing = device === 'mobile' ? 180 : device === 'tablet' ? 240 : 280;
     const width = this.data.length * spacing + padding * 2;
     const height = 400;
 
@@ -568,16 +760,6 @@ export class ResumeTimelineComponent implements OnInit {
       .delay((_, i) => i * 300)
       .duration(500)
       .style('opacity', 1);
-
-    // // Append dot
-    // svg.selectAll('.event')
-    //   .append('circle')
-    //   .attr('r', 0)
-    //   .attr('fill', (d: any) => d.color)
-    //   .transition()
-    //   .duration(600)
-    //   .attr('r', 14)
-    //   .style('filter', 'drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5))');
 
     // Year label box
     svg.selectAll('.event')
@@ -620,8 +802,8 @@ export class ResumeTimelineComponent implements OnInit {
       .attr('r', 0)
       .attr('fill', '#fff')
       .attr('stroke', (d: any) => d.color)
-      .attr('stroke-width', 10)
-      .style('filter', 'drop-shadow(3px 3px 6px rgba(0,0,0,0.2))')
+      .attr('stroke-width', 15)
+      .style('filter', 'drop-shadow(6px 6px 9px rgba(0,0,0,0.2))')
       .transition()
       .delay((_, i) => i * 300 + 500)
       .duration(500)

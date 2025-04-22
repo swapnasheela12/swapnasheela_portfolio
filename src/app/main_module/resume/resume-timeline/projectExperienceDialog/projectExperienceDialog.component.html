@@ -16,7 +16,12 @@
 
         <section *ngFor="let project of data.project_experience; trackBy: trackByFn" class="project-section">
           <h3>Project {{ project.project_no }}: {{ project.project_title }}</h3>
-
+          <h4 *ngIf="project?.project_link;">
+            <a [href]="project.project_link" target="_blank" rel="noopener noreferrer">
+              Project URL: {{ project.project_link }}
+            </a>
+          </h4>
+         
           <h4>Roles & Responsibilities:</h4>
           <ul>
             <li *ngFor="let item of project.role_and_responsibilities">{{ item }}</li>

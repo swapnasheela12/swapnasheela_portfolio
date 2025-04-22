@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./projectExperienceDialog.component.scss']
 })
 export class ProjectExperienceDialogComponent implements OnInit {
+  isVisible = true;
 
 
   constructor(public dialogRef: MatDialogRef<ProjectExperienceDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }

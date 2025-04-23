@@ -1,46 +1,49 @@
-
-
-
-<div class="sidebar" [@fadeSlideIn]>
-  <div class="profile">
-    <img src="../../../../assets/image/PNG/img_swapna_left.png" alt="Rayan Adlrdard" />
-    <h3>Swapnasheela Khandagale</h3>
-    <p class="designation">Front-End Developer</p>
+<div class="sidebar shadow-sm bg-white p-3" [@fadeSlideIn]>
+  <div class="profile text-center mb-4">
+    <img
+      src="../../../../assets/image/PNG/img_swapna_left.png"
+      alt="Swapnasheela Khandagale"
+      class="img-fluid rounded-circle mb-3"
+    />
+    <h3 class="h5 mb-1">Swapnasheela Khandagale</h3>
+    <p class="text-muted mb-0">Front-End Developer</p>
   </div>
 
-  <div class="info section">
-    <!-- <p><strong>Age:</strong> 38</p> -->
+  <div class="info section mb-4">
     <p><strong>Residence:</strong> USA</p>
     <p><strong>Freelance:</strong> <span class="status available">Available</span></p>
-    <p><strong>Address:</strong>New Jersey, USA</p>
-    <p><strong>Visa Status:</strong>H4-EAD</p>
+    <p><strong>Address:</strong> New Jersey, USA</p>
+    <p><strong>Visa Status:</strong> H4-EAD</p>
   </div>
 
-  <div class="languages section">
-    <h4>Languages</h4>
+  <div class="languages section mb-4">
+    <h4 class="section-title">Languages</h4>
     @for (lang of languages; track lang.id) {
-    <div>
-      <span>{{ lang.name }}</span>
-      <span class="percent">{{ lang.level }}</span>
-    </div>
+      <div class="d-flex justify-content-between small mb-1">
+        <span>{{ lang.name }}</span>
+        <span class="percent">{{ lang.level }}</span>
+      </div>
     }
     @empty {
-    <p>No languages available.</p>
+      <p class="text-muted small">No languages available.</p>
     }
   </div>
 
-  <div class="skills section">
-    <h4>Skills</h4>
+  <div class="skills section mb-4">
+    <h4 class="section-title">Skills</h4>
     @for (skill of skills; track skill.id) {
-    <div>
-      <span>{{ skill.name }}</span>
-      <span class="percent">{{ skill.level }}</span>
-    </div>
+      <div class="d-flex justify-content-between small mb-1">
+        <span>{{ skill.name }}</span>
+        <span class="percent">{{ skill.level }}</span>
+      </div>
     }
     @empty {
-    <p>No skills added.</p>
+      <p class="text-muted small">No skills added.</p>
     }
+    <div class="mt-5">
+      <button class="btn btn-download w-100 mt-auto" (click)="downloadCV()">Download CV</button>
+    </div>
   </div>
 
-  <button class="btn btn-download" (click)="downloadCV()">Download CV</button>
+  
 </div>

@@ -175,9 +175,9 @@ $btn-color: #fd853a;
             flex: 1 1 calc(33.33% - 1rem);
             transition: transform 0.3s ease;
 
-            &:hover {
-              transform: translateY(-6px);
-            }
+            // &:hover {
+            //   transform: translateY(-6px);
+            // }
           }
 
           // === Responsive Breakpoints ===

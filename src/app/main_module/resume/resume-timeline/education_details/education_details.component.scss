@@ -3,13 +3,36 @@
   margin-top: 42px;
 
   .col-12 {
-    .card-edu {
+    display: flex;
+
+    .education-card {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
       border: 1px solid;
       border-radius: 20px;
       padding: 20px;
       transition: border-color 0.3s ease;
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      // border-left: 4px solid #fb8c00;
+
+      @media (min-width: 576px) {
+        min-height: 275px;
+      }
+
+      @media (min-width: 768px) {
+        min-height: 300px;
+      }
+
+      @media (min-width: 992px) {
+        min-height: 350px;
+      }
 
       .step-card-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
         position: relative;
         transition: transform 0.3s ease;
 
@@ -50,27 +73,38 @@
         }
 
         .step-card {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
           position: relative;
           border-radius: 1.5rem;
-          background: #fff;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
-            0 5px 10px rgba(0, 0, 0, 0.15), 0 15px 35px rgba(0, 0, 0, 0.1);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          background: #111;
+          color: white;
+          box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
+            rgba(0, 0, 0, 0.05) 0px 5px 10px;
           padding: 5rem 1.5rem 2rem;
           text-align: center;
           overflow: hidden;
           z-index: 1;
-          background: #111;
-          color: white;
-          h2 {
+
+          h2.year {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+
+            @media (max-width: 576px) {
+              font-size: 1.8rem;
+            }
           }
 
-          p {
+          p.desc {
             font-size: 1rem;
             margin-bottom: 1.5rem;
             color: #ccc;
+
+            @media (max-width: 576px) {
+              font-size: 0.9rem;
+            }
           }
 
           i {
@@ -80,36 +114,5 @@
         }
       }
     }
-  }
-}
-
-.education-card {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  padding: 1.5rem;
-  border-left: 4px solid #fb8c00;
-
-  .ribbon {
-    background-color: #fb8c00;
-    color: white;
-    font-weight: bold;
-    padding: 0.3rem 1rem;
-    border-radius: 0 0.5rem 0.5rem 0;
-    position: absolute;
-    top: -1.2rem;
-    left: 0;
-  }
-
-  .year {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #999;
-  }
-
-  .desc {
-    font-size: 1rem;
-    color: #999;
-    margin-top: 0.5rem;
   }
 }

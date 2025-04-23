@@ -1,37 +1,50 @@
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid resume-details">
+  <div class="row resume-details-row">
     <!-- Left Sidebar -->
-    <div class="col-md-3 sidebar left-sidebar">
+    <div class="col-md-3 sidebar resume-details-left-sidebar">
       <app-resume-sidebar></app-resume-sidebar>
     </div>
 
     <!-- Center Content -->
-    <div class="col-md-9 main-content">
+    <div class="col-md-9 resume-details-main-content">
      
-      <app-education_details></app-education_details>
-      <div class="row dual-infographics">
-        <div class="col-md-12">
-          <div>
-            <h3>Work experience</h3>
-        </div>
-          <app-resume-timeline></app-resume-timeline>
-        </div> 
-        <div class="col-md-12">
-          <div>
-            <h3>Technical skills</h3>
+      <div class="row resume-details-main-content-row">
+        <div class="resume-details-education-col col-md-12">
+          <div class="education-section">
+            <div class="section-title">
+              <h4 class="section-title-h4" @fadeIn><span class="white-word">Education </span>Summary</h4>
+            </div>
+            <div class="edu-card-container">
+              <div class="edu-card">
+                <app-education_details></app-education_details>
+              </div>
+            </div>
           </div>
-          <app-infographic-d3></app-infographic-d3>
         </div>
-       
-       
+        <div class="resume-details-skill-col col-md-12">
+          <div class="skills-section">
+            <div class="section-title"> 
+              <h4 class="section-title-h4" @fadeIn><span class="white-word">Technical </span>Skills</h4>
+            </div>
+            <div class="skills-card-container">
+              <div class="skill-card">
+                <app-infographic-d3></app-infographic-d3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="resume-details-workExp-col col-md-12">
+          <div class="section-wrapper">
+            <div class="section-title"> 
+              <h4 class="section-title-h4" @fadeIn><span class="white-word">Work </span>Experience</h4>
+            </div>
+            <div class="work-card-container">
+              <app-resume-timeline></app-resume-timeline>
+              <!-- More Cards -->
+            </div>
+          </div>
+        </div>
       </div>
-     
-      
     </div>
-
-    <!-- Right Sidebar -->
-    <!-- <div class="col-md-1 sidebar right-sidebar">
-        Right Sidebar
-      </div> -->
   </div>
 </div>

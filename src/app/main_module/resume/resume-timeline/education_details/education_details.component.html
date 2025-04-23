@@ -1,21 +1,20 @@
 
-<div class="row justify-content-center">
-  <div>
-    <h3>Education</h3>
-  </div>
-  @for (step of steps; track step.id) {
-    <div class="col-12 col-sm-6 col-lg-4 mb-4" >
-      <div class="card-edu education-card" [style.borderColor]="step.color">
-        <div class="step-card-wrapper" [@fadeInUp] >
+<div class="row justify-content-center mt-0">
+  @for (step of steps; track step.id; let idx = $index) {
+    <div
+      class="col-12 col-sm-6 col-lg-4 d-flex mb-2"
+      
+    >
+      <div class="education-card flex-fill d-flex flex-column" [style.borderColor]="step.color">
+        <div class="step-card-wrapper flex-fill d-flex flex-column" [@fadeInUp]>
           <div class="ribbon" [style.backgroundColor]="step.color">{{ step.title }}</div>
-          <div class="step-card">
+          <div class="step-card flex-fill d-flex flex-column justify-content-between">
             <h2 class="year">{{ step.year }}</h2>
             <p class="desc">{{ step.desc }}</p>
             <i [class]="step.title" [style.color]="step.color"></i>
           </div>
         </div>
       </div>
-     
     </div>
   }
 </div>

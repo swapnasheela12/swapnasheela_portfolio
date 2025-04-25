@@ -1,37 +1,103 @@
+// #mapContainer {
+//   width: 100%;
+//   height: 75vh;
+//   position: relative;
+//   z-index: 0;
+//   .leaflet-map-pane {
+//     background-color: red !important;
+//     .leaflet-tile-pane {
+//     }
+//     .leaflet-overlay-pane {
+//     }
+//     .leaflet-shadow-pane {
+//     }
+//     .leaflet-marker-pane {
+//       background-color: red;
+//       .leaflet-year-box {
+//         background: white;
+//         border-radius: 6px;
+//         padding: 2px 8px;
+//         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+//         font-size: 14px;
+//         font-weight: 500;
+//       }
+//       .custom-pin {
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         .pin-dot {
+//           width: 12px;
+//           height: 12px;
+//           background: red;
+//           border-radius: 50%;
+//         }
+//         .pin-label {
+//           font-size: 12px !important;
+//           background: #fff !important;
+//           padding: 2px 4px !important;
+//           border-radius: 4px !important;
+//           margin-top: 4px !important;
+//           box-shadow: 0 0 2px rgba(0, 0, 0, 0.3) !important;
+//         }
+//       }
+//     }
+//   }
+// }
+
 #mapContainer {
   width: 100%;
   height: 75vh;
   position: relative;
   z-index: 0;
-}
 
-.leaflet-year-box {
-  background: white;
-  border-radius: 6px;
-  padding: 2px 8px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  font-size: 14px;
-  font-weight: 500;
-}
+  // Use ng-deep to target Leaflet internal layers
+  ::ng-deep .leaflet-map-pane {
+    background-color: red !important;
 
-.custom-pin {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    .leaflet-tile-pane {
+    }
 
-  .pin-dot {
-    width: 12px;
-    height: 12px;
-    background: red;
-    border-radius: 50%;
-  }
+    .leaflet-overlay-pane {
+    }
 
-  .pin-label {
-    font-size: 12px;
-    background: #fff;
-    padding: 2px 4px;
-    border-radius: 4px;
-    margin-top: 4px;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+    .leaflet-shadow-pane {
+    }
+
+    .leaflet-marker-pane {
+      background-color: transparent !important;
+
+      .leaflet-year-box {
+        background: white;
+        border-radius: 6px;
+        padding: 2px 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .custom-pin {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 50px;
+        .pin-dot {
+          width: 12px;
+          height: 12px;
+          background: red;
+          border-radius: 50%;
+        }
+
+        .pin-label {
+          font-size: 12px;
+          background: #fff;
+          padding: 2px 4px;
+          border-radius: 4px;
+          margin-top: 4px;
+          box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+          width: 80px;
+          text-align: center;
+        }
+      }
+    }
   }
 }

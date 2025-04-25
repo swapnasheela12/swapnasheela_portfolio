@@ -1,3 +1,4 @@
+
 import {
   AfterViewInit,
   Component,
@@ -23,6 +24,10 @@ export class TravelStoryComponent implements AfterViewInit {
   private planeMarker: any;
   private currentPlaneLatLng: any = null;
   private isBrowser: boolean;
+  private currentPathEl: SVGPathElement | null = null;
+  private segmentIndex: number = 0;
+  private isAnimating: boolean = false;
+  private isZooming: boolean = false;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -42,7 +47,6 @@ export class TravelStoryComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     if (!this.isBrowser) return;
-
     this.ngZone.runOutsideAngular(() => {
       setTimeout(() => this.initializeMapFlow(), 0);
     });
@@ -51,7 +55,6 @@ export class TravelStoryComponent implements AfterViewInit {
   private async initializeMapFlow() {
     const { default: L } = await import('leaflet');
 
-    // Clean up in case map was already initialized (refresh scenario)
     const mapContainer = this.mapContainerRef.nativeElement;
     mapContainer.innerHTML = '';
 
@@ -92,17 +95,18 @@ export class TravelStoryComponent implements AfterViewInit {
 
     this.planeMarker = L.marker(this.travelSegments[0].coords[0], { icon: planeIcon }).addTo(this.map);
 
-    const pathGenerator = d3.line<[number, number]>()
-      .x(d => this.map.latLngToLayerPoint(d).x)
-      .y(d => this.map.latLngToLayerPoint(d).y)
-      .curve(d3.curveCatmullRom.alpha(0.5));
+    const pathGenerator = () =>
+      d3.line<[number, number]>()
+        .x(d => this.map.latLngToLayerPoint(d).x)
+        .y(d => this.map.latLngToLayerPoint(d).y)
+        .curve(d3.curveCatmullRom.alpha(0.5));
 
     const redrawPaths = () => {
       g.selectAll('*').remove();
       this.travelSegments.forEach(segment => {
         g.append('path')
           .datum(segment.coords)
-          .attr('d', (d: any) => pathGenerator(d)!)
+          .attr('d', (d: any) => pathGenerator()(d)!)
           .attr('stroke', segment.color)
           .attr('stroke-width', 2.5)
           .attr('stroke-dasharray', '5,5')
@@ -111,10 +115,35 @@ export class TravelStoryComponent implements AfterViewInit {
     };
 
     this.map.on('zoomend', redrawPaths);
+
     this.map.on('move zoom', () => {
       if (this.currentPlaneLatLng) {
         this.planeMarker.setLatLng(this.currentPlaneLatLng);
+        if (this.map._yearPopup) {
+          this.map._yearPopup.setLatLng(this.currentPlaneLatLng);
+        }
       }
+      if (this.isAnimating && this.currentPathEl) {
+        const segment = this.travelSegments[this.segmentIndex];
+        const svg = d3.select(this.map.getPanes().overlayPane).select('svg').select('g');
+        svg.selectAll('path').remove();
+
+        const newPath = svg.append('path')
+          .datum(segment.coords)
+          .attr('d', (d: any) => pathGenerator()(d)!)
+          .attr('stroke', 'transparent')
+          .attr('fill', 'none');
+
+        this.currentPathEl = newPath.node();
+      }
+    });
+
+    this.map.on('zoomstart movestart', () => {
+      this.isZooming = true;
+    });
+
+    this.map.on('zoomend moveend', () => {
+      this.isZooming = false;
     });
 
     redrawPaths();
@@ -122,22 +151,16 @@ export class TravelStoryComponent implements AfterViewInit {
   }
 
   private animatePlaneWithYearAndPins(L: any, g: any, pathGenerator: any): void {
-    let segmentIndex = 0;
-    let isZooming = false;
-    let isAnimating = false;
-    let currentAnimationFrame: any = null;
-
     const flyNextSegment = () => {
-      if (segmentIndex >= this.travelSegments.length) {
+      if (this.segmentIndex >= this.travelSegments.length) {
         if (this.map._yearPopup) this.map.removeLayer(this.map._yearPopup);
         return;
       }
 
-      const segment = this.travelSegments[segmentIndex];
+      const segment = this.travelSegments[this.segmentIndex];
       const [startCoords, endCoords] = segment.coords;
 
-      isZooming = true;
-
+      this.isZooming = true;
       const bounds = L.latLngBounds(segment.coords);
       this.map.flyToBounds(bounds.pad(0.4), {
         duration: 1.2,
@@ -148,47 +171,55 @@ export class TravelStoryComponent implements AfterViewInit {
       const onMoveEnd = () => {
         this.map.off('moveend', onMoveEnd);
 
-        // Step 1: Plane at start position
         const startLatLng = L.latLng(startCoords[0], startCoords[1]);
         this.currentPlaneLatLng = startLatLng;
         this.planeMarker.setLatLng(startLatLng);
 
-        // Step 2: Draw path for animation
-        const path = g.append('path')
+        const svg = d3.select(this.map.getPanes().overlayPane).select('svg').select('g');
+        svg.selectAll('path').remove();
+        const path = svg.append('path')
           .datum(segment.coords)
-          .attr('d', (d: any) => pathGenerator(d)!)
+          .attr('d', (d: any) => pathGenerator()(d)!)
           .attr('stroke', 'transparent')
           .attr('fill', 'none');
 
-        const pathEl = path.node();
-        if (!pathEl) {
-          console.warn('Invalid path element. Skipping segment.');
-          segmentIndex++;
-          flyNextSegment();
-          return;
-        }
-
-        const totalLength = pathEl.getTotalLength();
-        if (!totalLength || isNaN(totalLength)) {
-          console.warn('Invalid totalLength. Skipping segment.');
-          segmentIndex++;
-          flyNextSegment();
-          return;
-        }
+        this.currentPathEl = path.node();
 
         const duration = 6000;
         const startTime = Date.now();
-        isAnimating = true;
+        this.isAnimating = true;
 
         const animate = () => {
+          if (this.isZooming) {
+            requestAnimationFrame(animate);
+            return;
+          }
+
+          if (!this.currentPathEl) {
+            console.warn('Path lost during animation.');
+            this.isAnimating = false;
+            this.segmentIndex++;
+            flyNextSegment();
+            return;
+          }
+
+          const totalLength = this.currentPathEl.getTotalLength();
+          if (!totalLength || isNaN(totalLength)) {
+            console.warn('Invalid path total length.');
+            this.isAnimating = false;
+            this.segmentIndex++;
+            flyNextSegment();
+            return;
+          }
+
           const elapsed = Date.now() - startTime;
           const t = Math.min(1, d3.easeCubicInOut(elapsed / duration));
+          const point = this.currentPathEl.getPointAtLength(t * totalLength);
 
-          const point = pathEl.getPointAtLength(t * totalLength);
           if (!point || isNaN(point.x) || isNaN(point.y)) {
-            console.warn('Invalid point during animation. Skipping.');
-            isAnimating = false;
-            segmentIndex++;
+            console.warn('Invalid animation point.');
+            this.isAnimating = false;
+            this.segmentIndex++;
             flyNextSegment();
             return;
           }
@@ -209,9 +240,9 @@ export class TravelStoryComponent implements AfterViewInit {
           }).addTo(this.map);
 
           if (t < 1) {
-            currentAnimationFrame = requestAnimationFrame(animate);
+            requestAnimationFrame(animate);
           } else {
-            isAnimating = false;
+            this.isAnimating = false;
             L.marker(endCoords, {
               icon: L.divIcon({
                 className: 'custom-pin',
@@ -221,120 +252,18 @@ export class TravelStoryComponent implements AfterViewInit {
               })
             }).addTo(this.map);
 
-            segmentIndex++;
+            this.segmentIndex++;
             flyNextSegment();
           }
         };
 
+        this.isZooming = false;
         animate();
-        isZooming = false;
       };
 
       this.map.on('moveend', onMoveEnd);
     };
 
-    // ✅ Keep airplane and popup in sync even during manual zoom/pan
-    this.map.on('move zoom', () => {
-      if (this.currentPlaneLatLng && !isZooming && !isAnimating) {
-        this.planeMarker.setLatLng(this.currentPlaneLatLng);
-        if (this.map._yearPopup) {
-          this.map._yearPopup.setLatLng(this.currentPlaneLatLng);
-        }
-      }
-    });
-
-    // Start the flight sequence
     flyNextSegment();
   }
-
-
-  // private animatePlaneWithYearAndPins(L: any, g: any, pathGenerator: any): void {
-  //   let segmentIndex = 0;
-
-  //   const flyNextSegment = () => {
-  //     if (segmentIndex >= this.travelSegments.length) {
-  //       if (this.map._yearPopup) this.map.removeLayer(this.map._yearPopup);
-  //       return;
-  //     }
-
-  //     const segment = this.travelSegments[segmentIndex];
-  //     const [startCoords, endCoords] = segment.coords;
-
-  //     // Step 1: Zoom/pan the map first before doing anything else
-  //     const bounds = L.latLngBounds(segment.coords);
-  //     this.map.flyToBounds(bounds.pad(0.4), {
-  //       duration: 1.2,
-  //       animate: true,
-  //       easeLinearity: 0.25
-  //     });
-
-  //     const onMoveEnd = () => {
-  //       this.map.off('moveend', onMoveEnd);
-
-  //       // Step 2: Now place plane at segment start point
-  //       const startLatLng = L.latLng(startCoords[0], startCoords[1]);
-  //       this.currentPlaneLatLng = startLatLng;
-  //       this.planeMarker.setLatLng(startLatLng);
-
-  //       // Step 3: Draw the invisible path for animation
-  //       const path = g.append('path')
-  //         .datum(segment.coords)
-  //         .attr('d', (d: any) => pathGenerator(d)!)
-  //         .attr('stroke', 'transparent')
-  //         .attr('fill', 'none');
-
-  //       const pathEl = path.node();
-  //       const totalLength = pathEl.getTotalLength();
-  //       const duration = 6000;
-  //       const startTime = Date.now();
-
-  //       const animate = () => {
-  //         const elapsed = Date.now() - startTime;
-  //         const t = Math.min(1, d3.easeCubicInOut(elapsed / duration));
-  //         const point = pathEl.getPointAtLength(t * totalLength);
-  //         const latLng = this.map.layerPointToLatLng([point.x, point.y]);
-
-  //         this.currentPlaneLatLng = latLng;
-  //         this.planeMarker.setLatLng(latLng);
-
-  //         if (this.map._yearPopup) this.map.removeLayer(this.map._yearPopup);
-  //         this.map._yearPopup = L.marker(latLng, {
-  //           icon: L.divIcon({
-  //             className: 'year-popup-label',
-  //             html: `<div class="leaflet-year-box">Year: ${segment.year}</div>`,
-  //             iconSize: [80, 20],
-  //             iconAnchor: [40, -10]
-  //           }),
-  //           interactive: false
-  //         }).addTo(this.map);
-
-  //         if (t < 1) {
-  //           requestAnimationFrame(animate);
-  //         } else {
-  //           // Drop pin at destination
-  //           L.marker(endCoords, {
-  //             icon: L.divIcon({
-  //               className: 'custom-pin',
-  //               html: `<div class="pin-dot"></div><div class="pin-label">${segment.to}</div>`,
-  //               iconSize: [20, 20],
-  //               iconAnchor: [10, 10]
-  //             })
-  //           }).addTo(this.map);
-
-  //           segmentIndex++;
-  //           flyNextSegment();
-  //         }
-  //       };
-
-  //       animate();
-  //     };
-
-  //     this.map.on('moveend', onMoveEnd);
-  //   };
-
-  //   flyNextSegment();
-  // }
-
-
 }
-

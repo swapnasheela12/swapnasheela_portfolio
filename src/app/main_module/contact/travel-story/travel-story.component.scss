@@ -1,16 +1,83 @@
-.map-wrapper {
-  width: 100%;
-  height: 100%;
-  position: relative;
+// .map-wrapper {
+//   width: 100%;
+//   height: 100%;
+//   position: relative;
 
-  .leaflet-container {
-    width: 100% !important;
-    height: 100% !important;
+//   .leaflet-container {
+//     width: 100% !important;
+//     height: 100% !important;
+//   }
+
+//   .travel-path {
+//     stroke-linecap: round;
+//     stroke-linejoin: round;
+//     opacity: 0.9;
+//   }
+// }
+// .year-popup-label {
+//   pointer-events: none;
+//   .leaflet-year-box {
+//     background: white;
+//     color: black;
+//     padding: 4px 10px;
+//     border-radius: 4px;
+//     font-size: 12px;
+//     font-weight: 500;
+//     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+//   }
+// }
+
+// .custom-pin {
+//   text-align: center;
+//   transform: translate(-50%, -50%);
+//   .pin-dot {
+//     width: 14px;
+//     height: 14px;
+//     background: black;
+//     border-radius: 50%;
+//     margin: auto;
+//   }
+//   .pin-label {
+//     font-size: 10px;
+//     color: black;
+//     margin-top: 12px;
+//   }
+// }
+
+#mapContainer {
+  width: 100%;
+  height: 75vh;
+  position: relative;
+  z-index: 0;
+}
+
+.leaflet-year-box {
+  background: white;
+  border-radius: 6px;
+  padding: 2px 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.custom-pin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .pin-dot {
+    width: 12px;
+    height: 12px;
+    background: red;
+    border-radius: 50%;
   }
 
-  .travel-path {
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    opacity: 0.9;
+  .pin-label {
+    font-size: 12px;
+    background: #fff;
+    padding: 2px 4px;
+    border-radius: 4px;
+    margin-top: 4px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
   }
 }

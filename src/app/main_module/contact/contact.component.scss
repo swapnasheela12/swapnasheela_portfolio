@@ -1,16 +1,12 @@
 .contact-page-container {
   height: 100%;
   width: 100%;
-  .map-container {
-    // height: 800px;
-    // width: 100%;
-    // border-radius: 50px;
-    // margin: 40px 0;
+  .map-container-animation {
     width: 100%;
     height: 800px; // or adjust as needed
     position: relative;
     overflow: hidden;
-    height: clamp(300px, 40vh, 600px);
+    height: clamp(600px, 40vh, 800px);
     app-travel-story {
       display: block;
       height: 100%;

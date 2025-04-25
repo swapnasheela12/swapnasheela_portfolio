@@ -120,7 +120,6 @@ export class TravelStoryComponent implements AfterViewInit {
     redrawPaths();
     this.animatePlaneWithYearAndPins(L, g, pathGenerator);
   }
-
   private animatePlaneWithYearAndPins(L: any, g: any, pathGenerator: any): void {
     let segmentIndex = 0;
 
@@ -131,59 +130,83 @@ export class TravelStoryComponent implements AfterViewInit {
       }
 
       const segment = this.travelSegments[segmentIndex];
+      const [startCoords, endCoords] = segment.coords;
 
-      const path = g.append('path')
-        .datum(segment.coords)
-        .attr('d', pathGenerator)
-        .attr('stroke', 'transparent')
-        .attr('fill', 'none');
+      // Step 1: Zoom/pan the map first before doing anything else
+      const bounds = L.latLngBounds(segment.coords);
+      this.map.flyToBounds(bounds.pad(0.4), {
+        duration: 1.2,
+        animate: true,
+        easeLinearity: 0.25
+      });
 
-      const pathEl = path.node();
-      const totalLength = pathEl.getTotalLength();
-      const duration = 6000;
-      const startTime = Date.now();
+      const onMoveEnd = () => {
+        this.map.off('moveend', onMoveEnd);
 
-      const animate = () => {
-        const elapsed = Date.now() - startTime;
-        const t = Math.min(1, d3.easeCubicInOut(elapsed / duration));
-        const point = pathEl.getPointAtLength(t * totalLength);
-        const latLng = this.map.layerPointToLatLng([point.x, point.y]);
+        // Step 2: Now place plane at segment start point
+        const startLatLng = L.latLng(startCoords[0], startCoords[1]);
+        this.currentPlaneLatLng = startLatLng;
+        this.planeMarker.setLatLng(startLatLng);
 
-        this.currentPlaneLatLng = latLng;
-        this.planeMarker.setLatLng(latLng);
+        // Step 3: Draw the invisible path for animation
+        const path = g.append('path')
+          .datum(segment.coords)
+          .attr('d', (d: any) => pathGenerator(d)!)
+          .attr('stroke', 'transparent')
+          .attr('fill', 'none');
 
-        if (this.map._yearPopup) this.map.removeLayer(this.map._yearPopup);
-        this.map._yearPopup = L.marker(latLng, {
-          icon: L.divIcon({
-            className: 'year-popup-label',
-            html: `<div class="leaflet-year-box">Year: ${segment.year}</div>`,
-            iconSize: [80, 20],
-            iconAnchor: [40, -10]
-          }),
-          interactive: false
-        }).addTo(this.map);
+        const pathEl = path.node();
+        const totalLength = pathEl.getTotalLength();
+        const duration = 6000;
+        const startTime = Date.now();
 
-        if (t < 1) {
-          requestAnimationFrame(animate);
-        } else {
-          L.marker(segment.coords[1], {
+        const animate = () => {
+          const elapsed = Date.now() - startTime;
+          const t = Math.min(1, d3.easeCubicInOut(elapsed / duration));
+          const point = pathEl.getPointAtLength(t * totalLength);
+          const latLng = this.map.layerPointToLatLng([point.x, point.y]);
+
+          this.currentPlaneLatLng = latLng;
+          this.planeMarker.setLatLng(latLng);
+
+          if (this.map._yearPopup) this.map.removeLayer(this.map._yearPopup);
+          this.map._yearPopup = L.marker(latLng, {
             icon: L.divIcon({
-              className: 'custom-pin',
-              html: `<div class="pin-dot"></div><div class="pin-label">${segment.to}</div>`,
-              iconSize: [20, 20],
-              iconAnchor: [10, 10]
-            })
+              className: 'year-popup-label',
+              html: `<div class="leaflet-year-box">Year: ${segment.year}</div>`,
+              iconSize: [80, 20],
+              iconAnchor: [40, -10]
+            }),
+            interactive: false
           }).addTo(this.map);
 
-          segmentIndex++;
-          flyNextSegment();
-        }
+          if (t < 1) {
+            requestAnimationFrame(animate);
+          } else {
+            // Drop pin at destination
+            L.marker(endCoords, {
+              icon: L.divIcon({
+                className: 'custom-pin',
+                html: `<div class="pin-dot"></div><div class="pin-label">${segment.to}</div>`,
+                iconSize: [20, 20],
+                iconAnchor: [10, 10]
+              })
+            }).addTo(this.map);
+
+            segmentIndex++;
+            flyNextSegment();
+          }
+        };
+
+        animate();
       };
 
-      animate();
+      this.map.on('moveend', onMoveEnd);
     };
 
     flyNextSegment();
   }
+
+
 }
 

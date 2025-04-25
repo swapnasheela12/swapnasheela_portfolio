@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { ThreeDTravelStoryComponent } from './threeDTravelStory/threeDTravelStory.component';
+import { TravelStoryComponent } from './travel-story/travel-story.component';
 
 @Component({
   selector: 'app-contact',
-  imports: [FormsModule, GoogleMapsModule],
+  imports: [FormsModule, GoogleMapsModule, TravelStoryComponent, ThreeDTravelStoryComponent],
   standalone: true,
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'

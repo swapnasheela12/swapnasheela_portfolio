@@ -3,16 +3,25 @@
 //   height: 75vh;
 //   position: relative;
 //   z-index: 0;
-//   .leaflet-map-pane {
+
+//   // Use ng-deep to target Leaflet internal layers
+//   ::ng-deep .leaflet-map-pane {
 //     background-color: red !important;
+
 //     .leaflet-tile-pane {
 //     }
+
 //     .leaflet-overlay-pane {
 //     }
+
 //     .leaflet-shadow-pane {
 //     }
+
 //     .leaflet-marker-pane {
-//       background-color: red;
+//       background-color: transparent !important;
+//       img {
+//         z-index: 9999; // airplane image marker
+//       }
 //       .leaflet-year-box {
 //         background: white;
 //         border-radius: 6px;
@@ -20,24 +29,32 @@
 //         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 //         font-size: 14px;
 //         font-weight: 500;
+//         margin-top: 20px;
+//         z-index: 5000; // year label popup
 //       }
-//       .custom-pin {
+
+//       .custom-pin .pin-container {
 //         display: flex;
 //         flex-direction: column;
 //         align-items: center;
+//         max-width: 50px;
 //         .pin-dot {
 //           width: 12px;
 //           height: 12px;
 //           background: red;
 //           border-radius: 50%;
 //         }
+
 //         .pin-label {
-//           font-size: 12px !important;
-//           background: #fff !important;
-//           padding: 2px 4px !important;
-//           border-radius: 4px !important;
-//           margin-top: 4px !important;
-//           box-shadow: 0 0 2px rgba(0, 0, 0, 0.3) !important;
+//           font-size: 12px;
+//           background: #fff;
+//           padding: 2px 4px;
+//           border-radius: 4px;
+//           margin-top: 4px;
+//           box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+//           width: 80px;
+//           text-align: center;
+//           z-index: 4000;
 //         }
 //       }
 //     }
@@ -50,53 +67,53 @@
   position: relative;
   z-index: 0;
 
-  // Use ng-deep to target Leaflet internal layers
   ::ng-deep .leaflet-map-pane {
-    background-color: red !important;
-
-    .leaflet-tile-pane {
-    }
-
-    .leaflet-overlay-pane {
-    }
-
-    .leaflet-shadow-pane {
-    }
-
     .leaflet-marker-pane {
-      background-color: transparent !important;
-
+      background: transparent;
+      img {
+        width: 100px;
+        height: 100px;
+        z-index: 9999 !important; // airplane image marker
+      }
       .leaflet-year-box {
+        margin-top: 28px;
         background: white;
-        border-radius: 6px;
         padding: 2px 8px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        font-size: 14px;
+        border-radius: 6px;
+        font-size: 12px;
         font-weight: 500;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+        z-index: 8000;
       }
 
-      .custom-pin {
+      // Custom destination pin
+      .custom-pin .pin-container {
         display: flex;
         flex-direction: column;
         align-items: center;
-        max-width: 50px;
-        .pin-dot {
-          width: 12px;
-          height: 12px;
-          background: red;
-          border-radius: 50%;
-        }
+        max-width: 80px;
+        margin-top: -30px;
+      }
 
-        .pin-label {
-          font-size: 12px;
-          background: #fff;
-          padding: 2px 4px;
-          border-radius: 4px;
-          margin-top: 4px;
-          box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-          width: 80px;
-          text-align: center;
-        }
+      .custom-pin .pin-dot {
+        width: 50px; /* Increased size for better visibility */
+        height: 50px; /* Match drop pin shape */
+        background: url("../../../../assets/image/PNG/droppin.png") no-repeat
+          center center;
+        background-size: contain;
+        // margin-bottom: 1px;
+      }
+
+      .custom-pin .pin-label {
+        font-size: 12px;
+        background: #fff;
+        padding: 2px 4px;
+        border-radius: 4px;
+        margin-top: -6px;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+        width: 80px;
+        text-align: center;
+        z-index: 4000;
       }
     }
   }

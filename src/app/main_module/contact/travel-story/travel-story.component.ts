@@ -54,7 +54,7 @@ export class TravelStoryComponent implements AfterViewInit {
       requestAnimationFrame(() => {
         setTimeout(() => {
           this.initializeMapFlow();
-        }, 100); // Slight delay to make DOM + CSS fully stable
+        }, 200); // Slight delay to make DOM + CSS fully stable
       });
     });
   }
@@ -276,11 +276,25 @@ export class TravelStoryComponent implements AfterViewInit {
             L.marker(endCoords, {
               icon: L.divIcon({
                 className: 'custom-pin',
-                html: `<div class="pin-dot"></div><div class="pin-label">${segment.to}</div>`,
-                iconSize: [20, 20],
-                iconAnchor: [10, 10]
+                html: `
+                  <div class="pin-container">
+                    <div class="pin-dot"></div>
+                    <div class="pin-label">${segment.to}</div>
+                  </div>
+                `,
+                iconSize: [80, 40],        // Give enough size for dot + label
+                iconAnchor: [40, 10]        // ⭐ Anchor point: center horizontally, slightly above dot
               })
             }).addTo(this.map);
+
+            // L.marker(endCoords, {
+            //   icon: L.divIcon({
+            //     className: 'custom-pin',
+            //     html: `<div class="pin-dot"></div><div class="pin-label">${segment.to}</div>`,
+            //     iconSize: [20, 20],
+            //     iconAnchor: [10, 10]
+            //   })
+            // }).addTo(this.map);
 
             // Now zoom to next start location
             this.isZooming = true;
@@ -307,3 +321,4 @@ export class TravelStoryComponent implements AfterViewInit {
   }
 
 }
+

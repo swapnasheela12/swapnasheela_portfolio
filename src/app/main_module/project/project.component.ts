@@ -18,14 +18,14 @@ export class ProjectComponent {
   selectedImage: string | null = null;
 
   tiles = [
-    { image: '../../../assets/image/PNG/myServices/hitachi-ABB.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' },
-    { image: '../../../assets/image/PNG/myServices/dashbord-jio.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' },
-    { image: '../../../assets/image/PNG/myServices/pixtran.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' },
-    { image: '../../../assets/image/PNG/myServices/hire4hotel.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' },
-    { image: '../../../assets/image/PNG/myServices/100pro.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' },
-    { image: '../../../assets/image/PNG/myServices/xovient.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' },
-    { image: '../../../assets/image/PNG/myServices/hitachi-ABB.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' },
-    { image: '../../../assets/image/PNG/myServices/dashbord-jio.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' },
+    { image: '../../../assets/image/PNG/myServices/hitachi-ABB.png', title: 'Hitachi ABB', desc: 'Hitachi Energy Relcare cost configurator' },
+    { image: '../../../assets/image/PNG/myServices/dashbord-jio.png', title: 'Reliance Jio', desc: 'JCP (Jio cognitive platform)' },
+    { image: '../../../assets/image/PNG/myServices/pixtran.png', title: 'PIX Transmissions', desc: ' Power Transmission Products site' },
+    { image: '../../../assets/image/PNG/myServices/hire4hotel.png', title: 'Hire4hotel', desc: 'Hotel industry career search' },
+    { image: '../../../assets/image/PNG/myServices/Medusense.png', title: 'Medusense', desc: 'Saudi Government Hospital (Medusense)' },
+    { image: '../../../assets/image/PNG/myServices/xovient.png', title: 'Xovient', desc: 'xovient services' },
+    { image: '../../../assets/image/PNG/myServices/hitachi-ABB.png', title: 'Hitachi ABB', desc: 'Hitachi Energy critical spare parts' },
+    { image: '../../../assets/image/PNG/myServices/jio_nbiot.png', title: 'Jio NB-IOT', desc: 'Reliance Jio NB-IOT' },
     { image: '../../../assets/image/PNG/myServices/pixtran.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' },
     { image: '../../../assets/image/PNG/myServices/hire4hotel.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' },
     { image: '../../../assets/image/PNG/myServices/100pro.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' },

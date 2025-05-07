@@ -1,1 +1,18 @@
-<p>project works!</p>
+<div #galleryWrapper id="galleryWrapper" class="gallery-wrapper">
+  <svg #gallerySvg class="gallery-svg" width="100%"></svg>
+
+  <div
+    class="fullscreen-overlay"
+    *ngIf="selectedImage"
+    (click)="closeLightbox()"
+    (contextmenu)="$event.preventDefault()"
+  >
+    <img
+      [src]="selectedImage"
+      class="fullscreen-image"
+      (click)="$event.stopPropagation()"
+      draggable="false"
+      (contextmenu)="$event.preventDefault()"
+    />
+  </div>
+</div>

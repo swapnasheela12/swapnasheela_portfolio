@@ -6,7 +6,7 @@ import { TravelStoryComponent } from './travel-story/travel-story.component';
 
 @Component({
   selector: 'app-contact',
-  imports: [FormsModule, GoogleMapsModule, TravelStoryComponent, ThreeDTravelStoryComponent],
+  imports: [FormsModule, GoogleMapsModule, TravelStoryComponent],
   standalone: true,
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'

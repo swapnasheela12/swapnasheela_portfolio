@@ -1,0 +1,16 @@
+// :host {
+//   display: block;
+//   background: #111;
+//   border-radius: 12px;
+// }
+
+.container {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.highcharts-figure {
+  margin: 0 auto;
+}

@@ -27,8 +27,9 @@ export class ProjectComponent {
     { image: '../../../assets/image/PNG/myServices/hitachi-ABB.png', title: 'Hitachi ABB', desc: 'Hitachi Energy critical spare parts' },
     { image: '../../../assets/image/PNG/myServices/jio_nbiot.png', title: 'Jio NB-IOT', desc: 'Reliance Jio NB-IOT' },
     { image: '../../../assets/image/PNG/myServices/pixtran.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' },
-    { image: '../../../assets/image/PNG/myServices/hire4hotel.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' },
+
     { image: '../../../assets/image/PNG/myServices/100pro.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' },
+    { image: '../../../assets/image/PNG/myServices/hire4hotel.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' },
     { image: '../../../assets/image/PNG/myServices/xovient.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' }
   ];
 
@@ -110,7 +111,7 @@ export class ProjectComponent {
         .attr('y', -tileSize / 2)
         .attr('width', tileSize)
         .attr('height', tileSize)
-        .attr('fill', '#4ec3dc')
+        .attr('fill', '#ccc')
         .attr('stroke', 'white')
         .attr('stroke-width', tileSize * 0.08)
         .attr('rx', tileSize * 0.1);

@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 
 import { CommonModule } from '@angular/common';
+import { ServicesChartComponent } from './services-chart/services-chart.component';
 
 @Component({
     selector: 'app-services',
-    imports: [CommonModule],
+    imports: [CommonModule, ServicesChartComponent],
     standalone: true,
     templateUrl: './services.component.html',
     styleUrls: ['./services.component.scss'],

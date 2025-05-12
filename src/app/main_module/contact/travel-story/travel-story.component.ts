@@ -234,24 +234,73 @@ export class TravelStoryComponent implements AfterViewInit {
             return;
           }
 
-          const point = this.currentPathEl.getPointAtLength(t * totalLength);
+          // const point = this.currentPathEl.getPointAtLength(t * totalLength);
+
+          // if (!point || isNaN(point.x) || isNaN(point.y)) {
+          //   console.warn('Invalid point coordinates.');
+          //   this.isAnimating = false;
+          //   this.segmentIndex++;
+          //   flyNextSegment();
+          //   return;
+          // }
+
+          // const latLng = this.map.layerPointToLatLng([point.x, point.y]);
+          // if (!latLng || isNaN(latLng.lat) || isNaN(latLng.lng)) {
+          //   console.warn('Invalid LatLng generated.');
+          //   this.isAnimating = false;
+          //   this.segmentIndex++;
+          //   flyNextSegment();
+          //   return;
+          // }
+
+          const lengthAtT = t * totalLength;
+
+          if (isNaN(lengthAtT) || !this.currentPathEl) {
+            console.warn('Invalid path length or path element is missing.');
+            this.isAnimating = false;
+            this.segmentIndex++;
+            flyNextSegment();
+            return;
+          }
+
+          let point: any;
+          try {
+            point = this.currentPathEl.getPointAtLength(lengthAtT);
+          } catch (err) {
+            console.warn('Error getting point at length:', err);
+            this.isAnimating = false;
+            this.segmentIndex++;
+            flyNextSegment();
+            return;
+          }
 
           if (!point || isNaN(point.x) || isNaN(point.y)) {
-            console.warn('Invalid point coordinates.');
+            console.warn('Invalid point from getPointAtLength:', point);
             this.isAnimating = false;
             this.segmentIndex++;
             flyNextSegment();
             return;
           }
 
-          const latLng = this.map.layerPointToLatLng([point.x, point.y]);
-          if (!latLng || isNaN(latLng.lat) || isNaN(latLng.lng)) {
-            console.warn('Invalid LatLng generated.');
+          let latLng;
+          try {
+            latLng = this.map.layerPointToLatLng([point.x, point.y]);
+          } catch (err) {
+            console.warn('Error converting to LatLng:', err);
             this.isAnimating = false;
             this.segmentIndex++;
             flyNextSegment();
             return;
           }
+
+          if (!latLng || isNaN(latLng.lat) || isNaN(latLng.lng)) {
+            console.warn('Invalid LatLng result:', latLng);
+            this.isAnimating = false;
+            this.segmentIndex++;
+            flyNextSegment();
+            return;
+          }
+
 
           this.currentPlaneLatLng = latLng;
           this.planeMarker.setLatLng(latLng);

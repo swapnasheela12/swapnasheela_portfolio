@@ -1,14 +1,15 @@
 .contact-page-container {
-  height: 100%;
   width: 100%;
+  height: 100%;
+
   .map-container-animation {
     width: 100%;
-    height: 800px; // or adjust as needed
+    height: clamp(300px, 40%, 800px);
     position: relative;
     overflow: hidden;
-    height: clamp(400px, 40vh, 800px);
     border-radius: 30px;
     margin-bottom: 40px;
+
     app-travel-story {
       display: block;
       height: 100%;
@@ -17,30 +18,30 @@
   }
 
   .contact-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    max-height: calc(100vh - 75px);
     background: #ffead5;
     border-radius: 30px;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
 
     .contact-card {
       display: flex;
       background: #111;
       color: white;
       border-radius: 10px;
-      overflow: hidden;
-      max-width: calc(100% - 220px);
       width: 100%;
-      height: 100%;
-      max-height: calc(100% - 150px);
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      max-width: 1100px;
+      margin: 40px 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+
+      .form-container,
+      .image-container {
+        padding: 30px;
+      }
 
       .form-container {
         flex: 1;
-        padding: 30px;
-
         h2 {
           font-size: 24px;
           .highlight {
@@ -49,13 +50,14 @@
         }
 
         .form-group {
-          margin-bottom: 15px;
+          margin-bottom: 1rem;
         }
 
         .btn {
           background: #fd853a;
           border: none;
           color: black;
+
           &:hover {
             background: #d4ac0d;
           }
@@ -65,8 +67,8 @@
       .image-container {
         flex: 1;
         display: flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
         background: #222;
 
         img {
@@ -78,14 +80,56 @@
     }
   }
 
-  // Responsive
-  @media (max-width: 768px) {
+  // ✅ Desktop: Side-by-side layout
+  @media (min-width: 1200px) {
     .contact-card {
-      flex-direction: column;
-      text-align: center;
+      flex-direction: row;
+      .form-container,
+      .image-container {
+        flex: 1 1 50%;
+      }
+    }
+  }
+
+  // ✅ Tablet: Side-by-side layout with wrap
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .contact-card {
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: 0;
+      .form-container,
+      .image-container {
+        flex: 1 1 100%;
+        padding: 20px;
+      }
 
       .image-container {
-        display: none; // Hide image on small screens
+        margin-top: 20px;
+      }
+    }
+  }
+
+  // ✅ Mobile: Stack vertically
+  @media (max-width: 767px) {
+    .contact-container {
+      padding: 1rem;
+    }
+
+    .contact-card {
+      flex-direction: column;
+      margin: 0;
+      .form-container,
+      .image-container {
+        flex: 1 1 100%;
+        padding: 15px;
+      }
+
+      .form-container h2 {
+        font-size: 20px;
+      }
+
+      .btn {
+        width: 100%;
       }
     }
   }

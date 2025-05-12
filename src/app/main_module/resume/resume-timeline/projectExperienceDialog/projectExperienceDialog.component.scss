@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .popup-card {
   max-width: 100%;
   width: 100%;
@@ -42,7 +44,8 @@
       }
 
       .close-btn:hover {
-        background: darken(#fd853a, 1.5%);
+        // background: darken(#fd853a, 1.5%);
+        background-color: color.adjust(#fd853a, $lightness: -10%);
         cursor: pointer;
         transition: background 0.3s ease;
       }

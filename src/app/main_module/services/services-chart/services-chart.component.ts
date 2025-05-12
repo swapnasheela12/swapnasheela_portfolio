@@ -66,8 +66,6 @@
 //   }
 // }
 
-
-
 import * as Highcharts from 'highcharts';
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser, CommonModule } from '@angular/common';
@@ -82,12 +80,15 @@ import { HighchartsChartModule } from 'highcharts-angular';
 })
 export class ServicesChartComponent implements OnInit {
   Highcharts: typeof Highcharts = Highcharts;
-  chartOptions: Highcharts.Options = {}; // initialize with empty object
+  chartOptions: Highcharts.Options | undefined;
+  isBrowser: boolean;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
+    if (this.isBrowser) {
       this.chartOptions = {
         chart: {
           type: 'column',

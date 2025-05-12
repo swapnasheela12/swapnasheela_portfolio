@@ -39,3 +39,4 @@ angular.json
 # Miscellaneous
 *.bak
 *.swp
+.DS_Store

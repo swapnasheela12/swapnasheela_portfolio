@@ -81,6 +81,85 @@
               animation: moveAndRotate5 5s linear infinite;
             }
           }
+          /* MEDIA QUERIES FOR RESPONSIVENESS */
+
+          /* Extra Large to Large (1200px to 992px) */
+          @media (max-width: 1199.98px) {
+            .img-container {
+              .img1,
+              .img2,
+              .img3,
+              .img4,
+              .img5 {
+                width: 80%;
+                height: auto;
+              }
+
+              .img5 {
+                right: 40%;
+              }
+            }
+          }
+
+          /* Large to Medium (991px to 768px) */
+          @media (max-width: 991.98px) {
+            .img-container {
+              .img1,
+              .img2,
+              .img3,
+              .img4,
+              .img5 {
+                width: 60%;
+              }
+
+              .img5 {
+                right: 35%;
+              }
+            }
+          }
+
+          /* Medium to Small (767px to 576px) */
+          @media (max-width: 767.98px) {
+            .img-container {
+              .img1,
+              .img2,
+              .img3,
+              .img4,
+              .img5 {
+                width: 120px;
+                height: 120px;
+              }
+
+              // .img2,
+              // .img4 {
+              //   display: none;
+              // }
+
+              .img5 {
+                right: 25%;
+              }
+            }
+          }
+
+          /* Small and below (<576px) */
+          @media (max-width: 575.98px) {
+            .img-container {
+              .img1,
+              .img3,
+              .img4,
+              .img5 {
+                width: 100px;
+                height: 100px;
+              }
+              // .img4 {
+              //   bottom: 0%;
+              // }
+              .img5 {
+                right: 78%;
+                bottom: 25%;
+              }
+            }
+          }
         }
 
         &:hover {
@@ -269,7 +348,7 @@
         border: 0;
         position: relative;
         z-index: 2;
-
+        padding: 20px 0 !important;
         @include media-breakpoint-down(md) {
           padding: 15px;
         }
@@ -280,9 +359,9 @@
 
           .card-header-myservices {
             color: #fcfcfd;
-
+            width: 100%;
             .card-header-container-myservices {
-              padding: 10px;
+              // padding: 10px;
 
               .word-my {
                 height: fit-content;

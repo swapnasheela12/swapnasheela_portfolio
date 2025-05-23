@@ -6,7 +6,7 @@
         <h2>Let's Connect there</h2>
       </div>
       <div class="footer-content-button col-12 col-md-5 m-2 text-center p-3">
-        <button class="hire-button">Hire me ➔</button>
+        <button class="hire-button"  routerLink="/contact" routerLinkActive="active">Hire me ➔</button>
       </div>
     </div>
   </div>
@@ -19,8 +19,10 @@
           <p>Bringing ideas to life through clean code, modern design, and seamless interactions.</p>
           <p>Let's collaborate and create something amazing!</p>
           <div class="social-icons">
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
+             <a href="https://www.linkedin.com/in/swapnasheela-khandagale-01961820" target="_blank"
+                            rel="noopener noreferrer" onclick="event.stopPropagation();"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/swapnasheela12" target="_blank"
+                            rel="noopener noreferrer" onclick="event.stopPropagation();"><i class="fab fa-github"></i></a>
             <a href="#"><i class="fab fa-facebook"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-youtube"></i></a>
@@ -32,11 +34,11 @@
         <div class="col-lg-3 col-md-6 footer-nav">
           <h4>Navigation</h4>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Service</a></li>
-            <li><a href="#">Resume</a></li>
-            <li><a href="#">Project</a></li>
+            <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+            <li><a routerLink="/about" routerLinkActive="active">About Us</a></li>
+            <li><a routerLink="/services" routerLinkActive="active">Service</a></li>
+            <li><a routerLink="/resume" routerLinkActive="active">Resume</a></li>
+            <li><a routerLink="/project" routerLinkActive="active">Project</a></li>
           </ul>
         </div>
 

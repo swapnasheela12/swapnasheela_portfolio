@@ -46,6 +46,13 @@
   }
 }
 
+::ng-deep
+  .mdc-text-field--outlined:not(.mdc-text-field--disabled)
+  .mdc-text-field__input {
+  color: #344054 !important;
+  caret-color: #344054;
+}
+
 // .discuss-project-container {
 //   display: flex;
 //   flex-direction: column;

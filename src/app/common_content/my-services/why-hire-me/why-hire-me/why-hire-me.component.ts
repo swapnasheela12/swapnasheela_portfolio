@@ -1,7 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-why-hire-me',
+  imports: [MatButtonModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    RouterLink,
+    RouterLinkActive
+  ],
   standalone: true,
   templateUrl: './why-hire-me.component.html',
   styleUrls: ['./why-hire-me.component.scss']

@@ -482,9 +482,15 @@ export class ResumeTimelineComponent implements OnInit {
       .duration(500)
       .style('opacity', 1);
 
-    // White border circle (slightly larger, behind the main one)
-    eventGroups.append('circle')
-      .attr('cx', (d, i) => i % 2 === 0 ? timelineLineX - 90 : timelineLineX + 90)
+
+
+    const layoutConfig = {
+      mobile: { offset: 60, iconRadius: 40, borderRadius: 44, iconSize: 40, textMaxWidth: 130 },
+      tablet: { offset: 80, iconRadius: 50, borderRadius: 54, iconSize: 50, textMaxWidth: 200 },
+      desktop: { offset: 90, iconRadius: 60, borderRadius: 66, iconSize: 50, textMaxWidth: 220 },
+    }[device];
+    eventGroups.append('circle') // White border behind
+      .attr('cx', (d, i) => i % 2 === 0 ? timelineLineX - (layoutConfig.offset + 8) : timelineLineX + layoutConfig.offset)
       .attr('cy', 90)
       .attr('r', 0)
       .attr('fill', '#fff')
@@ -492,11 +498,10 @@ export class ResumeTimelineComponent implements OnInit {
       .transition()
       .delay((d, i) => i * 300 + 400)
       .duration(600)
-      .attr('r', 66); // Slightly larger than main circle (60 + stroke-width)
+      .attr('r', layoutConfig.borderRadius);
 
-    // Main icon circle (on top, with stroke and shadow)
-    eventGroups.append('circle')
-      .attr('cx', (d, i) => i % 2 === 0 ? timelineLineX - 90 : timelineLineX + 90)
+    eventGroups.append('circle') // Foreground circle with stroke
+      .attr('cx', (d, i) => i % 2 === 0 ? timelineLineX - (layoutConfig.offset + 8) : timelineLineX + layoutConfig.offset)
       .attr('cy', 90)
       .attr('r', 0)
       .attr('fill', '#fff')
@@ -506,148 +511,89 @@ export class ResumeTimelineComponent implements OnInit {
       .transition()
       .delay((d, i) => i * 300 + 500)
       .duration(600)
-      .attr('r', 60)
+      .attr('r', layoutConfig.iconRadius)
       .style('opacity', 1);
 
-
-    // Icon Image with fade-in animation
-    eventGroups.append('image')
+    eventGroups.append('image') // Company logo
       .attr('xlink:href', (d: any) => d.icon)
-      .attr('x', (d, i) => i % 2 === 0 ? timelineLineX - 115 : timelineLineX + 65)
-      .attr('y', 65)
-      .attr('width', 50)
-      .attr('height', 50)
+      .attr('x', (d, i) => i % 2 === 0
+        ? timelineLineX - (layoutConfig.offset + 8) - layoutConfig.iconSize / 2
+        : timelineLineX + layoutConfig.offset - layoutConfig.iconSize / 2)
+      .attr('y', 90 - layoutConfig.iconSize / 2)
+      .attr('width', layoutConfig.iconSize)
+      .attr('height', layoutConfig.iconSize)
       .style('opacity', 0)
       .transition()
       .delay((d, i) => i * 300 + 600)
       .duration(400)
       .style('opacity', 1);
 
-    // Title Text with smooth fade-in animation
-    // eventGroups.append('text')
-    //   .attr('data-type', 'title')
-    //   .attr('x', (d, i) => i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
-    //   .attr('y', 80)
-    //   .attr('font-size', '16px')
-    //   .attr('fill', (d: any) => d.color)
-    //   .style('opacity', 0)
-    //   .text((d: any) => d.title)
-    //   .transition()
-    //   .delay((d, i) => i * 300 + 700)
-    //   .duration(400)
-    //   .style('opacity', 1);
+    const layoutConfigTxt = {
+      mobile: { offset: 60, textMaxWidth: 100 },
+      tablet: { offset: 80, textMaxWidth: 200 },
+      desktop: { offset: 90, textMaxWidth: 220 },
+    }[device];
+
+
+    function wrapText(
+      textEl: d3.Selection<SVGTextElement, any, any, any>,
+      textString: string,
+      x: number,
+      y: number,
+      maxWidth: number,
+      lineHeight: number
+    ): void {
+      const words = textString.split(/\s+/);
+      let line: string[] = [];
+      let lineNumber = 0;
+
+      let tspan = textEl.append('tspan')
+        .attr('x', x)
+        .attr('y', y)
+        .attr('dy', '0em');
+
+      for (const word of words) {
+        line.push(word);
+        tspan.text(line.join(' '));
+
+        if (tspan.node()!.getComputedTextLength() > maxWidth) {
+          line.pop();
+          tspan.text(line.join(' '));
+          line = [word];
+          lineNumber++;
+
+          tspan = textEl.append('tspan')
+            .attr('x', x)
+            .attr('y', y)
+            .attr('dy', `${lineNumber * lineHeight}px`)
+            .text(word);
+        }
+      }
+    }
 
     eventGroups.append('text')
       .attr('data-type', 'title')
       .attr('font-size', '16px')
       .attr('fill', (d: any) => d.color)
       .style('opacity', 0)
-      .attr('text-anchor', 'start') // default
-      .each(function (d: any, i: number) {
-        const text = d3.select(this);
-        const words = d.title.split(/\s+/);
-        const lineHeight = 18;
+      .each(function (d: any, i) {
+        const isLeft = i % 2 === 0;
+        const x = isLeft
+          ? timelineLineX + (layoutConfigTxt.offset + 10)
+          : timelineLineX - (layoutConfigTxt.offset - 25) - layoutConfigTxt.textMaxWidth;
+        const y = 80;
 
-        // 🧠 Determine side based on even/odd
-        const isEven = i % 2 === 0;
-
-        // 🎯 Calculate x, y, and maxWidth per breakpoint + side
-        let x, y, maxWidth, textAnchor;
-
-        if (device === 'mobile') {
-          x = isEven ? timelineLineX + 50 : timelineLineX - 150;
-          y = 80;
-          maxWidth = 130;
-          textAnchor = 'start';
-        } else if (device === 'tablet') {
-          x = isEven ? timelineLineX + 50 : timelineLineX - 220;
-          y = 80;
-          maxWidth = 200;
-          textAnchor = 'start';
-        } else {
-          // desktop
-          x = isEven ? timelineLineX + 50 : timelineLineX - 260;
-          y = 80;
-          maxWidth = 220;
-          textAnchor = 'start';
-        }
-
-        text.attr('x', x).attr('y', y).attr('text-anchor', textAnchor);
-
-        // 💬 Word wrapping logic
-        let line: string[] = [];
-        let lineNumber = 0;
-        let tspan = text.append('tspan')
+        const text = d3.select(this)
           .attr('x', x)
           .attr('y', y)
-          .attr('dy', '0em');
+          .attr('text-anchor', 'start');
 
-        for (const word of words) {
-          line.push(word);
-          tspan.text(line.join(' '));
-          if (tspan.node()!.getComputedTextLength() > maxWidth) {
-            line.pop();
-            tspan.text(line.join(' '));
-            line = [word];
-            lineNumber++;
-
-            tspan = text.append('tspan')
-              .attr('x', x)
-              .attr('y', y)
-              .attr('dy', `${lineNumber * lineHeight}px`)
-              .text(word);
-          }
-        }
+        wrapText(text, d.title, x, y, layoutConfigTxt.textMaxWidth, 18);
       })
       .transition()
       .delay((d, i) => i * 300 + 700)
       .duration(400)
       .style('opacity', 1);
-
-
-    // Description Text with fade-in
-    // eventGroups.append('text')
-    //   .attr('data-type', 'desc')
-    //   .attr('x', (d, i) => i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
-    //   .attr('y', 100)
-    //   .attr('font-size', '14px')
-    //   .attr('fill', '#667085')
-    //   .style('opacity', 0)
-    //   .each(function (d: any, i) {
-    //     const textEl = d3.select(this);
-    //     const words = d.desc.split(/\s+/);
-    //     const lineHeight = 14; // approx line height in px
-    //     const maxWidth = 180;
-
-    //     let line: string[] = [];
-    //     let lineNumber = 0;
-    //     let tspan = textEl.append('tspan')
-    //       .attr('x', i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
-    //       .attr('y', 100)
-    //       .attr('dy', '0em');
-
-    //     for (let word of words) {
-    //       line.push(word);
-    //       tspan.text(line.join(' '));
-
-    //       if (tspan.node()!.getComputedTextLength() > maxWidth) {
-    //         line.pop();
-    //         tspan.text(line.join(' '));
-    //         line = [word];
-    //         lineNumber++;
-
-    //         tspan = textEl.append('tspan')
-    //           .attr('x', i % 2 === 0 ? timelineLineX + 90 : timelineLineX - 260)
-    //           .attr('y', 100)
-    //           .attr('dy', `${lineHeight}px`)
-    //           .text(word);
-    //       }
-    //     }
-    //   })
-    //   .transition()
-    //   .delay((d, i) => i * 300 + 800)
-    //   .duration(400)
-    //   .style('opacity', 1);
 
     eventGroups.append('text')
       .attr('data-type', 'desc')
@@ -655,61 +601,22 @@ export class ResumeTimelineComponent implements OnInit {
       .attr('fill', '#667085')
       .style('opacity', 0)
       .each(function (d: any, i) {
-        const isEven = i % 2 === 0;
+        const isLeft = i % 2 === 0;
+        const x = isLeft
+          ? timelineLineX + layoutConfigTxt.offset + 10
+          : timelineLineX - (layoutConfigTxt.offset - 25) - layoutConfigTxt.textMaxWidth;
+        const baseY = 80;
 
-        const textEl = d3.select(this);
-        const words = d.desc.split(/\s+/);
-        const lineHeight = 16;
-
-        // 👇 Set device-specific layout
-        let x, baseY, maxWidth;
-
-        if (device === 'mobile') {
-          x = isEven ? timelineLineX + 50 : timelineLineX - 150;
-          baseY = 80; // title y
-          maxWidth = 130;
-        } else if (device === 'tablet') {
-          x = isEven ? timelineLineX + 50 : timelineLineX - 220;
-          baseY = 80;
-          maxWidth = 200;
-        } else {
-          x = isEven ? timelineLineX + 50 : timelineLineX - 260;
-          baseY = 80;
-          maxWidth = 220;
-        }
-
-        // 👇 Count number of title lines
         const parentGroup = d3.select(this.parentNode as SVGGElement);
-        const titleText = parentGroup.select('[data-type="title"]');
+        const titleLines = parentGroup.select('[data-type="title"]').selectAll('tspan').size();
+        const y = baseY + titleLines * 18 + 8;
 
-        const titleLines = titleText.selectAll('tspan').size();
-        const y = baseY + titleLines * 18 + 8; // 18px title lineHeight + 8px spacing
-
-        let line: string[] = [];
-        let lineNumber = 0;
-
-        let tspan = textEl.append('tspan')
+        const text = d3.select(this)
           .attr('x', x)
           .attr('y', y)
-          .attr('dy', '0em');
+          .attr('text-anchor', 'start');
 
-        for (const word of words) {
-          line.push(word);
-          tspan.text(line.join(' '));
-
-          if (tspan.node()!.getComputedTextLength() > maxWidth) {
-            line.pop();
-            tspan.text(line.join(' '));
-            line = [word];
-            lineNumber++;
-
-            tspan = textEl.append('tspan')
-              .attr('x', x)
-              .attr('y', y)
-              .attr('dy', `${lineNumber * lineHeight}px`)
-              .text(word);
-          }
-        }
+        wrapText(text, d.desc, x, y, layoutConfigTxt.textMaxWidth, 16);
       })
       .transition()
       .delay((d, i) => i * 300 + 800)

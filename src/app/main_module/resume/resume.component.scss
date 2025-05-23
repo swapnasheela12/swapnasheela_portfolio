@@ -19,9 +19,14 @@ $bg-dark: #111;
 $text-light: #fff;
 $btn-color: #fd853a;
 .resume-details {
+  margin-top: -30px;
+  // box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
   .resume-details-row {
+    // box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
     .resume-details-left-sidebar {
-      background-color: #f8f9fa;
+      // box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+      // background-color: #f8f9fa;
+      border-radius: 20px 0 0 0;
       min-height: 100vh;
       display: flex;
       // align-items: center;

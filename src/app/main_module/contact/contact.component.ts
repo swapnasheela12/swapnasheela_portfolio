@@ -1,41 +1,63 @@
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators
+} from '@angular/forms';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { GoogleMapsModule } from '@angular/google-maps';
-import { HttpClient } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { ThreeDTravelStoryComponent } from './threeDTravelStory/threeDTravelStory.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { TravelStoryComponent } from './travel-story/travel-story.component';
+
 @Component({
   selector: 'app-contact',
-  imports: [FormsModule, GoogleMapsModule, TravelStoryComponent, MatSnackBarModule],
   standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSnackBarModule,
+    TravelStoryComponent
+  ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
+  contactForm: FormGroup;
 
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar) {
+    this.contactForm = this.fb.group({
+      name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      subject: ['', Validators.required],
+      message: ['', Validators.required]
+    });
+  }
 
-  title = 'google-maps-demo';
-
-  // Set the center of the map (latitude, longitude)
-  center = { lat: 40.31, lng: -74.32 }; // San Francisco, for example
-
-  // Set zoom level
-  zoom = 12;
-
-  // Set a marker on the map
-  markerPosition = { lat: 40.31, lng: -74.32 }; // San Francisco
-  contact = { name: '', email: '', message: '' };
-  constructor(public snackBar: MatSnackBar) { }
   sendMessage() {
-    this.snackBar.open('Message sent', 'Close', {
+    if (this.contactForm.invalid) {
+      this.snackBar.open('Please fill all fields correctly.', 'Close', {
+        duration: 3000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top'
+      });
+      return;
+    }
+
+    console.log(this.contactForm.value); // Or send to backend
+
+    this.snackBar.open('Message sent successfully!', 'Close', {
       duration: 3000,
       horizontalPosition: 'right',
       verticalPosition: 'top'
     });
 
-    this.contact = { name: '', email: '', message: '' };
-
+    this.contactForm.reset();
   }
 }

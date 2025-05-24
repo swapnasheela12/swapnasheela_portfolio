@@ -63,6 +63,12 @@
             color: #fff;
           }
         }
+        .btn:disabled {
+          background-color: #ccc !important; // light gray
+          color: #666 !important; // dimmed text
+          cursor: not-allowed;
+          box-shadow: none;
+        }
       }
 
       .image-container {

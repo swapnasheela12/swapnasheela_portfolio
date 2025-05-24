@@ -220,32 +220,82 @@ export class InfographicD3Component implements AfterViewInit {
         .transition().duration(600)
         .attr('transform', (d: any) => `translate(${d.y - headOffset + 30},${d.x})`);
 
-      // BUBBLE on initial render
+      // // BUBBLE on initial render
+      // const drawBubble = (text: string) => {
+      //   d3.selectAll('.speech-foreign').remove();
+
+      //   const bubble = g.select('g.root-head')
+      //     .append('foreignObject')
+      //     .attr('class', 'speech-foreign')
+      //     .attr('x', headOffset + 20)
+      //     .attr('y', -headOffset / 2)
+      //     .attr('width', 180)
+      //     .attr('height', 100)
+      //     .style('opacity', 0);
+
+      //   bubble.transition().duration(600).style('opacity', 1);
+
+      //   bubble.append('xhtml:div')
+      //     .attr('class', 'speech-bubble')
+      //     .style('font-family', 'Segoe UI, sans-serif')
+      //     .style('color', '#fff')
+      //     .style('background', '#388e3c')
+      //     .style('padding', '10px 12px')
+      //     .style('border-radius', '12px')
+      //     .style('box-shadow', '0 4px 10px rgba(0,0,0,0.2)')
+      //     .style('font-size', '12px')
+      //     .html(text);
+      // };
+
       const drawBubble = (text: string) => {
+        // Remove existing bubble if any
         d3.selectAll('.speech-foreign').remove();
+
+        const bubbleWidth = 280;
+        const bubbleHeight = 400;
+        const padding = 10;
 
         const bubble = g.select('g.root-head')
           .append('foreignObject')
           .attr('class', 'speech-foreign')
           .attr('x', headOffset + 20)
           .attr('y', -headOffset / 2)
-          .attr('width', 180)
-          .attr('height', 100)
+          .attr('width', bubbleWidth)
+          .attr('height', bubbleHeight)
           .style('opacity', 0);
 
         bubble.transition().duration(600).style('opacity', 1);
 
-        bubble.append('xhtml:div')
-          .attr('class', 'speech-bubble')
-          .style('font-family', 'Segoe UI, sans-serif')
+        const div = bubble.append('xhtml:div')
+          .attr('xmlns', 'http://www.w3.org/1999/xhtml')
+          .style('font-family', `'Segoe UI', sans-serif`)
           .style('color', '#fff')
-          .style('background', '#388e3c')
-          .style('padding', '10px 12px')
+          .style('background', '#1e88e5')
+          .style('padding', `${padding}px`)
           .style('border-radius', '12px')
-          .style('box-shadow', '0 4px 10px rgba(0,0,0,0.2)')
-          .style('font-size', '12px')
-          .html(text);
+          .style('box-shadow', '0 4px 10px rgba(0, 0, 0, 0.2)')
+          .style('font-size', '13px')
+          .style('position', 'relative')
+          .style('line-height', '1.4')
+          .html(`
+      ${text}
+      <style>
+        .speech-bubble::after {
+          content: "";
+          position: absolute;
+          bottom: -10px;
+          left: 20px;
+          width: 0;
+          height: 0;
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+          border-top: 10px solid #1e88e5;
+        }
+      </style>
+      <div class="speech-bubble"></div>
+    `);
       };
+
 
       drawBubble('Click to expand!');
 

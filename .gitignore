@@ -40,3 +40,4 @@ angular.json
 *.bak
 *.swp
 .DS_Store
+src/.DS_Store

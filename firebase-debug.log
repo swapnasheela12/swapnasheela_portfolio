@@ -1,0 +1,89 @@
+[debug] [2025-05-27T18:14:13.553Z] ----------------------------------------------------------------------
+[debug] [2025-05-27T18:14:13.555Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init functions
+[debug] [2025-05-27T18:14:13.555Z] CLI Version:   14.4.0
+[debug] [2025-05-27T18:14:13.555Z] Platform:      darwin
+[debug] [2025-05-27T18:14:13.555Z] Node Version:  v22.14.0
+[debug] [2025-05-27T18:14:13.556Z] Time:          Tue May 27 2025 14:14:13 GMT-0400 (Eastern Daylight Time)
+[debug] [2025-05-27T18:14:13.556Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-05-27T18:14:13.651Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-27T18:14:13.652Z] > authorizing via signed-in user (swapnasheela.study@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/swapnasheelakhandagale/Desktop/git account swapnasheela12/swapnasheela12/swapnasheela_portfolio
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-05-27T18:14:13.657Z] Using project from CLI flag: swapnasheelaportfolio
+[debug] [2025-05-27T18:14:13.657Z] Checked if tokens are valid: false, expires at: 1748368476713
+[debug] [2025-05-27T18:14:13.657Z] Checked if tokens are valid: false, expires at: 1748368476713
+[debug] [2025-05-27T18:14:13.657Z] > refreshing access token with scopes: []
+[debug] [2025-05-27T18:14:13.658Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-05-27T18:14:13.658Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-05-27T18:14:13.813Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-05-27T18:14:13.813Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-05-27T18:14:13.830Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/swapnasheelaportfolio [none]
+[debug] [2025-05-27T18:14:14.250Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/swapnasheelaportfolio 200
+[debug] [2025-05-27T18:14:14.250Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/swapnasheelaportfolio {"projectId":"swapnasheelaportfolio","projectNumber":"45922674774","displayName":"swapnasheelaportfolio","name":"projects/swapnasheelaportfolio","resources":{"hostingSite":"swapnasheelaportfolio"},"state":"ACTIVE","etag":"1_9f902c31-898a-4051-912a-4593b97d1b69"}
+[info] i  Using project swapnasheelaportfolio (swapnasheelaportfolio) 
+[info] 
+=== Functions Setup
+[debug] [2025-05-27T18:14:14.262Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-27T18:14:14.262Z] > authorizing via signed-in user (swapnasheela.study@gmail.com)
+[debug] [2025-05-27T18:14:14.262Z] [iam] checking project swapnasheelaportfolio for permissions ["firebase.projects.get"]
+[debug] [2025-05-27T18:14:14.262Z] Checked if tokens are valid: true, expires at: 1748373252813
+[debug] [2025-05-27T18:14:14.262Z] Checked if tokens are valid: true, expires at: 1748373252813
+[debug] [2025-05-27T18:14:14.263Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/swapnasheelaportfolio:testIamPermissions [none]
+[debug] [2025-05-27T18:14:14.263Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/swapnasheelaportfolio:testIamPermissions x-goog-quota-user=projects/swapnasheelaportfolio
+[debug] [2025-05-27T18:14:14.263Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/swapnasheelaportfolio:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-05-27T18:14:14.492Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/swapnasheelaportfolio:testIamPermissions 200
+[debug] [2025-05-27T18:14:14.492Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/swapnasheelaportfolio:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-05-27T18:14:14.493Z] Checked if tokens are valid: true, expires at: 1748373252813
+[debug] [2025-05-27T18:14:14.493Z] Checked if tokens are valid: true, expires at: 1748373252813
+[debug] [2025-05-27T18:14:14.493Z] Checked if tokens are valid: true, expires at: 1748373252813
+[debug] [2025-05-27T18:14:14.493Z] Checked if tokens are valid: true, expires at: 1748373252813
+[debug] [2025-05-27T18:14:14.493Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/swapnasheelaportfolio/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-05-27T18:14:14.493Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/swapnasheelaportfolio/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/swapnasheelaportfolio
+[debug] [2025-05-27T18:14:14.494Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/swapnasheelaportfolio/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-05-27T18:14:14.494Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/swapnasheelaportfolio/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/swapnasheelaportfolio
+[debug] [2025-05-27T18:14:14.924Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/swapnasheelaportfolio/services/runtimeconfig.googleapis.com 200
+[debug] [2025-05-27T18:14:14.924Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/swapnasheelaportfolio/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-05-27T18:14:14.927Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/swapnasheelaportfolio/services/cloudfunctions.googleapis.com 200
+[debug] [2025-05-27T18:14:14.927Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/swapnasheelaportfolio/services/cloudfunctions.googleapis.com [omitted]
+[info] 
+Detected existing codebase(s): default, y
+
+[info] Let's create a new codebase for your functions.
+[info] A directory corresponding to the codebase will be created in your project
+[info] with sample code pre-configured.
+
+[info] See https://firebase.google.com/docs/functions/organize-functions for
+[info] more information on organizing your functions using codebases.
+
+[info] Functions can be deployed with firebase deploy.
+
+[error] Invalid codebase name. Codebase must be less than 64 characters and can contain only lowercase letters, numeric characters, underscores, and dashes.
+[error] Invalid codebase name. Codebase must be less than 64 characters and can contain only lowercase letters, numeric characters, underscores, and dashes.
+[error] Invalid codebase name. Codebase must be less than 64 characters and can contain only lowercase letters, numeric characters, underscores, and dashes.
+[info] ✔  Wrote contact_email/package.json 
+[info] ✔  Wrote contact_email/.eslintrc.js 
+[info] ✔  Wrote contact_email/tsconfig.dev.json 
+[info] ✔  Wrote contact_email/tsconfig.json 
+[info] ✔  Wrote contact_email/src/index.ts 
+[info] ✔  Wrote contact_email/.gitignore 

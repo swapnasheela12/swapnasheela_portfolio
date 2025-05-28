@@ -29,7 +29,7 @@
     }
   </div>
 
-  <div class="skills section mb-4">
+  <!-- <div class="skills section mb-4">
     <h4 class="section-title">Skills</h4>
     @for (skill of skills; track skill.id) {
       <div class="d-flex justify-content-between small mb-1">
@@ -43,7 +43,30 @@
     <div class="mt-5">
       <button class="btn btn-download w-100 mt-auto" (click)="downloadCV()">Download CV</button>
     </div>
-  </div>
+  </div> -->
 
-  
+  <div class="skills section mb-4">
+  <h4 class="section-title">Skills</h4>
+
+  @for (group of skills; track group.group) {
+    <div class="mb-3">
+      <div class="group-name text-uppercase fw-bold">{{ group.group }}</div>
+      @for (skill of group.technologies; track skill.name) {
+        <div class="d-flex justify-content-between small mb-1">
+          <span>{{ skill.name }}</span>
+          <span class="percent">{{ skill.level }}</span>
+        </div>
+      }
+    </div>
+  }
+
+  @empty {
+    <p class="text-muted small">No skills added.</p>
+  }
+
+  <div class="mt-4">
+    <button class="btn btn-download w-100 mt-auto" (click)="downloadCV()">Download CV</button>
+  </div>
+</div>
+
 </div>

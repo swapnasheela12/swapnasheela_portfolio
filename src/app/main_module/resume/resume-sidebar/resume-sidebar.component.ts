@@ -23,37 +23,133 @@ export class ResumeSidebarComponent implements OnInit {
   ];
 
   skills = [
-    { "id": 1, "name": "HTML", "level": "90%" },
-    { "id": 2, "name": "CSS / SCSS / LESS", "level": "85%" },
-    { "id": 3, "name": "Bootstrap", "level": "85%" },
-    { "id": 4, "name": "JavaScript", "level": "80%" },
-    { "id": 5, "name": "TypeScript", "level": "80%" },
-    { "id": 6, "name": "jQuery", "level": "80%" },
-    { "id": 7, "name": "AngularJS", "level": "85%" },
-    { "id": 8, "name": "Angular (2+ to 13+)", "level": "90%" },
-    { "id": 9, "name": "React.js", "level": "80%" },
-    { "id": 10, "name": "Material-UI / Angular Material", "level": "85%" },
-    { "id": 11, "name": "Node.js", "level": "75%" },
-    { "id": 12, "name": "PHP", "level": "70%" },
-    { "id": 13, "name": "Core Java", "level": "70%" },
-    { "id": 14, "name": "SQL / MySQL", "level": "75%" },
-    { "id": 15, "name": "Ag Grid", "level": "75%" },
-    { "id": 16, "name": "Highcharts / Chart.js", "level": "80%" },
-    { "id": 17, "name": "D3.js", "level": "70%" },
-    { "id": 18, "name": "GoJS", "level": "70%" },
-    { "id": 19, "name": "EaselJS / TweenJS", "level": "65%" },
-    { "id": 20, "name": "Leaflet.js", "level": "70%" },
-    { "id": 21, "name": "Three.js", "level": "60%" },
-    { "id": 22, "name": "AJAX / JSON", "level": "85%" },
-    { "id": 23, "name": "Axios", "level": "80%" },
-    { "id": 24, "name": "OAuth / JWT", "level": "75%" },
-    { "id": 25, "name": "Azure Services / Azure AD", "level": "75%" },
-    { "id": 26, "name": "Netlify", "level": "70%" },
-    { "id": 27, "name": "Git / SVN / Bitbucket / Phabricator", "level": "80%" },
-    { "id": 28, "name": "Visual Studio Code / Atom / Eclipse", "level": "75%" },
-    { "id": 29, "name": "XAMPP / WAMP", "level": "70%" },
-    { "id": 30, "name": "OS: Windows / MacOS / Ubuntu", "level": "80%" }
+    {
+      group: "Frontend Technologies",
+      technologies: [
+        { name: "HTML", level: "90%" },
+        { name: "CSS / SCSS / LESS", level: "85%" },
+        { name: "Bootstrap", level: "85%" },
+        { name: "JavaScript", level: "80%" },
+        { name: "TypeScript", level: "80%" },
+        { name: "jQuery", level: "80%" },
+        { name: "AngularJS", level: "85%" },
+        { name: "Angular (2+ to 13+)", level: "90%" },
+        { name: "React.js", level: "80%" }
+      ]
+    },
+    {
+      group: "UI Libraries & Frameworks",
+      technologies: [
+        { name: "Material-UI / Angular Material", level: "85%" },
+        { name: "Ag Grid", level: "75%" }
+      ]
+    },
+    {
+      group: "Charts and Visualizations",
+      technologies: [
+        { name: "Highcharts / Chart.js", level: "80%" },
+        { name: "D3.js", level: "70%" },
+        { name: "GoJS", level: "70%" },
+        { name: "EaselJS / TweenJS", level: "65%" }
+      ]
+    },
+    {
+      group: "Backend & Programming Languages",
+      technologies: [
+        { name: "Node.js", level: "75%" },
+        { name: "PHP", level: "60%" },
+        { name: "Paython", level: "70%" },
+        { name: "Core Java", level: "70%" },
+        { name: "SQL / MySQL", level: "75%" }
+      ]
+    },
+    {
+      group: "APIs and Communication",
+      technologies: [
+        { name: "AJAX / JSON", level: "85%" },
+        { name: "Axios", level: "80%" },
+        { name: "OAuth / JWT", level: "75%" }
+      ]
+    },
+    {
+      group: "Platforms & Hosting",
+      technologies: [
+        { name: "Firebase", level: "80%" },
+        { name: "EmailJS", level: "80%" },
+        { name: "Azure Services / Azure AD", level: "75%" },
+        { name: "Netlify", level: "70%" }
+      ]
+    },
+    {
+      group: "Development Tools",
+      technologies: [
+        { name: "Git / SVN / Bitbucket / Phabricator", level: "80%" },
+        { name: "Visual Studio Code / Atom / Eclipse", level: "75%" },
+        { name: "XAMPP / WAMP", level: "70%" }
+      ]
+    },
+    {
+      group: "Miscellaneous",
+      technologies: [
+        { name: "Leaflet.js", level: "70%" },
+        { name: "Three.js", level: "60%" },
+        { name: "OS: Windows / MacOS / Ubuntu", level: "80%" }
+      ]
+    }
   ];
+
+
+  // skills = [
+  //   // === Frontend Technologies ===
+  //   { "id": 1, "name": "HTML", "level": "90%" },
+  //   { "id": 2, "name": "CSS / SCSS / LESS", "level": "85%" },
+  //   { "id": 3, "name": "Bootstrap", "level": "85%" },
+  //   { "id": 4, "name": "JavaScript", "level": "80%" },
+  //   { "id": 5, "name": "TypeScript", "level": "80%" },
+  //   { "id": 6, "name": "jQuery", "level": "80%" },
+  //   { "id": 7, "name": "AngularJS", "level": "85%" },
+  //   { "id": 8, "name": "Angular (2+ to 13+)", "level": "90%" },
+  //   { "id": 9, "name": "React.js", "level": "80%" },
+
+  //   // === UI Libraries & Frameworks ===
+  //   { "id": 10, "name": "Material-UI / Angular Material", "level": "85%" },
+  //   { "id": 11, "name": "Ag Grid", "level": "75%" },
+
+  //   // === Charts and Visualizations ===
+  //   { "id": 12, "name": "Highcharts / Chart.js", "level": "80%" },
+  //   { "id": 13, "name": "D3.js", "level": "70%" },
+  //   { "id": 14, "name": "GoJS", "level": "70%" },
+  //   { "id": 15, "name": "EaselJS / TweenJS", "level": "65%" },
+
+  //   // === Backend / Programming Languages ===
+  //   { "id": 16, "name": "Node.js", "level": "75%" },
+  //   { "id": 17, "name": "PHP", "level": "60%" },
+  //   { "id": 18, "name": "Paython", "level": "70%" },
+  //   { "id": 19, "name": "Core Java", "level": "70%" },
+  //   { "id": 20, "name": "SQL / MySQL", "level": "75%" },
+
+  //   // === APIs and Communication ===
+  //   { "id": 21, "name": "AJAX / JSON", "level": "85%" },
+  //   { "id": 22, "name": "Axios", "level": "80%" },
+  //   { "id": 23, "name": "OAuth / JWT", "level": "75%" },
+
+  //   // === Platforms & Hosting ===
+  //   { "id": 24, "name": "Firebase", "level": "80%" },
+  //   { "id": 25, "name": "EmailJS", "level": "80%" },
+  //   { "id": 26, "name": "Azure Services / Azure AD", "level": "75%" },
+  //   { "id": 27, "name": "Netlify", "level": "70%" },
+
+  //   // === Dev Tools ===
+  //   { "id": 28, "name": "Git / SVN / Bitbucket / Phabricator", "level": "80%" },
+  //   { "id": 29, "name": "Visual Studio Code / Atom / Eclipse", "level": "75%" },
+  //   { "id": 30, "name": "XAMPP / WAMP", "level": "70%" },
+
+  //   // === Miscellaneous ===
+  //   { "id": 31, "name": "Leaflet.js", "level": "70%" },
+  //   { "id": 32, "name": "Three.js", "level": "60%" },
+  //   { "id": 33, "name": "OS: Windows / MacOS / Ubuntu", "level": "80%" }
+  // ];
+
   constructor() { }
 
   ngOnInit() {

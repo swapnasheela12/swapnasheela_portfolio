@@ -182,12 +182,28 @@
     }
 
     /* Logo container */
+    // .background-container {
+    //   width: 154px;
+    //   height: 40px;
+    //   background: url("../../../assets/image/PNG/Vector.png") no-repeat center
+    //     center;
+    //   background-size: cover;
+    // }
     .background-container {
-      width: 195px;
-      height: 41px;
-      background: url("../../../assets/image/SVG/Vector.svg") no-repeat center
+      width: 10vw; // Scales with viewport width
+      max-width: 154px;
+      aspect-ratio: 130 / 40; // Maintains original aspect ratio
+      background: url("../../../assets/image/PNG/Vector.png") no-repeat center
         center;
-      background-size: cover;
+      background-size: contain;
+
+      @media (max-width: 768px) {
+        width: 20vw; // Increase width slightly for tablets
+      }
+
+      @media (max-width: 480px) {
+        width: 35vw; // Increase further for mobile screens
+      }
     }
 
     /* Responsive rules */

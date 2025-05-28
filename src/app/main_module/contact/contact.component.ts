@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { SocketService } from '../../services/socket.service';
 import { TravelStoryComponent } from './travel-story/travel-story.component';
+import emailjs from 'emailjs-com';
 
 @Component({
   selector: 'app-contact',
@@ -47,11 +48,29 @@ export class ContactComponent {
     const data = this.contactForm.value;
     const contactRef = collection(this.firestore, 'contacts');
     addDoc(contactRef, data).then(() => {
+
+    }).catch(error => {
+      console.error("Error:", error);
+    });
+
+    emailjs.send(
+      'service_burl1cq',    // Replace with your actual service ID
+      'template_yw5qbpl',   // Replace with your actual template ID
+      {
+        name: data.name,
+        email: data.email,
+        title: data.subject,
+        message: data.message,
+      },
+      'FOTJJ6JL7WZtaIy2m'     // Replace with your actual public key
+    ).then(() => {
+
       if (this.contactForm.invalid) {
         this.snackBar.open('Please fill all fields correctly.', 'Close', {
           duration: 3000,
           horizontalPosition: 'right',
-          verticalPosition: 'top'
+          verticalPosition: 'top',
+          panelClass: ['orange-snackbar']
         });
         return;
       }
@@ -59,13 +78,21 @@ export class ContactComponent {
       this.snackBar.open('Message sent successfully!', 'Close', {
         duration: 3000,
         horizontalPosition: 'right',
-        verticalPosition: 'top'
+        verticalPosition: 'top',
+        panelClass: ['orange-snackbar']
       });
 
       this.contactForm.reset();
-    }).catch(error => {
-      console.error("Error:", error);
+    }).catch((error) => {
+      console.error('EmailJS error:', error);
+      this.snackBar.open('Failed to send email. Please try again later.', 'Close', {
+        duration: 3000,
+        horizontalPosition: 'right',
+        verticalPosition: 'top',
+        panelClass: ['orange-snackbar']
+      });
     });
-
   }
+
 }
+

@@ -1,4 +1,3 @@
-
 <div class="footer-container">
   <div class="footer-content container d-flex justify-content-center align-items-center">
     <div class="footer-content-row row justify-content-center w-100">
@@ -6,7 +5,7 @@
         <h2>Let's Connect there</h2>
       </div>
       <div class="footer-content-button col-12 col-md-5 m-2 text-center p-3">
-        <button class="hire-button"  routerLink="/contact" routerLinkActive="active">Hire me ➔</button>
+        <button class="hire-button" routerLink="/contact" routerLinkActive="active">Hire me ➔</button>
       </div>
     </div>
   </div>
@@ -19,10 +18,10 @@
           <p>Bringing ideas to life through clean code, modern design, and seamless interactions.</p>
           <p>Let's collaborate and create something amazing!</p>
           <div class="social-icons">
-             <a href="https://www.linkedin.com/in/swapnasheela-khandagale-01961820" target="_blank"
-                            rel="noopener noreferrer" onclick="event.stopPropagation();"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/swapnasheela12" target="_blank"
-                            rel="noopener noreferrer" onclick="event.stopPropagation();"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/swapnasheela-khandagale-01961820" target="_blank"
+              rel="noopener noreferrer" onclick="event.stopPropagation();"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/swapnasheela12" target="_blank" rel="noopener noreferrer"
+              onclick="event.stopPropagation();"><i class="fab fa-github"></i></a>
             <a href="#"><i class="fab fa-facebook"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-youtube"></i></a>
@@ -52,10 +51,13 @@
         <!-- Subscription Section -->
         <div class="col-lg-3 col-md-6 footer-subscribe">
           <h4>Get the latest information</h4>
-          <div class="subscribe-box">
-            <input type="email" placeholder="Enter Email Address" />
-            <button type="submit">➔</button>
-          </div>
+          <!-- <form class="subscribe-box" (ngSubmit)="submitEmail()"> -->
+            <div class="subscribe-box">
+              <input type="email" [formControl]="emailControl" placeholder="Enter Email Address" />
+              <button (click)="submitEmail()" type="submit">➔</button>
+            </div>
+          <!-- </form> -->
+
         </div>
       </div>
     </div>

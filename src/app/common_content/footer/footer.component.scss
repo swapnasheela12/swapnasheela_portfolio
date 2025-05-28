@@ -204,3 +204,11 @@
     }
   }
 }
+
+/* Global Snackbar Theme Override */
+::ng-deep .mat-snack-bar-container {
+  background-color: #f97316 !important;
+  color: #ffffff !important;
+  font-weight: 500;
+  border-radius: 8px;
+}

@@ -28,7 +28,7 @@ import { MatInputModule } from '@angular/material/input';
     trigger('fadeIn', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('1s ease-out', style({ opacity: 1 }))
+        animate('300ms ease-out', style({ opacity: 1 }))
       ])
     ])
   ]

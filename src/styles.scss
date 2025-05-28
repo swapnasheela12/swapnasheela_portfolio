@@ -84,3 +84,16 @@ body {
     opacity: 1;
   }
 }
+
+/* FULLY CUSTOM ORANGE SNACKBAR */
+.orange-snackbar {
+  .mat-mdc-snackbar-surface {
+    background-color: #f97316 !important;
+    color: white !important;
+  }
+  .mat-button,
+  .orange-snackbar .mat-button .mat-button-wrapper {
+    color: white !important;
+    font-weight: 600;
+  }
+}

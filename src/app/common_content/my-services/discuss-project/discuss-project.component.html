@@ -8,8 +8,8 @@
           <div matPrefix class="discuss-project-icon-cointainer input-group-text">
             <mat-icon class="discuss-project-icon">mail</mat-icon>
           </div>
-          <input class="discuss-project-input-box" type="email" matInput placeholder="Enter Email Address" />
-          <button class="discuss-project-button-send" color="primary" matSuffix>Send</button>
+          <input [formControl]="emailControl" class="discuss-project-input-box" type="email" matInput placeholder="Enter Email Address" />
+          <button class="discuss-project-button-send" (click)="sendEmail()" color="primary" matSuffix>Send</button>
         </mat-form-field>
       </div>
     </div>

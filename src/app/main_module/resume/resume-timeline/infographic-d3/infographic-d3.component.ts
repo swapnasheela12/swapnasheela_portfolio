@@ -247,13 +247,82 @@ export class InfographicD3Component implements AfterViewInit {
       //     .html(text);
       // };
 
+      //   const drawBubble = (text: string) => {
+      //     // Remove existing bubble if any
+      //     d3.selectAll('.speech-foreign').remove();
+
+      //     const bubbleWidth = 280;
+      //     const bubbleHeight = 400;
+      //     const padding = 10;
+
+      //     const bubble = g.select('g.root-head')
+      //       .append('foreignObject')
+      //       .attr('class', 'speech-foreign')
+      //       .attr('x', headOffset + 20)
+      //       .attr('y', -headOffset / 2)
+      //       .attr('width', bubbleWidth)
+      //       .attr('height', bubbleHeight)
+      //       .style('opacity', 0);
+
+      //     bubble.transition().duration(600).style('opacity', 1);
+
+      //     const div = bubble.append('xhtml:div')
+      //       .attr('xmlns', 'http://www.w3.org/1999/xhtml')
+      //       .style('font-family', `'Segoe UI', sans-serif`)
+      //       .style('color', '#fff')
+      //       .style('background', '#1e88e5')
+      //       .style('padding', `${padding}px`)
+      //       .style('border-radius', '12px')
+      //       .style('box-shadow', '0 4px 10px rgba(0, 0, 0, 0.2)')
+      //       .style('font-size', '13px')
+      //       .style('position', 'relative')
+      //       .style('line-height', '1.4')
+      //       .html(`
+      //   ${text}
+      //   <style>
+      //     .speech-bubble::after {
+      //       content: "";
+      //       position: absolute;
+      //       bottom: -10px;
+      //       left: 20px;
+      //       width: 0;
+      //       height: 0;
+      //       border-left: 10px solid transparent;
+      //       border-right: 10px solid transparent;
+      //       border-top: 10px solid #1e88e5;
+      //     }
+      //   </style>
+      //   <div class="speech-bubble"></div>
+      // `);
+      //   };
+
       const drawBubble = (text: string) => {
-        // Remove existing bubble if any
         d3.selectAll('.speech-foreign').remove();
 
-        const bubbleWidth = 280;
-        const bubbleHeight = 400;
-        const padding = 10;
+        // Get current screen width
+        const screenWidth = window.innerWidth;
+
+        // Responsive bubble dimensions
+        let bubbleWidth = 280;
+        let bubbleHeight = 400;
+        let padding = 10;
+
+        if (screenWidth <= 480) {
+          // Mobile
+          bubbleWidth = screenWidth * 0.18;
+          bubbleHeight = 220;
+          padding = 6;
+        } else if (screenWidth <= 768) {
+          // Tablet
+          bubbleWidth = screenWidth * 0.28;
+          bubbleHeight = 250;
+          padding = 10;
+        } else {
+          // Desktop
+          bubbleWidth = 300;
+          bubbleHeight = 400;
+          padding = 12;
+        }
 
         const bubble = g.select('g.root-head')
           .append('foreignObject')
@@ -266,7 +335,7 @@ export class InfographicD3Component implements AfterViewInit {
 
         bubble.transition().duration(600).style('opacity', 1);
 
-        const div = bubble.append('xhtml:div')
+        bubble.append('xhtml:div')
           .attr('xmlns', 'http://www.w3.org/1999/xhtml')
           .style('font-family', `'Segoe UI', sans-serif`)
           .style('color', '#fff')

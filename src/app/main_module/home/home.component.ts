@@ -5,7 +5,7 @@ import { MyServicesComponent } from "../../common_content/my-services/my-service
 
 @Component({
     selector: 'app-home',
-    imports: [MyServicesComponent, HeaderComponent, FooterComponent],
+    imports: [MyServicesComponent, HeaderComponent],
     standalone: true,
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss'

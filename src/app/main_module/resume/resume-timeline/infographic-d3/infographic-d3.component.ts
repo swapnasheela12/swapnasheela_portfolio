@@ -319,9 +319,9 @@ export class InfographicD3Component implements AfterViewInit {
           padding = 10;
         } else {
           // Desktop
-          bubbleWidth = 300;
+          bubbleWidth = 150;
           bubbleHeight = 400;
-          padding = 12;
+          padding = 10;
         }
 
         const bubble = g.select('g.root-head')

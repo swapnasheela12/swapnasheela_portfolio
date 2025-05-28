@@ -28,9 +28,9 @@ export class ProjectComponent {
     { image: '../../../assets/image/PNG/myServices/jio_nbiot.png', title: 'Jio NB-IOT', desc: 'Reliance Jio NB-IOT' },
     { image: '../../../assets/image/PNG/myServices/pixtran.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' },
 
-    { image: '../../../assets/image/PNG/myServices/100pro.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' },
-    { image: '../../../assets/image/PNG/myServices/hire4hotel.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' },
-    { image: '../../../assets/image/PNG/myServices/xovient.png', title: 'LOREM IPSUM', desc: 'sed do eiusmod tempor incididunt ut labore' }
+    { image: '../../../assets/image/PNG/myServices/hitachi-ABB.png', title: 'Hitachi ABB', desc: 'Hitachi Energy Relcare cost configurator' },
+    { image: '../../../assets/image/PNG/myServices/dashbord-jio.png', title: 'Reliance Jio', desc: 'JCP (Jio cognitive platform)' },
+    { image: '../../../assets/image/PNG/myServices/pixtran.png', title: 'PIX Transmissions', desc: ' Power Transmission Products site' },
   ];
 
   ngAfterViewInit(): void {

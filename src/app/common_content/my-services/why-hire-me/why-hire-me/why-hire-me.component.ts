@@ -17,7 +17,7 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
     MatDatepickerModule,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
   ],
   standalone: true,
   templateUrl: './why-hire-me.component.html',

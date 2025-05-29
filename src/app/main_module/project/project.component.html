@@ -1,19 +1,24 @@
-<!-- <div #galleryWrapper id="galleryWrapper" class="gallery-wrapper mb-5">
-  <svg #gallerySvg class="gallery-svg" width="100%"></svg>
+<div class="travel-slider container pb-5">
+    <div class="section-title">
+        <h4 class="section-title-h4" ><span class="white-word">Project </span>List</h4>
+    </div>
+    <div class="slider-wrapper position-relative">
+        <button class="nav-btn prev" (click)="prevSlide()">‹</button>
 
-  <div
-    class="fullscreen-overlay"
-    *ngIf="selectedImage"
-    (click)="closeLightbox()"
-    (contextmenu)="$event.preventDefault()"
-  >
-    <img
-      [src]="selectedImage"
-      class="fullscreen-image"
-      (click)="$event.stopPropagation()"
-      draggable="false"
-      (contextmenu)="$event.preventDefault()"
-    />
-  </div>
-</div> -->
-<app-image-slider></app-image-slider>
+        <div (contextmenu)="disableRightClick($event)" class="card-slider d-flex overflow-hidden" #slider
+            draggable="false">
+            <div class="card-item" *ngFor="let card of cards; let i = index" [class.active]="i === currentIndex">
+                <div class="card-content shadow-lg rounded" (click)="openImageDialog(card)">
+                    <img [src]="card.image" class="img-fluid" alt="destination" />
+                    <div class="card-text">
+                        <h5>{{ card.title }}</h5>
+                        <p>{{ card.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="nav-btn next" (click)="nextSlide()">›</button>
+    </div>
+</div>
+<app-awards-recognition></app-awards-recognition>

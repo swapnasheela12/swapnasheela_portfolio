@@ -1,59 +1,117 @@
-.gallery-wrapper {
-  width: 100%;
-  height: 80vh;
-  overflow: hidden;
-  position: relative;
+$primary-color: #fd853a;
+$bg-dark: #111;
+$text-light: #fff;
+$btn-color: #fd853a;
 
-  .gallery-svg {
-    display: block;
-  }
-
-  .fullscreen-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(8px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10000;
-    animation: fadeIn 0.3s ease;
-    cursor: pointer;
-
-    user-select: none;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-    pointer-events: auto;
-
-    img.fullscreen-image {
-      max-width: 90vw;
-      max-height: 90vh;
-      border-radius: 16px;
-      animation: zoomIn 0.4s ease;
-      pointer-events: none;
+.travel-slider {
+  height: 100vh;
+  .section-title {
+    // margin-top: 2rem;
+    .section-title-h4 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: $primary-color;
+      //   margin-bottom: 10px;
+      font-family: Lufga Medium;
+      .white-word {
+        color: #344054;
+      }
     }
   }
-}
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+  .slider-wrapper {
+    position: relative;
 
-@keyframes zoomIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0.5;
+    .card-slider {
+      transition: transform 0.5s ease-in-out;
+      gap: 1.5rem;
+      padding: 1rem; // 1rem top and bottom, 0 left and right
+      .card-item {
+        flex: 0 0 auto;
+        width: clamp(250px, 30%, 350px);
+        transition: transform 0.3s;
+        cursor: pointer;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+
+        .card-content {
+          background: #fff;
+          border-radius: 20px;
+          overflow: hidden;
+          transition: box-shadow 0.3s;
+          height: 100%;
+
+          img {
+            content: "© Swapnasheela - Protected";
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+          }
+
+          .card-text {
+            padding: 1rem;
+            text-align: center;
+            background: #1a1a1a;
+            color: #f97316;
+            h5 {
+              font-weight: 600;
+              margin-bottom: 0.5rem;
+            }
+
+            p {
+              font-size: 0.9rem;
+              color: #555;
+            }
+          }
+        }
+      }
+    }
+
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      border: none;
+      font-size: 2rem;
+      z-index: 1;
+      padding: 0 1rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+
+      &.prev {
+        left: -20px;
+      }
+
+      &.next {
+        right: -20px;
+      }
+
+      &:hover {
+        background-color: #f97316;
+        color: white;
+      }
+    }
   }
-  to {
-    transform: scale(1);
-    opacity: 1;
+
+  @media (max-width: 768px) {
+    .travel-slider {
+      height: 500px;
+
+      .card-slider {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+
+        .card-item {
+          width: 80%;
+        }
+
+        .nav-btn {
+          display: none;
+        }
+      }
+    }
   }
 }

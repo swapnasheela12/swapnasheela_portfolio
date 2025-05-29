@@ -1,8 +1,12 @@
-<div class="travel-slider container py-5">
+<div class="travel-slider container pb-5">
+    <div class="section-title">
+        <h4 class="section-title-h4" ><span class="white-word">Project </span>List</h4>
+    </div>
     <div class="slider-wrapper position-relative">
         <button class="nav-btn prev" (click)="prevSlide()">‹</button>
 
-        <div (contextmenu)="disableRightClick($event)" class="card-slider d-flex overflow-hidden" #slider draggable="false">
+        <div (contextmenu)="disableRightClick($event)" class="card-slider d-flex overflow-hidden" #slider
+            draggable="false">
             <div class="card-item" *ngFor="let card of cards; let i = index" [class.active]="i === currentIndex">
                 <div class="card-content shadow-lg rounded" (click)="openImageDialog(card)">
                     <img [src]="card.image" class="img-fluid" alt="destination" />

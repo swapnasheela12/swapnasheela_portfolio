@@ -1,0 +1,16 @@
+<div class="awards-container container py-5">
+     <div class="section-title">
+        <h4 class="section-title-h4" ><span class="white-word">🏆 Awards </span>& Recognitions</h4>
+    </div>
+  
+  <div class="row justify-content-center g-4">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-4" *ngFor="let award of awards">
+      <div class="award-card p-3 text-center h-100">
+        <img [src]="award.image" [alt]="award.title" class="award-icon mb-3" />
+        <h5 class="award-title">{{ award.title }}</h5>
+        <p class="award-source">{{ award.issuer }}</p>
+        <small class="award-year">{{ award.year }}</small>
+      </div>
+    </div>
+  </div>
+</div>

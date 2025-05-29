@@ -115,9 +115,9 @@ export class InfographicD3Component implements AfterViewInit {
       desktop: {
         widthPadding: 200,
         topPadding: 60,
-        block: { width: 350, height: 90 },
+        block: { width: 250, height: 100 },
         font: { titleSize: '18px', descSize: '16px', lineHeight: 16 },
-        headSize: 400,
+        headSize: 290,
         nodeDistance: 180,
         linkStroke: 2,
         scaleFactor: 1,

@@ -2,6 +2,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 
 import { AppComponent } from './app/app.component';
+import { MatDialogModule } from '@angular/material/dialog';
 import { appConfig } from './app/app.config';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { importProvidersFrom } from '@angular/core';
@@ -26,6 +27,7 @@ const firebaseConfig = {
 bootstrapApplication(AppComponent, {
   providers: [
     provideAnimations(),
+    MatDialogModule,
     provideRouter(routes),
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideFirestore(() => getFirestore())

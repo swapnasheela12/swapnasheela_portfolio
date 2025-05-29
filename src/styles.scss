@@ -97,3 +97,11 @@ body {
     font-weight: 600;
   }
 }
+
+::ng-deep .image-dialog-panel .mat-dialog-container {
+  padding: 1.5rem;
+  border-radius: 20px;
+  max-width: 90vw;
+  width: 100%;
+  background: white;
+}

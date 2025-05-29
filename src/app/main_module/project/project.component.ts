@@ -19,7 +19,6 @@ export class ProjectComponent {
   @ViewChild('slider', { static: true }) slider!: ElementRef;
   constructor(private dialog: MatDialog) { }
   cards = [
-    { image: '../../../../assets/image/PNG/myServices/hitachi-ABB.png', title: 'Hitachi ABB', description: 'Hitachi Energy Relcare cost configurator' },
     { image: './../../../assets/image/PNG/myServices/hitachi-ABB.png', title: 'Hitachi ABB', description: 'Hitachi Energy Relcare cost configurator' },
     { image: '../../../assets/image/PNG/myServices/dashbord-jio.png', title: 'Reliance Jio', description: 'JCP (Jio cognitive platform)' },
     { image: '../../../assets/image/PNG/myServices/pixtran.png', title: 'PIX Transmissions', description: ' Power Transmission Products site' },

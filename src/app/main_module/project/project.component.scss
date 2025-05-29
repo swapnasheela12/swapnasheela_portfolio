@@ -1,18 +1,139 @@
+// $primary-color: #fd853a;
+// $bg-dark: #111;
+// $text-light: #fff;
+// $btn-color: #fd853a;
+
+// .travel-slider {
+//   height: 100%;
+//   .section-title {
+//     // margin-top: 2rem;
+//     .section-title-h4 {
+//       font-size: 2rem;
+//       font-weight: 700;
+//       color: $primary-color;
+//       //   margin-bottom: 10px;
+//       font-family: Lufga Medium;
+//       .white-word {
+//         color: #344054;
+//       }
+//     }
+//   }
+
+//   .slider-wrapper {
+//     position: relative;
+
+//     .card-slider {
+//       transition: transform 0.5s ease-in-out;
+//       gap: 1.5rem;
+//       padding: 1rem; // 1rem top and bottom, 0 left and right
+//       .card-item {
+//         flex: 0 0 auto;
+//         width: clamp(250px, 30%, 350px);
+//         transition: transform 0.3s;
+//         cursor: pointer;
+
+//         &:hover {
+//           transform: scale(1.05);
+//         }
+
+//         .card-content {
+//           background: #fff;
+//           border-radius: 20px;
+//           overflow: hidden;
+//           transition: box-shadow 0.3s;
+//           height: 100%;
+
+//           img {
+//             content: "© Swapnasheela - Protected";
+//             width: 100%;
+//             height: 200px;
+//             object-fit: cover;
+//           }
+
+//           .card-text {
+//             padding: 1rem;
+//             text-align: center;
+//             background: #1a1a1a;
+//             color: #f97316;
+//             h5 {
+//               font-weight: 600;
+//               margin-bottom: 0.5rem;
+//             }
+
+//             p {
+//               font-size: 0.9rem;
+//               color: #555;
+//             }
+//           }
+//         }
+//       }
+//     }
+
+//     .nav-btn {
+//       position: absolute;
+//       top: 50%;
+//       transform: translateY(-50%);
+//       background: #fff;
+//       border: none;
+//       font-size: 2rem;
+//       z-index: 1;
+//       padding: 0 1rem;
+//       cursor: pointer;
+//       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+
+//       &.prev {
+//         left: -20px;
+//       }
+
+//       &.next {
+//         right: -20px;
+//       }
+
+//       &:hover {
+//         background-color: #f97316;
+//         color: white;
+//       }
+//     }
+//   }
+
+//   // @media (max-width: 768px) {
+//   //   .travel-slider {
+      
+//   //     .card-slider {
+//   //       flex-wrap: nowrap;
+//   //       overflow-x: auto;
+
+//   //       .card-item {
+//   //         width: 80%;
+//   //       }
+
+//   //       .nav-btn {
+//   //         display: none;
+//   //       }
+//   //     }
+//   //   }
+//   // }
+// }
+
+
+
 $primary-color: #fd853a;
 $bg-dark: #111;
 $text-light: #fff;
-$btn-color: #fd853a;
 
 .travel-slider {
-  height: 100%;
+  padding-block: 2rem;
+
   .section-title {
-    // margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+
     .section-title-h4 {
       font-size: 2rem;
       font-weight: 700;
       color: $primary-color;
-      //   margin-bottom: 10px;
-      font-family: Lufga Medium;
+      font-family: 'Lufga Medium';
+
       .white-word {
         color: #344054;
       }
@@ -23,13 +144,22 @@ $btn-color: #fd853a;
     position: relative;
 
     .card-slider {
-      transition: transform 0.5s ease-in-out;
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
       gap: 1.5rem;
-      padding: 1rem; // 1rem top and bottom, 0 left and right
+      padding: 0 1rem;
+
+      &::-webkit-scrollbar {
+        display: none; // hide scrollbar on all devices
+      }
+
       .card-item {
         flex: 0 0 auto;
-        width: clamp(250px, 30%, 350px);
-        transition: transform 0.3s;
+        width: clamp(220px, 80vw, 300px);
+        transition: transform 0.3s ease;
         cursor: pointer;
 
         &:hover {
@@ -40,29 +170,34 @@ $btn-color: #fd853a;
           background: #fff;
           border-radius: 20px;
           overflow: hidden;
-          transition: box-shadow 0.3s;
           height: 100%;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          transition: box-shadow 0.3s ease;
 
           img {
-            content: "© Swapnasheela - Protected";
             width: 100%;
             height: 200px;
             object-fit: cover;
+            user-select: none;
+            pointer-events: none;
           }
 
           .card-text {
             padding: 1rem;
-            text-align: center;
             background: #1a1a1a;
-            color: #f97316;
+            color: $primary-color;
+            text-align: center;
+height: inherit;
             h5 {
               font-weight: 600;
+              font-size: 1.1rem;
               margin-bottom: 0.5rem;
             }
 
             p {
               font-size: 0.9rem;
-              color: #555;
+              color: #bbb;
+              margin: 0;
             }
           }
         }
@@ -76,40 +211,26 @@ $btn-color: #fd853a;
       background: #fff;
       border: none;
       font-size: 2rem;
-      z-index: 1;
-      padding: 0 1rem;
+      z-index: 10;
+      padding: 0 0.8rem;
       cursor: pointer;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 
       &.prev {
-        left: -20px;
+        left: 0;
       }
 
       &.next {
-        right: -20px;
+        right: 0;
       }
 
       &:hover {
-        background-color: #f97316;
+        background-color: $primary-color;
         color: white;
       }
-    }
-  }
 
-  @media (max-width: 768px) {
-    .travel-slider {
-      
-      .card-slider {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-
-        .card-item {
-          width: 80%;
-        }
-
-        .nav-btn {
-          display: none;
-        }
+      @media (max-width: 768px) {
+        display: none;
       }
     }
   }

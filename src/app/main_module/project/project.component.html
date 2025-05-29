@@ -1,4 +1,4 @@
-<div class="travel-slider container pb-5">
+<!-- <div class="travel-slider container pb-5">
     <div class="section-title  text-center">
         <h4 class="section-title-h4" ><span class="white-word">Project </span>List</h4>
     </div>
@@ -20,5 +20,32 @@
 
         <button class="nav-btn next" (click)="nextSlide()">›</button>
     </div>
+</div>
+<app-awards-recognition></app-awards-recognition> -->
+
+<div class="travel-slider container-fluid">
+  <div class="section-title">
+    <h4 class="section-title-h4">
+      <span class="white-word">Project</span> List
+    </h4>
+  </div>
+
+  <div class="slider-wrapper position-relative">
+    <button class="nav-btn prev" (click)="prevSlide()">‹</button>
+
+    <div class="card-slider" #slider (contextmenu)="disableRightClick($event)">
+      <div class="card-item" *ngFor="let card of cards; let i = index" [class.active]="i === currentIndex">
+        <div class="card-content" (click)="openImageDialog(card)">
+          <img [src]="card.image" alt="Project Image" />
+          <div class="card-text">
+            <h5>{{ card.title }}</h5>
+            <p>{{ card.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="nav-btn next" (click)="nextSlide()">›</button>
+  </div>
 </div>
 <app-awards-recognition></app-awards-recognition>

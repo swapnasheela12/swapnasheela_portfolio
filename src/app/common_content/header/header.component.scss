@@ -215,9 +215,6 @@
 }
 
 
-
-
-
 /*
   ##Device = Desktops
   ##Screen = 1281px to higher resolution desktops
@@ -452,7 +449,9 @@
           .img-bind-container {
             .eclips-img-container {
               .img-eclips-style {
-                img {}
+                img {
+                  transform: translate(0%, 6%);
+                }
               }
             }
 
@@ -465,12 +464,19 @@
                 }
               }
             }
+            
 
-            .photo-img-container {
-              .img-photo-style {
-                img {}
+             .photo-img-container {
+           
+
+            .img-photo-style {
+             
+
+              img {
+                transform: translate(0%, -19%);
               }
             }
+          }
           }
         }
 

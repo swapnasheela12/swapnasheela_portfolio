@@ -81,11 +81,13 @@
               animation: moveAndRotate5 5s linear infinite;
             }
           }
+
           /* MEDIA QUERIES FOR RESPONSIVENESS */
 
           /* Extra Large to Large (1200px to 992px) */
           @media (max-width: 1199.98px) {
             .img-container {
+
               .img1,
               .img2,
               .img3,
@@ -104,6 +106,7 @@
           /* Large to Medium (991px to 768px) */
           @media (max-width: 991.98px) {
             .img-container {
+
               .img1,
               .img2,
               .img3,
@@ -121,6 +124,7 @@
           /* Medium to Small (767px to 576px) */
           @media (max-width: 767.98px) {
             .img-container {
+
               .img1,
               .img2,
               .img3,
@@ -144,6 +148,7 @@
           /* Small and below (<576px) */
           @media (max-width: 575.98px) {
             .img-container {
+
               .img1,
               .img3,
               .img4,
@@ -151,6 +156,7 @@
                 width: 100px;
                 height: 100px;
               }
+
               // .img4 {
               //   bottom: 0%;
               // }
@@ -183,8 +189,7 @@
             }
 
             .img2 {
-              @include media-breakpoint-up(xxl) {
-              }
+              @include media-breakpoint-up(xxl) {}
 
               @include media-breakpoint-up(xl) {
                 @keyframes moveAndRotate2 {
@@ -264,6 +269,7 @@
             }
 
             .img3 {
+
               // transform: translateX(100px);
               @keyframes moveAndRotate3 {
                 0% {
@@ -349,6 +355,7 @@
         position: relative;
         z-index: 2;
         padding: 20px 0 !important;
+
         @include media-breakpoint-down(md) {
           padding: 15px;
         }
@@ -360,6 +367,7 @@
           .card-header-myservices {
             color: #fcfcfd;
             width: 100%;
+
             .card-header-container-myservices {
               // padding: 10px;
 
@@ -446,20 +454,14 @@
               /* the radius */
               --s: 40px;
               /* the size of the corner*/
-              --_m: /calc(2 * var(--r)) calc(2 * var(--r)) radial-gradient(
-                  #000 70%,
-                  #0000 72%
-                ) no-repeat;
+              --_m: /calc(2 * var(--r)) calc(2 * var(--r)) radial-gradient(#000 70%,
+                  #0000 72%) no-repeat;
               mask: right 0 bottom calc(var(--s) + var(--r)) var(--_m),
                 right calc(var(--s) + var(--r)) bottom 0 var(--_m),
-                radial-gradient(var(--s) at 100% 100%, #0000 99%, #000 101%)
-                  calc(-1 * var(--r)) calc(-1 * var(--r)) no-repeat,
-                conic-gradient(
-                  from 90deg at calc(100% - var(--s) - 2 * var(--r))
-                    calc(100% - var(--s) - 2 * var(--r)),
+                radial-gradient(var(--s) at 100% 100%, #0000 99%, #000 101%) calc(-1 * var(--r)) calc(-1 * var(--r)) no-repeat,
+                conic-gradient(from 90deg at calc(100% - var(--s) - 2 * var(--r)) calc(100% - var(--s) - 2 * var(--r)),
                   #0000 25%,
-                  #000 0
-                );
+                  #000 0);
 
               @include media-breakpoint-down(md) {
                 height: 500px;
@@ -475,6 +477,7 @@
                 font-size: 32px;
                 border-bottom: 2px solid rgba(255, 255, 255, 0.3);
                 line-height: 34px;
+                height: 30%;
 
                 .heading-my-services-card {
                   margin: 24px 15px;
@@ -493,7 +496,7 @@
 
               .card-body {
                 height: 100%;
-                max-height: calc(100% - 132px);
+                max-height: calc(100% - 30%);
                 position: relative;
                 padding: 0;
 

@@ -33,7 +33,7 @@ export class ResumeSidebarComponent implements OnInit {
         { name: "TypeScript", level: "80%" },
         { name: "jQuery", level: "80%" },
         { name: "AngularJS", level: "85%" },
-        { name: "Angular (2+ to 13+)", level: "90%" },
+        { name: "Angular (2+ to 19+)", level: "90%" },
         { name: "React.js", level: "80%" }
       ]
     },

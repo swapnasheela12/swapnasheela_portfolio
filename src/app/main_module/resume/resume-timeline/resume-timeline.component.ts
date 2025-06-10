@@ -21,103 +21,97 @@ export class ResumeTimelineComponent implements OnInit {
 
   private data = [
     {
-      id: 1, name: "exl services", year: 2025, title: 'UI Lead Assistant Manager', desc: 'EXL Services, USA', icon: '../../../../assets/image/JPG/my-services/exlservices.png', color: '#fd853a',
+      id: 1, name: "elutus info technology", year: 2016, title: 'Web Developer', desc: 'Elutus Info Technology Pvt Ltd, India', icon: '../../../../assets/image/JPG/my-services/elutus.png', color: '#fd853a',
       "project_experience": [
         {
           "project_no": 1,
-          "project_title": "Insurance Employee Dashboard (Web)",
+          "project_title": "Pix Transmissions Ltd",
+          "project_link": "http://www.pixtrans.com/",
           "role_and_responsibilities": [
-            "Developed a comprehensive Employee Dashboard for Insurance company using React.js, enabling internal employees to access, manage, and monitor company-wide insurance data, client interactions, claims statuses, and internal analytics.",
-            "The dashboard streamlines the workflow for employees by providing a real-time, user-friendly interface with essential tools and data for efficient management.",
-            "Using React.js for the frontend, .NET (C#) for the backend, and Azure for cloud hosting and services, this dashboard enables employees to manage insurance policies, claims, customer information, and internal analytics with ease.",
-            "Secure login system with JWT authentication for employee access.",
-            "Role-based access control (RBAC) to provide different levels of access for various employee roles (e.g., Admin, Claims Manager, Sales, Customer Support).",
-            "Session management to ensure secure access and prevent unauthorized actions.",
-            "A dynamic, customizable homepage showing an overview of company metrics, current claims, policies in progress, and employee-specific data.",
-            "Real-time data updates for key performance indicators (KPIs), such as claim approval rates, policy renewals, and customer interactions.",
-            "Ability for employees to view and manage insurance claims, track claim statuses, and review claim details (pending, approved, rejected).",
-            "Automated notifications for any claim updates (e.g., new claim submissions, approvals, rejections).",
-            "Option to mark claims for follow-up, escalate issues, or assign them to different departments.",
-            "Employee access to view, modify, and manage active insurance policies, including customer details, coverage levels, and policy status.",
-            "Real-time updates to policy details as they are modified by customers or other employees.",
-            "Integration with the CRM system to view and manage customer interactions, sales activities, and communications.",
-            "Track customer feedback and service issues directly from the dashboard for follow-up or escalation.",
-            "Data visualizations (using Chart.js or Recharts) to display various company metrics such as claim approval rates, policies sold, and overall insurance performance.",
-            "Generate and download reports for claims, policies, and sales performance for internal auditing and decision-making.",
-            "In-app alerts for important events such as claim escalations, policy renewals, or missed deadlines.",
-            "Email and push notifications for employees to ensure timely actions and responses.",
-            "Advanced search functionality for quickly finding claims, policies, and customer records based on various criteria (e.g., policy type, claim status, customer name).",
-            "Filters for sorting claims, policies, and employees by status, type, or priority.",
-            "Employees can create, assign, and track internal tasks related to policies, claims, and customer follow-ups.",
-            "Task prioritization and due date management to ensure deadlines are met.",
-            "Fully responsive interface for accessing the employee dashboard from desktops, tablets, and mobile devices.",
-            "Use of Material-UI for fast, flexible, and responsive design components."
+            "Planned structure and design as per client requirements.",
+            "Designed and coded multiple web pages.",
+            "Performed manual testing for the site.",
+            "Prepared test case documentation according to the development process.",
+            "Worked on various internal modules and sub-modules."
           ],
           "environment": [
-            "React.js: A JavaScript library for building the user interface. React helps create dynamic, single-page applications with a component-based architecture.",
-            "React Router: For client-side routing to handle different views (e.g., Claims, Policies, Analytics).",
-            "Material-UI: A popular UI component library to ensure a modern, responsive, and consistent design.",
-            "Axios: For making API requests to fetch and post data to the backend.",
-            "highcharts.js: For visualizing performance data and creating reports.",
-            ".NET (C#): The backend is developed using .NET Core (or ASP.NET Core), a robust framework for building scalable and high-performance APIs.",
-            "Entity Framework Core: An Object-Relational Mapping (ORM) framework to interact with the database using C# objects.",
-            "SQL Server or Azure SQL Database: For storing employee, client, policy, claim, and other organizational data.",
-            "JWT (JSON Web Tokens): Used for stateless, secure authentication and authorization between the frontend and backend.",
-            "OAuth/OpenID: Integration with Azure Active Directory for single sign-on (SSO) and secure role-based access.",
-            "Azure App Services: Host both the backend API (ASP.NET Core) and React frontend with managed services, providing scalability and security.",
-            "Azure Active Directory (AAD): For user authentication and role-based access control. Employees are authenticated via OAuth and access is secured based on roles (Admin, Claims Manager, Customer Support, etc.).",
-            "Deployed frontend on Netlify for continuous deployment.",
-            "Backend deployed on Azure."
-          ]
-        }
-      ]
-    },
-    {
-      id: 2, name: "topcoder", year: 2022, title: 'Freelance Ui Developer', desc: 'Wipro (Topcoder), Global', icon: '../../../../assets/image/JPG/my-services/wiprotopcoder.jpg', color: '#fd853a',
-      "project_experience": [
-        {
-          "project_no": 1,
-          "project_title": "S4 Portal ABB (Web)",
-          "project_link": "https://login.microsoftonline.com/372ee9e0-9ce0-4033-a64a-c07073a91ecd/saml2?SAMLRequest=jVLBbtswDP0VQ3fbipzEjRAHyBIMC9B1RpP1sBsj06kAWfJEOd3%2Bfq6Sod1hQS86UI%2FvPT5ySdAZ0cv1EJ7tI%2F4ckELyqzOW5OWnYoO30gFpkhY6JBmU3K%2B%2F3kuRcdl7F5xyhiVrIvRBO7txloYO%2FR79WSv8%2FnhfsecQepJ5DsdjRpd6at1LplyXWzj3cMKscSzZjurawivNW5NxJ22zTivvyLXBWaMtxtaiFIgL5OlCjc%2BUF0UK8ymkipe8LGAxQdXkcQyWfHZeYZyyYi0YQpbsthXbP2xwOpvzu9kERMuhVXdNybEoy0Lgoh35yxFINRDpM761Eg24sxTAhooJLmYpn6ZCHLiQnEsxz%2Baz4gdL6ms%2Bn7RttD3dDvN4AZH8cjjUaf1tf4gEZ92gfxjRH8%2FxCT3FDEdatlrGCGT07N8v97Yd%2BLtRtrqhu8zfs1%2B1evnqd7etndHqd7I2xr1sPEIYZwh%2BwLiODsL%2FDUyySazoJm0jVA6WelS61diwfHWV%2FfdwV38A&RelayState=https%3A%2F%2Fabb.service-now.com%2Fmyservices%3Fid%3Dmyis",
-          "role_and_responsibilities": [
-            "Service and Consulting Solutions Application Suite consists of business applications available to Hitachi Energy users. They consist of 4 categories: engagement, partnership, consulting, and sustainability.",
-            "Provides a unified architecture and platform across applications. Core functionality includes role-based access control, project and task management, model execution management, prepare-execute-collect results, sync and async model execution, user dashboards.",
-            "Developed the application in module-wise structure like Critical Spare Parts (CSP), Harmonic Impedance Scanning (HIS), and Cost Configurator.",
-            "Built the application using HTML5, XHTML, CSS3, JavaScript, Angular 13, jQuery, AJAX, JSON, Bootstrap, and Lodash.",
-            "Designed and developed front-end using Angular Reactive Forms for authentication and validation. Data displayed in table format using Angular Material.",
-            "Integrated RESTful APIs for POST, PUT, DELETE, and GET operations.",
-            "Used frameworks and plugins for additional features like custom table data, Angular Material, Angular Bootstrap UI, ngx-daterangepicker-material, and Moment.js.",
-            "Utilized Git for version control and team collaboration."
-          ],
-          "environment": [
-            "HTML", "CSS", "SCSS", "Bootstrap", "Angular 13", "JavaScript", "jQuery", "JSON",
-            "NPM", "Karma", "Bower", "Git", "SVN", "Node.js", "Angular Material", "Lodash"
+            "JavaScript", "PHP", "MySQL", "Bootstrap", "HTML5", "CSS3", "jQuery", "Manual Testing", "XAMPP Server"
           ]
         },
         {
           "project_no": 2,
-          "project_title": "RelCare Hitachi ABB (Web)",
-          "project_link": "https://login.microsoftonline.com/7831e6d9-dc6c-4cd1-9ec6-1dc2b4133195/resume?ctx=rQQIARAAjZHPa9NwAMXzXbeuFlyrgu6gUKSIONP8_lWo2HVzS20T1t-tB0mTb5q0aZIlabsW_wBPspOIJxUPMhgMUZBd9LzTjuJhTLzIDmN42kns_gPh8eA9eJfPi4apFMmn8HshMoWnkwwLeZqhOZQUcAWlIU6gAlQIFOdIUqE4rQ15yrsajWeevARy7cGzz8jpfnK-BHfAbSMIXD-NYarjpgwzUFTDhDb0OuOU6vQxZRAYXwA4BOA3ADszSZwQWKZNaSjDMjTKKTSLTgsB5WlOoygoEApF_ZiJydnpjrwwxzMn8M9MRPeUTh_aweuQC8d5t5UTWbGb3ZIrTaLZlXqFSpWU1pqBNJlmkzAkUpwU6s2RtFIdtVaWreJaqVfMib7YJyxtbdWUbd9U6gzeauSNJlVy2yRThY1lS-w6ptqv9ZRG3mpSG6bewDMfQ0mOpwjIagKqqayK0qp2wUdlUUJTyTZNUBQhMAehW44LbVNLuJ6jmxZMOLpumTZ8qqgq9P3vIXA4C05mr0dC8ZuLSAK5ewefS0ci0XhscT6BnM-Cd3NTxAur77-e_T16-Gm3jJz8uoEczGHVcqdY2Gi5vUk-y3sBafe2YC2rS4oh05XhuuTkCl7T6ZdUDM8waWI7DLbD1w7Csb6vWKmun2p7zsiH3lkYPJ9H9i_9x2WvomAnuiRKOd4ctvjqsMxpWXu8MZJYsVzRaWL4SO4UJzrZkVk71-FcdS8Kvl1Gzhd2X_x8--bD8en6Sez-cAmzMb-2aWFDfLBc3yTyMp9VBoPOuEpaXZ4f1h9jan_VJaVsZi-OHE91BfkH0",
+          "project_title": "Hire4Hotel",
+          "project_link": "http://www.hire4hotel.com",
           "role_and_responsibilities": [
-            "RelCare is a digital partnership agreement combining asset management software with Hitachi Energy expertise.",
-            "Enables asset managers to optimize system performance and protect crucial power assets. Location tracing and signal range detection using OpenStreetMap, Canvas, SVG, and GoJS.",
-            "Service performance is visualized using graphs like pie charts and bar charts via D3.js.",
-            "Built the application using HTML5, XHTML, CSS3, JavaScript, Angular 12, jQuery, AJAX, JSON, Bootstrap, and Lodash.",
-            "Designed responsive UI with Angular Reactive Forms, Angular Material, Bootstrap, and other modern web technologies.",
-            "Created mobile-friendly, responsive pages using Bootstrap 4, Media Queries, Flex Layout, Grid, Tables, Toolbars, and Panels.",
-            "Implemented RESTful service calls (POST, PUT, DELETE, GET).",
-            "Used frameworks and plugins like GoJS, D3.js, custom table features, Angular Material, ngx-daterangepicker-material, and Moment.js.",
-            "Utilized Git for version control and team collaboration."
+            "Designed and developed responsive web pages for the site.",
+            "Planned and designed structure based on client needs.",
+            "Performed coding and testing, including manual testing.",
+            "Prepared test case documentation according to the development cycle.",
+            "Focused on enhancing user experience through improvements based on mockups and client feedback.",
+            "Worked on various internal modules and sub-modules."
           ],
           "environment": [
-            "HTML", "CSS", "SCSS", "Bootstrap", "Angular 12", "JavaScript", "jQuery", "OpenStreetMap", "JSON",
-            "NPM", "Karma", "Bower", "D3.js", "Git", "SVN", "GoJS", "Jasmine", "Node.js",
-            "AngularJS Material", "EaselJS", "TweenJS", "Lodash", "Three.js", "Leaflet.js"
+            "JavaScript", "PHP", "MySQL", "Bootstrap", "HTML5", "CSS3", "jQuery", "Manual Testing", "XAMPP Server"
+          ]
+        },
+        {
+          "project_no": 3,
+          "project_title": "Xovient Technology Pvt Ltd",
+          "project_link": "https://www.xovient.com",
+          "role_and_responsibilities": [
+            "Designed and coded responsive web pages.",
+            "Collaborated on structure planning and designing as per client requirements.",
+            "Enhanced the application for better user experience.",
+            "Performed continuous improvements based on mockups and client discussions.",
+            "Worked on various internal modules and sub-modules."
+          ],
+          "environment": [
+            "JavaScript", "PHP", "MySQL", "Bootstrap", "HTML5", "CSS3", "jQuery", "Manual Testing", "XAMPP Server"
           ]
         }
       ]
-    },
-    {
+    }, {
+      id: 2, name: "usense innovative solutions", year: 2017, title: 'Jr Ui Developer', desc: 'Usense Innovative Solutions Pvt. Ltd, India', icon: '../../../../assets/image/JPG/my-services/usense.jpeg', color: '#fd853a',
+      "project_experience": [
+        {
+          "project_no": 1,
+          "project_title": "Reliance JIO Coverage Platform JCP2 (Client)",
+          "project_link": "https://jcp.jioconnect.com/jcpnewbeta/",
+          "role_and_responsibilities": [
+            "Developed a platform for telecom employees and admins to trace signal tower coverage.",
+            "Used Google Maps, canvas, SVG, and Leaflet to trace tower locations and coverage range.",
+            "Visualized performance data using Highcharts.",
+            "Handled large data using AG-Grid and displayed dummy performance data via JSON.",
+            "Developed forms using Angular Material, HTML, CSS, jQuery.",
+            "Implemented core functionality using JavaScript and AngularJS.",
+            "Worked on internal modules including performance, feedback, fault, dashboard, configuration, administer, and work order."
+          ],
+          "environment": [
+            "HTML", "CSS", "SCSS", "Bootstrap", "AngularJS", "JavaScript", "jQuery", "Highchart", "JSON",
+            "NPM", "Karma", "Bower", "D3.js", "Git", "SVN", "Ag-Grid", "Jasmine", "Node.js",
+            "AngularJS Material", "EaselJS", "TweenJS", "Underscore", "Three.js", "Leaflet.js"
+          ]
+        },
+        {
+          "project_no": 2,
+          "project_title": "Saudi Government Hospital (Medusense) (Client)",
+          "role_and_responsibilities": [
+            "Developed a full-stack hospital management system for both frontend and backend.",
+            "Designed modular AngularJS controllers for SPA architecture.",
+            "Integrated forms using Angular Material, HTML, CSS, jQuery with custom CSS and business logic.",
+            "Built core functionality using JavaScript and AngularJS.",
+            "Worked on internal modules like Dental, Optical, Doctor, Receptionist, Pharmacist, Sales & Purchase, Administer, and Work Order.",
+            "Enhanced the application experience based on client mockups and verbal feedback.",
+            "Developed reusable internal modules including performance, dashboard, and work order handling."
+          ],
+          "environment": [
+            "HTML", "CSS", "SCSS", "Bootstrap", "AngularJS", "JavaScript", "jQuery", "JSON", "NPM",
+            "Karma", "Bower", "D3.js", "Git", "SVN", "Ag-Grid", "Jasmine", "Node.js",
+            "AngularJS Material", "EaselJS", "Bitbucket", "Underscore", "REST API"
+          ]
+        }
+      ]
+    }, {
       id: 3, name: "reliance jio", year: 2018, title: 'Deputy Manager Ui Developer', desc: 'Reliance Jio, India', icon: '../../../../assets/image/JPG/my-services/Reliance_Jio.png', color: '#fd853a',
       "project_experience": [
         {
@@ -226,96 +220,98 @@ export class ResumeTimelineComponent implements OnInit {
           ]
         }
       ]
-    },
-    {
-      id: 4, name: "usense innovative solutions", year: 2017, title: 'Jr Ui Developer', desc: 'Usense Innovative Solutions Pvt. Ltd, India', icon: '../../../../assets/image/JPG/my-services/usense.jpeg', color: '#fd853a',
+    }, {
+      id: 4, name: "topcoder", year: 2022, title: 'Freelance Ui Developer', desc: 'Wipro (Topcoder), Global', icon: '../../../../assets/image/JPG/my-services/wiprotopcoder.jpg', color: '#fd853a',
       "project_experience": [
         {
           "project_no": 1,
-          "project_title": "Reliance JIO Coverage Platform JCP2 (Client)",
-          "project_link": "https://jcp.jioconnect.com/jcpnewbeta/",
+          "project_title": "S4 Portal ABB (Web)",
+          "project_link": "https://login.microsoftonline.com/372ee9e0-9ce0-4033-a64a-c07073a91ecd/saml2?SAMLRequest=jVLBbtswDP0VQ3fbipzEjRAHyBIMC9B1RpP1sBsj06kAWfJEOd3%2Bfq6Sod1hQS86UI%2FvPT5ySdAZ0cv1EJ7tI%2F4ckELyqzOW5OWnYoO30gFpkhY6JBmU3K%2B%2F3kuRcdl7F5xyhiVrIvRBO7txloYO%2FR79WSv8%2FnhfsecQepJ5DsdjRpd6at1LplyXWzj3cMKscSzZjurawivNW5NxJ22zTivvyLXBWaMtxtaiFIgL5OlCjc%2BUF0UK8ymkipe8LGAxQdXkcQyWfHZeYZyyYi0YQpbsthXbP2xwOpvzu9kERMuhVXdNybEoy0Lgoh35yxFINRDpM761Eg24sxTAhooJLmYpn6ZCHLiQnEsxz%2Baz4gdL6ms%2Bn7RttD3dDvN4AZH8cjjUaf1tf4gEZ92gfxjRH8%2FxCT3FDEdatlrGCGT07N8v97Yd%2BLtRtrqhu8zfs1%2B1evnqd7etndHqd7I2xr1sPEIYZwh%2BwLiODsL%2FDUyySazoJm0jVA6WelS61diwfHWV%2FfdwV38A&RelayState=https%3A%2F%2Fabb.service-now.com%2Fmyservices%3Fid%3Dmyis",
           "role_and_responsibilities": [
-            "Developed a platform for telecom employees and admins to trace signal tower coverage.",
-            "Used Google Maps, canvas, SVG, and Leaflet to trace tower locations and coverage range.",
-            "Visualized performance data using Highcharts.",
-            "Handled large data using AG-Grid and displayed dummy performance data via JSON.",
-            "Developed forms using Angular Material, HTML, CSS, jQuery.",
-            "Implemented core functionality using JavaScript and AngularJS.",
-            "Worked on internal modules including performance, feedback, fault, dashboard, configuration, administer, and work order."
+            "Service and Consulting Solutions Application Suite consists of business applications available to Hitachi Energy users. They consist of 4 categories: engagement, partnership, consulting, and sustainability.",
+            "Provides a unified architecture and platform across applications. Core functionality includes role-based access control, project and task management, model execution management, prepare-execute-collect results, sync and async model execution, user dashboards.",
+            "Developed the application in module-wise structure like Critical Spare Parts (CSP), Harmonic Impedance Scanning (HIS), and Cost Configurator.",
+            "Built the application using HTML5, XHTML, CSS3, JavaScript, Angular 13, jQuery, AJAX, JSON, Bootstrap, and Lodash.",
+            "Designed and developed front-end using Angular Reactive Forms for authentication and validation. Data displayed in table format using Angular Material.",
+            "Integrated RESTful APIs for POST, PUT, DELETE, and GET operations.",
+            "Used frameworks and plugins for additional features like custom table data, Angular Material, Angular Bootstrap UI, ngx-daterangepicker-material, and Moment.js.",
+            "Utilized Git for version control and team collaboration."
           ],
           "environment": [
-            "HTML", "CSS", "SCSS", "Bootstrap", "AngularJS", "JavaScript", "jQuery", "Highchart", "JSON",
-            "NPM", "Karma", "Bower", "D3.js", "Git", "SVN", "Ag-Grid", "Jasmine", "Node.js",
-            "AngularJS Material", "EaselJS", "TweenJS", "Underscore", "Three.js", "Leaflet.js"
+            "HTML", "CSS", "SCSS", "Bootstrap", "Angular 13", "JavaScript", "jQuery", "JSON",
+            "NPM", "Karma", "Bower", "Git", "SVN", "Node.js", "Angular Material", "Lodash"
           ]
         },
         {
           "project_no": 2,
-          "project_title": "Saudi Government Hospital (Medusense) (Client)",
+          "project_title": "RelCare Hitachi ABB (Web)",
+          "project_link": "https://login.microsoftonline.com/7831e6d9-dc6c-4cd1-9ec6-1dc2b4133195/resume?ctx=rQQIARAAjZHPa9NwAMXzXbeuFlyrgu6gUKSIONP8_lWo2HVzS20T1t-tB0mTb5q0aZIlabsW_wBPspOIJxUPMhgMUZBd9LzTjuJhTLzIDmN42kns_gPh8eA9eJfPi4apFMmn8HshMoWnkwwLeZqhOZQUcAWlIU6gAlQIFOdIUqE4rQ15yrsajWeevARy7cGzz8jpfnK-BHfAbSMIXD-NYarjpgwzUFTDhDb0OuOU6vQxZRAYXwA4BOA3ADszSZwQWKZNaSjDMjTKKTSLTgsB5WlOoygoEApF_ZiJydnpjrwwxzMn8M9MRPeUTh_aweuQC8d5t5UTWbGb3ZIrTaLZlXqFSpWU1pqBNJlmkzAkUpwU6s2RtFIdtVaWreJaqVfMib7YJyxtbdWUbd9U6gzeauSNJlVy2yRThY1lS-w6ptqv9ZRG3mpSG6bewDMfQ0mOpwjIagKqqayK0qp2wUdlUUJTyTZNUBQhMAehW44LbVNLuJ6jmxZMOLpumTZ8qqgq9P3vIXA4C05mr0dC8ZuLSAK5ewefS0ci0XhscT6BnM-Cd3NTxAur77-e_T16-Gm3jJz8uoEczGHVcqdY2Gi5vUk-y3sBafe2YC2rS4oh05XhuuTkCl7T6ZdUDM8waWI7DLbD1w7Csb6vWKmun2p7zsiH3lkYPJ9H9i_9x2WvomAnuiRKOd4ctvjqsMxpWXu8MZJYsVzRaWL4SO4UJzrZkVk71-FcdS8Kvl1Gzhd2X_x8--bD8en6Sez-cAmzMb-2aWFDfLBc3yTyMp9VBoPOuEpaXZ4f1h9jan_VJaVsZi-OHE91BfkH0",
           "role_and_responsibilities": [
-            "Developed a full-stack hospital management system for both frontend and backend.",
-            "Designed modular AngularJS controllers for SPA architecture.",
-            "Integrated forms using Angular Material, HTML, CSS, jQuery with custom CSS and business logic.",
-            "Built core functionality using JavaScript and AngularJS.",
-            "Worked on internal modules like Dental, Optical, Doctor, Receptionist, Pharmacist, Sales & Purchase, Administer, and Work Order.",
-            "Enhanced the application experience based on client mockups and verbal feedback.",
-            "Developed reusable internal modules including performance, dashboard, and work order handling."
+            "RelCare is a digital partnership agreement combining asset management software with Hitachi Energy expertise.",
+            "Enables asset managers to optimize system performance and protect crucial power assets. Location tracing and signal range detection using OpenStreetMap, Canvas, SVG, and GoJS.",
+            "Service performance is visualized using graphs like pie charts and bar charts via D3.js.",
+            "Built the application using HTML5, XHTML, CSS3, JavaScript, Angular 12, jQuery, AJAX, JSON, Bootstrap, and Lodash.",
+            "Designed responsive UI with Angular Reactive Forms, Angular Material, Bootstrap, and other modern web technologies.",
+            "Created mobile-friendly, responsive pages using Bootstrap 4, Media Queries, Flex Layout, Grid, Tables, Toolbars, and Panels.",
+            "Implemented RESTful service calls (POST, PUT, DELETE, GET).",
+            "Used frameworks and plugins like GoJS, D3.js, custom table features, Angular Material, ngx-daterangepicker-material, and Moment.js.",
+            "Utilized Git for version control and team collaboration."
           ],
           "environment": [
-            "HTML", "CSS", "SCSS", "Bootstrap", "AngularJS", "JavaScript", "jQuery", "JSON", "NPM",
-            "Karma", "Bower", "D3.js", "Git", "SVN", "Ag-Grid", "Jasmine", "Node.js",
-            "AngularJS Material", "EaselJS", "Bitbucket", "Underscore", "REST API"
+            "HTML", "CSS", "SCSS", "Bootstrap", "Angular 12", "JavaScript", "jQuery", "OpenStreetMap", "JSON",
+            "NPM", "Karma", "Bower", "D3.js", "Git", "SVN", "GoJS", "Jasmine", "Node.js",
+            "AngularJS Material", "EaselJS", "TweenJS", "Lodash", "Three.js", "Leaflet.js"
           ]
         }
       ]
-    },
-    {
-      id: 5, name: "elutus info technology", year: 2016, title: 'Web Developer', desc: 'Elutus Info Technology Pvt Ltd, India', icon: '../../../../assets/image/JPG/my-services/elutus.png', color: '#fd853a',
+    }, {
+      id: 5, name: "exl services", year: 2025, title: 'UI Lead Assistant Manager', desc: 'EXL Services, USA', icon: '../../../../assets/image/JPG/my-services/exlservices.png', color: '#fd853a',
       "project_experience": [
         {
           "project_no": 1,
-          "project_title": "Pix Transmissions Ltd",
-          "project_link": "http://www.pixtrans.com/",
+          "project_title": "Insurance Employee Dashboard (Web)",
           "role_and_responsibilities": [
-            "Planned structure and design as per client requirements.",
-            "Designed and coded multiple web pages.",
-            "Performed manual testing for the site.",
-            "Prepared test case documentation according to the development process.",
-            "Worked on various internal modules and sub-modules."
+            "Developed a comprehensive Employee Dashboard for Insurance company using React.js, enabling internal employees to access, manage, and monitor company-wide insurance data, client interactions, claims statuses, and internal analytics.",
+            "The dashboard streamlines the workflow for employees by providing a real-time, user-friendly interface with essential tools and data for efficient management.",
+            "Using React.js for the frontend, .NET (C#) for the backend, and Azure for cloud hosting and services, this dashboard enables employees to manage insurance policies, claims, customer information, and internal analytics with ease.",
+            "Secure login system with JWT authentication for employee access.",
+            "Role-based access control (RBAC) to provide different levels of access for various employee roles (e.g., Admin, Claims Manager, Sales, Customer Support).",
+            "Session management to ensure secure access and prevent unauthorized actions.",
+            "A dynamic, customizable homepage showing an overview of company metrics, current claims, policies in progress, and employee-specific data.",
+            "Real-time data updates for key performance indicators (KPIs), such as claim approval rates, policy renewals, and customer interactions.",
+            "Ability for employees to view and manage insurance claims, track claim statuses, and review claim details (pending, approved, rejected).",
+            "Automated notifications for any claim updates (e.g., new claim submissions, approvals, rejections).",
+            "Option to mark claims for follow-up, escalate issues, or assign them to different departments.",
+            "Employee access to view, modify, and manage active insurance policies, including customer details, coverage levels, and policy status.",
+            "Real-time updates to policy details as they are modified by customers or other employees.",
+            "Integration with the CRM system to view and manage customer interactions, sales activities, and communications.",
+            "Track customer feedback and service issues directly from the dashboard for follow-up or escalation.",
+            "Data visualizations (using Chart.js or Recharts) to display various company metrics such as claim approval rates, policies sold, and overall insurance performance.",
+            "Generate and download reports for claims, policies, and sales performance for internal auditing and decision-making.",
+            "In-app alerts for important events such as claim escalations, policy renewals, or missed deadlines.",
+            "Email and push notifications for employees to ensure timely actions and responses.",
+            "Advanced search functionality for quickly finding claims, policies, and customer records based on various criteria (e.g., policy type, claim status, customer name).",
+            "Filters for sorting claims, policies, and employees by status, type, or priority.",
+            "Employees can create, assign, and track internal tasks related to policies, claims, and customer follow-ups.",
+            "Task prioritization and due date management to ensure deadlines are met.",
+            "Fully responsive interface for accessing the employee dashboard from desktops, tablets, and mobile devices.",
+            "Use of Material-UI for fast, flexible, and responsive design components."
           ],
           "environment": [
-            "JavaScript", "PHP", "MySQL", "Bootstrap", "HTML5", "CSS3", "jQuery", "Manual Testing", "XAMPP Server"
-          ]
-        },
-        {
-          "project_no": 2,
-          "project_title": "Hire4Hotel",
-          "project_link": "http://www.hire4hotel.com",
-          "role_and_responsibilities": [
-            "Designed and developed responsive web pages for the site.",
-            "Planned and designed structure based on client needs.",
-            "Performed coding and testing, including manual testing.",
-            "Prepared test case documentation according to the development cycle.",
-            "Focused on enhancing user experience through improvements based on mockups and client feedback.",
-            "Worked on various internal modules and sub-modules."
-          ],
-          "environment": [
-            "JavaScript", "PHP", "MySQL", "Bootstrap", "HTML5", "CSS3", "jQuery", "Manual Testing", "XAMPP Server"
-          ]
-        },
-        {
-          "project_no": 3,
-          "project_title": "Xovient Technology Pvt Ltd",
-          "project_link": "https://www.xovient.com",
-          "role_and_responsibilities": [
-            "Designed and coded responsive web pages.",
-            "Collaborated on structure planning and designing as per client requirements.",
-            "Enhanced the application for better user experience.",
-            "Performed continuous improvements based on mockups and client discussions.",
-            "Worked on various internal modules and sub-modules."
-          ],
-          "environment": [
-            "JavaScript", "PHP", "MySQL", "Bootstrap", "HTML5", "CSS3", "jQuery", "Manual Testing", "XAMPP Server"
+            "React.js: A JavaScript library for building the user interface. React helps create dynamic, single-page applications with a component-based architecture.",
+            "React Router: For client-side routing to handle different views (e.g., Claims, Policies, Analytics).",
+            "Material-UI: A popular UI component library to ensure a modern, responsive, and consistent design.",
+            "Axios: For making API requests to fetch and post data to the backend.",
+            "highcharts.js: For visualizing performance data and creating reports.",
+            ".NET (C#): The backend is developed using .NET Core (or ASP.NET Core), a robust framework for building scalable and high-performance APIs.",
+            "Entity Framework Core: An Object-Relational Mapping (ORM) framework to interact with the database using C# objects.",
+            "SQL Server or Azure SQL Database: For storing employee, client, policy, claim, and other organizational data.",
+            "JWT (JSON Web Tokens): Used for stateless, secure authentication and authorization between the frontend and backend.",
+            "OAuth/OpenID: Integration with Azure Active Directory for single sign-on (SSO) and secure role-based access.",
+            "Azure App Services: Host both the backend API (ASP.NET Core) and React frontend with managed services, providing scalability and security.",
+            "Azure Active Directory (AAD): For user authentication and role-based access control. Employees are authenticated via OAuth and access is secured based on roles (Admin, Claims Manager, Customer Support, etc.).",
+            "Deployed frontend on Netlify for continuous deployment.",
+            "Backend deployed on Azure."
           ]
         }
       ]

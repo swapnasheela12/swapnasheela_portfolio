@@ -1,4 +1,4 @@
 <div class="image-dialog-container" (contextmenu)="disableRightClick($event)" draggable="false">
-  <img [src]="data.image" [alt]="data.title" class="img-fluid rounded" />
+  <img [src]="data.image" loading="lazy" [alt]="data.title" class="img-fluid rounded" />
   <h5 class="text-center mt-3">{{ data.title }}</h5>
 </div>

@@ -9,7 +9,7 @@
             draggable="false">
             <div class="card-item" *ngFor="let card of cards; let i = index" [class.active]="i === currentIndex">
                 <div class="card-content shadow-lg rounded" (click)="openImageDialog(card)">
-                    <img [src]="card.image" class="img-fluid" alt="destination" />
+                    <img [src]="card.image" loading="lazy" class="img-fluid" alt="destination" />
                     <div class="card-text">
                         <h5>{{ card.title }}</h5>
                         <p>{{ card.description }}</p>
